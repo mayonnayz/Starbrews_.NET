@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "nslkj+Fr+6Q=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\zyann\\Documents\\.Net\\Cafe_System\\Cafe_System.vbproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\zyann\\.nuget\\packages\\system.configuration.configurationmanager\\10.0.3\\system.configuration.configurationmanager.10.0.3.nupkg.sha512",
+    "C:\\Users\\zyann\\.nuget\\packages\\system.data.oledb\\10.0.3\\system.data.oledb.10.0.3.nupkg.sha512",
+    "C:\\Users\\zyann\\.nuget\\packages\\system.diagnostics.eventlog\\10.0.3\\system.diagnostics.eventlog.10.0.3.nupkg.sha512",
+    "C:\\Users\\zyann\\.nuget\\packages\\system.diagnostics.performancecounter\\10.0.3\\system.diagnostics.performancecounter.10.0.3.nupkg.sha512",
+    "C:\\Users\\zyann\\.nuget\\packages\\system.security.cryptography.protecteddata\\10.0.3\\system.security.cryptography.protecteddata.10.0.3.nupkg.sha512",
+    "C:\\Users\\zyann\\.nuget\\packages\\system.threading.accesscontrol\\10.0.3\\system.threading.accesscontrol.10.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

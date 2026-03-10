@@ -1,0 +1,29 @@
+{
+  "ShowEmptyProjects": false,
+  "SelectedGroups": [
+    "C:\\Users\\zyann\\Documents\\.Net\\Cafe_System\\LogIn.resx",
+    "C:\\Users\\zyann\\Documents\\.Net\\Cafe_System\\tabInventory.resx",
+    "C:\\Users\\zyann\\Documents\\.Net\\Cafe_System\\tabItems.resx",
+    "C:\\Users\\zyann\\Documents\\.Net\\Cafe_System\\tabDashboard.resx",
+    "C:\\Users\\zyann\\Documents\\.Net\\Cafe_System\\tabOrderRequests.resx",
+    "C:\\Users\\zyann\\Documents\\.Net\\Cafe_System\\Dashboard.resx",
+    "C:\\Users\\zyann\\Documents\\.Net\\Cafe_System\\tabAccounts.resx"
+  ],
+  "ExpandedProjects": [
+    "C:\\Users\\zyann\\Documents\\.Net\\Cafe_System\\Cafe_System.vbproj"
+  ],
+  "EnableSpellChecker": true,
+  "ColumnOrder": [
+    "name",
+    "type",
+    "file-path",
+    "file-name",
+    "neutral-value",
+    "neutral-comment"
+  ],
+  "VisibleColumnKeys": [
+    "name",
+    "neutral-comment",
+    "neutral-value"
+  ]
+}
