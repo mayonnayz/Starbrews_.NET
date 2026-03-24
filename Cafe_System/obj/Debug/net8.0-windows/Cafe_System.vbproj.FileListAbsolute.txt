@@ -183,3 +183,9 @@ C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net
 C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.subSuppliers.resources
 C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.subItems.resources
 C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.subCategory.resources
+C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.subCat.resources
+C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.subClosing.resources
+C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.subStockRoom.resources
+C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.subCreateReq.resources
+C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.subInvLogs.resources
+C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.subOrderReq.resources

@@ -122,7 +122,7 @@ Public Class subSuppliers
 
     Private Sub LoadCategories()
         Try
-            Dim sql As String = "SELECT CategoryID, CatName FROM CategoriesTbl"
+            Dim sql As String = "SELECT CategoryID, CatName FROM CategoriesTbl WHERE CatStatus = 1"
 
             Using cmd As New OleDbCommand(sql, oledbCnn)
                 Using adapter As New OleDbDataAdapter(cmd)

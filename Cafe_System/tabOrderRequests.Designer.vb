@@ -173,7 +173,7 @@ Partial Class tabOrderRequests
         btnViewRequest.ForeColor = SystemColors.ButtonHighlight
         btnViewRequest.Location = New Point(13, 601)
         btnViewRequest.Name = "btnViewRequest"
-        btnViewRequest.Size = New Size(150, 23)
+        btnViewRequest.Size = New Size(187, 23)
         btnViewRequest.TabIndex = 12
         btnViewRequest.Text = "VIEW ORDER REQUEST"
         btnViewRequest.UseVisualStyleBackColor = False

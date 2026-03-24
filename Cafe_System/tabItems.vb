@@ -40,10 +40,12 @@ Public Class tabItems
         dgridItems.Columns.Clear()
 
         sql = "SELECT i.ItemID, i.ItemName, i.ItemDesc, c.CatName AS Category, " &
-              "i.UnitPrice, i.Unit, i.ItemCategory " &
-              "FROM ItemsTbl i " &
-              "INNER JOIN CategoriesTbl c ON i.ItemCategory = c.CategoryID " &
-              "WHERE i.ItemStatus = " & status
+          "i.UnitPrice, i.Unit, i.ItemCategory " &
+          "FROM ItemsTbl i " &
+          "INNER JOIN CategoriesTbl c " &
+          "ON i.ItemCategory = c.CategoryID " &
+          "WHERE i.ItemStatus = " & status &
+          " AND c.CatStatus = 1"
 
         Using da As New OleDbDataAdapter(sql, oledbCnn)
             da.Fill(dt)
@@ -113,7 +115,7 @@ Public Class tabItems
 
         Dim dtCat As New DataTable()
 
-        sql = "SELECT CategoryID, CatName FROM CategoriesTbl"
+        sql = "SELECT CategoryID, CatName FROM CategoriesTbl WHERE CatStatus = 1"
 
         Using da As New OleDbDataAdapter(sql, oledbCnn)
             da.Fill(dtCat)
@@ -137,7 +139,7 @@ Public Class tabItems
         sql = "SELECT i.ItemID, i.ItemName, i.ItemDesc, c.CatName AS Category, " &
               "i.UnitPrice, i.Unit, i.ItemCategory " &
               "FROM ItemsTbl i " &
-              "INNER JOIN CategoriesTbl c ON i.ItemCategory = c.CategoryID " &
+              "INNER JOIN CategoriesTbl c ON i.ItemCategory = c.CategoryID AND c.CatStatus = 1 " &
               "WHERE i.ItemStatus = " & status &
               " AND i.ItemName LIKE ?"
 
@@ -162,7 +164,6 @@ Public Class tabItems
 
     End Sub
     Private Sub dgridItems_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgridItems.CellContentClick
-
         If Form1.UserLvl = 2 Or Form1.UserLvl = 3 Then
             Exit Sub
         End If
@@ -182,6 +183,8 @@ Public Class tabItems
             itemName = row.Cells("ItemName").Value.ToString()
             itemDesc = row.Cells("ItemDesc").Value.ToString()
             itemCategory = Convert.ToInt32(row.Cells("ItemCategory").Value)
+            unitPrice = Convert.ToDecimal(row.Cells("UnitPrice").Value)
+            unit = row.Cells("Unit").Value.ToString()
 
             subItm.ShowDialog()
             LoadItems()
@@ -302,13 +305,20 @@ Public Class tabItems
 
     End Sub
     Private Sub btnAddItem_Click(sender As Object, e As EventArgs) Handles btnAddItem.Click
-
         Dim subItm As New subItems()
 
         purpose = "Create New Item"
 
         subItm.ShowDialog()
         LoadItems()
+    End Sub
 
+    Private Sub btnCategories_Click(sender As Object, e As EventArgs) Handles btnCategories.Click
+        Dim subCat As New subCategory()
+
+        subCat.ShowDialog()
+
+        LoadItems()
+        LoadCategories()
     End Sub
 End Class

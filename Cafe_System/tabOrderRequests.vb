@@ -24,7 +24,7 @@ Public Class tabOrderRequests
 
     Private Sub LoadCategories()
         Try
-            Dim sql As String = "SELECT CategoryID, CatName FROM CategoriesTbl"
+            Dim sql As String = "SELECT CategoryID, CatName FROM CategoriesTbl WHERE CatStatus = 1"
 
             Using cmd As New OleDbCommand(sql, oledbCnn)
                 Using adapter As New OleDbDataAdapter(cmd)
@@ -202,5 +202,17 @@ Public Class tabOrderRequests
         Else
             MessageBox.Show("Please select a supplier to edit.")
         End If
+    End Sub
+
+    Private Sub btnViewRequest_Click(sender As Object, e As EventArgs) Handles btnViewRequest.Click
+        Dim subView As New subOrderReq()
+
+        subView.ShowDialog()
+    End Sub
+
+    Private Sub btnCreateRequest_Click(sender As Object, e As EventArgs) Handles btnCreateRequest.Click
+        Dim subAdd As New subCreateReq()
+
+        subAdd.ShowDialog()
     End Sub
 End Class

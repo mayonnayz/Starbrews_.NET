@@ -27,9 +27,9 @@ Partial Class subItems
         GroupBox2 = New GroupBox()
         Label6 = New Label()
         Label3 = New Label()
-        txtUname = New TextBox()
-        txtPass = New TextBox()
-        cmbUlvl = New ComboBox()
+        txtUPrice = New TextBox()
+        txtUnit = New TextBox()
+        cmbCategory = New ComboBox()
         Label5 = New Label()
         GroupBox1 = New GroupBox()
         Label2 = New Label()
@@ -77,8 +77,8 @@ Partial Class subItems
         GroupBox2.BackColor = Color.Transparent
         GroupBox2.Controls.Add(Label6)
         GroupBox2.Controls.Add(Label3)
-        GroupBox2.Controls.Add(txtUname)
-        GroupBox2.Controls.Add(txtPass)
+        GroupBox2.Controls.Add(txtUPrice)
+        GroupBox2.Controls.Add(txtUnit)
         GroupBox2.ForeColor = Color.Transparent
         GroupBox2.Location = New Point(35, 272)
         GroupBox2.Name = "GroupBox2"
@@ -111,31 +111,32 @@ Partial Class subItems
         Label3.TabIndex = 5
         Label3.Text = "Unit Price:"
         ' 
-        ' txtUname
+        ' txtUPrice
         ' 
-        txtUname.Font = New Font("Consolas", 9F)
-        txtUname.Location = New Point(103, 22)
-        txtUname.Name = "txtUname"
-        txtUname.Size = New Size(104, 22)
-        txtUname.TabIndex = 4
+        txtUPrice.Font = New Font("Consolas", 9F)
+        txtUPrice.Location = New Point(103, 22)
+        txtUPrice.Name = "txtUPrice"
+        txtUPrice.Size = New Size(104, 22)
+        txtUPrice.TabIndex = 4
         ' 
-        ' txtPass
+        ' txtUnit
         ' 
-        txtPass.Font = New Font("Consolas", 9F)
-        txtPass.Location = New Point(261, 22)
-        txtPass.Name = "txtPass"
-        txtPass.Size = New Size(79, 22)
-        txtPass.TabIndex = 6
+        txtUnit.Font = New Font("Consolas", 9F)
+        txtUnit.Location = New Point(261, 22)
+        txtUnit.Name = "txtUnit"
+        txtUnit.Size = New Size(79, 22)
+        txtUnit.TabIndex = 6
         ' 
-        ' cmbUlvl
+        ' cmbCategory
         ' 
-        cmbUlvl.Font = New Font("Consolas", 9F)
-        cmbUlvl.FormattingEnabled = True
-        cmbUlvl.Items.AddRange(New Object() {"Super Admin", "Store Manager", "Shift Supervisor", "Barista"})
-        cmbUlvl.Location = New Point(120, 134)
-        cmbUlvl.Name = "cmbUlvl"
-        cmbUlvl.Size = New Size(217, 22)
-        cmbUlvl.TabIndex = 10
+        cmbCategory.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbCategory.Font = New Font("Consolas", 9F)
+        cmbCategory.FormattingEnabled = True
+        cmbCategory.Items.AddRange(New Object() {"Super Admin", "Store Manager", "Shift Supervisor", "Barista"})
+        cmbCategory.Location = New Point(120, 134)
+        cmbCategory.Name = "cmbCategory"
+        cmbCategory.Size = New Size(217, 22)
+        cmbCategory.TabIndex = 10
         ' 
         ' Label5
         ' 
@@ -155,7 +156,7 @@ Partial Class subItems
         GroupBox1.Controls.Add(Label2)
         GroupBox1.Controls.Add(Label1)
         GroupBox1.Controls.Add(txtIDesc)
-        GroupBox1.Controls.Add(cmbUlvl)
+        GroupBox1.Controls.Add(cmbCategory)
         GroupBox1.Controls.Add(txtIName)
         GroupBox1.Controls.Add(Label5)
         GroupBox1.ForeColor = Color.Transparent
@@ -247,9 +248,9 @@ Partial Class subItems
     Friend WithEvents btnSubmit As Button
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents txtUname As TextBox
-    Friend WithEvents txtPass As TextBox
-    Friend WithEvents cmbUlvl As ComboBox
+    Friend WithEvents txtUPrice As TextBox
+    Friend WithEvents txtUnit As TextBox
+    Friend WithEvents cmbCategory As ComboBox
     Friend WithEvents Label5 As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label2 As Label

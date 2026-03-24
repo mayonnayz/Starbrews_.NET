@@ -236,7 +236,7 @@ Partial Class subSuppliers
         MaximizeBox = False
         MinimizeBox = False
         Name = "subSuppliers"
-        StartPosition = FormStartPosition.CenterParent
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Suppliers"
         GroupBox1.ResumeLayout(False)
         GroupBox1.PerformLayout()
