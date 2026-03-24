@@ -7,6 +7,12 @@
     <Compile Update="LogIn.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="subAccounts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="subSuppliers.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="tabAccounts.vb">
       <SubType>UserControl</SubType>
     </Compile>

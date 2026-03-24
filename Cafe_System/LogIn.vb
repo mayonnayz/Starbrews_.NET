@@ -7,6 +7,8 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         OpenConnection()
         accountsSet()
+
+        txtPassword.UseSystemPasswordChar = False
     End Sub
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
 
@@ -18,7 +20,7 @@ Public Class Form1
             Return
         End If
 
-        sql = "SELECT * FROM AccountsTbl WHERE StrComp([Username], ?, 0) = 0 AND StrComp([Password], ?, 0) = 0"
+        sql = "SELECT * FROM AccountsTbl WHERE StrComp([Username], ?, 0) = 0 AND StrComp([Password], ?, 0) = 0 AND Status = 1"
 
         Using cmd As New OleDbCommand(sql, oledbCnn)
             cmd.Parameters.AddWithValue("?", username)
@@ -42,9 +44,14 @@ Public Class Form1
                 End If
             End Using
         End Using
-
     End Sub
-
+    Private Sub chkShowPass_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowPass.CheckedChanged
+        If chkShowPass.Checked Then
+            txtPassword.UseSystemPasswordChar = True
+        Else
+            txtPassword.UseSystemPasswordChar = False
+        End If
+    End Sub
     Private Sub btnLogin_MouseEnter(sender As Object, e As EventArgs) Handles btnLogin.MouseEnter
         btnLogin.BackgroundImage = My.Resources.loginbtnhover
         btnLogin.BackgroundImageLayout = ImageLayout.Zoom

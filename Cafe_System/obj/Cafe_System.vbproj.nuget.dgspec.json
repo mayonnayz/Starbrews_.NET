@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zyann\\Documents\\.Net\\Cafe_System\\Cafe_System.vbproj": {}
+    "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\Cafe_System.vbproj": {}
   },
   "projects": {
-    "C:\\Users\\zyann\\Documents\\.Net\\Cafe_System\\Cafe_System.vbproj": {
+    "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\Cafe_System.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zyann\\Documents\\.Net\\Cafe_System\\Cafe_System.vbproj",
+        "projectUniqueName": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\Cafe_System.vbproj",
         "projectName": "Cafe_System",
-        "projectPath": "C:\\Users\\zyann\\Documents\\.Net\\Cafe_System\\Cafe_System.vbproj",
+        "projectPath": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\Cafe_System.vbproj",
         "packagesPath": "C:\\Users\\zyann\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zyann\\Documents\\.Net\\Cafe_System\\obj\\",
+        "outputPath": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -22,6 +22,7 @@ Partial Class tabDashboard
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(tabDashboard))
         Label1 = New Label()
         Panel1 = New Panel()
         SuspendLayout()
@@ -40,11 +41,11 @@ Partial Class tabDashboard
         ' Panel1
         ' 
         Panel1.BackColor = Color.Transparent
-        Panel1.BackgroundImage = My.Resources.Resources.filler
+        Panel1.BackgroundImage = CType(resources.GetObject("Panel1.BackgroundImage"), Image)
         Panel1.BackgroundImageLayout = ImageLayout.Zoom
-        Panel1.Location = New Point(85, 99)
+        Panel1.Location = New Point(13, 87)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(638, 433)
+        Panel1.Size = New Size(819, 463)
         Panel1.TabIndex = 1
         ' 
         ' tabDashboard

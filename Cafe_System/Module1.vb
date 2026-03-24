@@ -12,7 +12,7 @@ Module Module1
 
     Public Function OpenConnection() As Boolean
 
-        connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\zyann\Documents\.Net\CafeDBase.accdb"
+        connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\CafeDBase.accdb"
         oledbCnn = New OleDbConnection(connectionString)
 
         Try

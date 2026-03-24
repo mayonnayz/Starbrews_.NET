@@ -73,9 +73,19 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property filler() As System.Drawing.Bitmap
+        Friend ReadOnly Property btngeneral() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("filler", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("btngeneral", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property btngeneralhover() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("btngeneralhover", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -186,6 +196,16 @@ Namespace My.Resources
         Friend ReadOnly Property sidePanelBg() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("sidePanelBg", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property subModbg() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("subModbg", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
