@@ -95,6 +95,7 @@ Partial Class subAccounts
         ' 
         ' cmbUlvl
         ' 
+        cmbUlvl.DropDownStyle = ComboBoxStyle.DropDownList
         cmbUlvl.Font = New Font("Consolas", 9F)
         cmbUlvl.FormattingEnabled = True
         cmbUlvl.Items.AddRange(New Object() {"Super Admin", "Store Manager", "Shift Supervisor", "Barista"})

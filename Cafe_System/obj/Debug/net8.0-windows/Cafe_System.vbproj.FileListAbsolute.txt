@@ -181,3 +181,5 @@ C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net
 C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\ref\Cafe_System.dll
 C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.subAccounts.resources
 C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.subSuppliers.resources
+C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.subItems.resources
+C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.subCategory.resources

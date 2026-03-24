@@ -5,11 +5,13 @@ Public Class subAccounts
     Private Sub subAccounts_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblTitle.Text = tabAccounts.purpose
 
-        If tabAccounts.userlvl = 0 Then
+        If (tabAccounts.userlvl <> 0) Or (tabAccounts.purpose = "Create New Account") Then
+            cmbUlvl.Enabled = True
+        Else
             cmbUlvl.Enabled = False
         End If
 
-        If tabAccounts.purpose = "Edit Account" Then
+        If tabAccounts.purpose = "Account Info" Then
             txtFName.Text = tabAccounts.fname
             txtLName.Text = tabAccounts.lname
             txtUname.Text = tabAccounts.uname
@@ -20,9 +22,12 @@ Public Class subAccounts
             txtLName.Text = ""
             txtUname.Text = ""
             txtPass.Text = ""
-            cmbUlvl.SelectedIndex = 0
+            cmbUlvl.SelectedIndex = 3
         End If
 
+        Me.BeginInvoke(Sub()
+                           Me.ActiveControl = Nothing
+                       End Sub)
     End Sub
 
     Private Function ValidateInputs() As Boolean
@@ -76,8 +81,13 @@ Public Class subAccounts
     End Sub
 
     Private Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
-        Dim result As String
-        result = MessageBox.Show("Are you sure you want to submit?", "Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        Dim result As String = ""
+
+        If tabAccounts.purpose = "Account Info" Then
+            result = MessageBox.Show("Are you sure you want to submit changes?", "Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        ElseIf tabAccounts.purpose = "Create New Account" Then
+            result = MessageBox.Show("Are you sure you want to create account?", "Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        End If
 
         If result = DialogResult.Yes Then
             If Not ValidateInputs() Then Exit Sub

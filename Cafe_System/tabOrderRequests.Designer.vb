@@ -56,7 +56,7 @@ Partial Class tabOrderRequests
         ' DataGridView1
         ' 
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        DataGridView1.BackgroundColor = Color.PapayaWhip
+        DataGridView1.BackgroundColor = Color.FromArgb(CByte(89), CByte(82), CByte(71))
         DataGridView1.BorderStyle = BorderStyle.Fixed3D
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Columns.AddRange(New DataGridViewColumn() {ReqNo, Date_Requested, RequestedBy, Status})
@@ -87,7 +87,7 @@ Partial Class tabOrderRequests
         ' 
         ' lstSupplier
         ' 
-        lstSupplier.BackColor = Color.Bisque
+        lstSupplier.BackColor = Color.FromArgb(CByte(196), CByte(188), CByte(171))
         lstSupplier.BorderStyle = BorderStyle.FixedSingle
         lstSupplier.Font = New Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lstSupplier.FormattingEnabled = True
@@ -110,10 +110,11 @@ Partial Class tabOrderRequests
         ' 
         ' btnAddSupplier
         ' 
-        btnAddSupplier.BackColor = Color.PeachPuff
+        btnAddSupplier.BackColor = Color.FromArgb(CByte(172), CByte(155), CByte(120))
         btnAddSupplier.FlatAppearance.BorderSize = 0
         btnAddSupplier.FlatStyle = FlatStyle.Popup
         btnAddSupplier.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
+        btnAddSupplier.ForeColor = SystemColors.ButtonHighlight
         btnAddSupplier.Location = New Point(529, 586)
         btnAddSupplier.Name = "btnAddSupplier"
         btnAddSupplier.Size = New Size(150, 23)
@@ -123,10 +124,11 @@ Partial Class tabOrderRequests
         ' 
         ' btnArchiveSupplier
         ' 
-        btnArchiveSupplier.BackColor = Color.PeachPuff
+        btnArchiveSupplier.BackColor = Color.FromArgb(CByte(172), CByte(155), CByte(120))
         btnArchiveSupplier.FlatAppearance.BorderSize = 0
         btnArchiveSupplier.FlatStyle = FlatStyle.Popup
         btnArchiveSupplier.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
+        btnArchiveSupplier.ForeColor = SystemColors.ButtonHighlight
         btnArchiveSupplier.Location = New Point(687, 615)
         btnArchiveSupplier.Name = "btnArchiveSupplier"
         btnArchiveSupplier.Size = New Size(152, 23)
@@ -136,10 +138,11 @@ Partial Class tabOrderRequests
         ' 
         ' btnEditSupplier
         ' 
-        btnEditSupplier.BackColor = Color.PeachPuff
+        btnEditSupplier.BackColor = Color.FromArgb(CByte(172), CByte(155), CByte(120))
         btnEditSupplier.FlatAppearance.BorderSize = 0
         btnEditSupplier.FlatStyle = FlatStyle.Popup
         btnEditSupplier.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
+        btnEditSupplier.ForeColor = SystemColors.ButtonHighlight
         btnEditSupplier.Location = New Point(687, 586)
         btnEditSupplier.Name = "btnEditSupplier"
         btnEditSupplier.Size = New Size(152, 23)
@@ -149,10 +152,11 @@ Partial Class tabOrderRequests
         ' 
         ' btnCreateRequest
         ' 
-        btnCreateRequest.BackColor = Color.Wheat
+        btnCreateRequest.BackColor = Color.FromArgb(CByte(165), CByte(161), CByte(141))
         btnCreateRequest.FlatAppearance.BorderSize = 0
         btnCreateRequest.FlatStyle = FlatStyle.Popup
         btnCreateRequest.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
+        btnCreateRequest.ForeColor = SystemColors.ButtonHighlight
         btnCreateRequest.Location = New Point(15, 60)
         btnCreateRequest.Name = "btnCreateRequest"
         btnCreateRequest.Size = New Size(167, 23)
@@ -162,10 +166,11 @@ Partial Class tabOrderRequests
         ' 
         ' btnViewRequest
         ' 
-        btnViewRequest.BackColor = Color.Wheat
+        btnViewRequest.BackColor = Color.FromArgb(CByte(165), CByte(161), CByte(141))
         btnViewRequest.FlatAppearance.BorderSize = 0
         btnViewRequest.FlatStyle = FlatStyle.Popup
         btnViewRequest.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
+        btnViewRequest.ForeColor = SystemColors.ButtonHighlight
         btnViewRequest.Location = New Point(13, 601)
         btnViewRequest.Name = "btnViewRequest"
         btnViewRequest.Size = New Size(150, 23)
@@ -175,10 +180,11 @@ Partial Class tabOrderRequests
         ' 
         ' btnViewArch
         ' 
-        btnViewArch.BackColor = Color.Peru
+        btnViewArch.BackColor = Color.FromArgb(CByte(135), CByte(125), CByte(107))
         btnViewArch.FlatAppearance.BorderSize = 0
         btnViewArch.FlatStyle = FlatStyle.Popup
         btnViewArch.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
+        btnViewArch.ForeColor = SystemColors.ButtonHighlight
         btnViewArch.Location = New Point(529, 615)
         btnViewArch.Name = "btnViewArch"
         btnViewArch.Size = New Size(150, 23)
@@ -188,15 +194,16 @@ Partial Class tabOrderRequests
         ' 
         ' btnSearch
         ' 
-        btnSearch.BackColor = Color.PeachPuff
+        btnSearch.BackColor = Color.FromArgb(CByte(172), CByte(155), CByte(120))
         btnSearch.FlatAppearance.BorderSize = 0
         btnSearch.FlatStyle = FlatStyle.Popup
         btnSearch.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnSearch.Location = New Point(773, 63)
+        btnSearch.ForeColor = SystemColors.ButtonHighlight
+        btnSearch.Location = New Point(807, 63)
         btnSearch.Name = "btnSearch"
-        btnSearch.Size = New Size(64, 22)
+        btnSearch.Size = New Size(30, 22)
         btnSearch.TabIndex = 15
-        btnSearch.Text = "SEARCH"
+        btnSearch.Text = "🔍︎"
         btnSearch.UseVisualStyleBackColor = False
         ' 
         ' txtSearch
@@ -204,16 +211,16 @@ Partial Class tabOrderRequests
         txtSearch.Font = New Font("Consolas", 9F)
         txtSearch.Location = New Point(529, 63)
         txtSearch.Name = "txtSearch"
-        txtSearch.Size = New Size(122, 22)
+        txtSearch.Size = New Size(140, 22)
         txtSearch.TabIndex = 14
         ' 
         ' cmbCategory
         ' 
         cmbCategory.Font = New Font("Consolas", 9F)
         cmbCategory.FormattingEnabled = True
-        cmbCategory.Location = New Point(651, 63)
+        cmbCategory.Location = New Point(669, 63)
         cmbCategory.Name = "cmbCategory"
-        cmbCategory.Size = New Size(122, 22)
+        cmbCategory.Size = New Size(138, 22)
         cmbCategory.TabIndex = 16
         ' 
         ' tabOrderRequests

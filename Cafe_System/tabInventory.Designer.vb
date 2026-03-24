@@ -86,10 +86,11 @@ Partial Class tabInventory
         ' 
         ' btnHistoryStore
         ' 
-        btnHistoryStore.BackColor = Color.Linen
+        btnHistoryStore.BackColor = Color.FromArgb(CByte(165), CByte(161), CByte(141))
         btnHistoryStore.FlatAppearance.BorderSize = 0
         btnHistoryStore.FlatStyle = FlatStyle.Popup
         btnHistoryStore.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
+        btnHistoryStore.ForeColor = SystemColors.ButtonHighlight
         btnHistoryStore.Location = New Point(724, 562)
         btnHistoryStore.Name = "btnHistoryStore"
         btnHistoryStore.Size = New Size(102, 23)
@@ -100,13 +101,13 @@ Partial Class tabInventory
         ' DataGridView1
         ' 
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        DataGridView1.BackgroundColor = Color.SeaShell
+        DataGridView1.BackgroundColor = Color.FromArgb(CByte(89), CByte(82), CByte(71))
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = SystemColors.Control
         DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Control
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText
         DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
         DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -115,7 +116,7 @@ Partial Class tabInventory
         DataGridViewCellStyle2.BackColor = SystemColors.Window
         DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(80), CByte(82), CByte(71))
         DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
         DataGridView1.DefaultCellStyle = DataGridViewCellStyle2
@@ -159,10 +160,11 @@ Partial Class tabInventory
         ' 
         ' btnClosingCount
         ' 
-        btnClosingCount.BackColor = Color.Linen
+        btnClosingCount.BackColor = Color.FromArgb(CByte(135), CByte(125), CByte(107))
         btnClosingCount.FlatAppearance.BorderSize = 0
         btnClosingCount.FlatStyle = FlatStyle.Popup
         btnClosingCount.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
+        btnClosingCount.ForeColor = SystemColors.ButtonHighlight
         btnClosingCount.Location = New Point(641, 31)
         btnClosingCount.Name = "btnClosingCount"
         btnClosingCount.Size = New Size(185, 23)
@@ -199,10 +201,11 @@ Partial Class tabInventory
         ' 
         ' btnStockIn
         ' 
-        btnStockIn.BackColor = Color.Linen
+        btnStockIn.BackColor = Color.FromArgb(CByte(135), CByte(125), CByte(107))
         btnStockIn.FlatAppearance.BorderSize = 0
         btnStockIn.FlatStyle = FlatStyle.Popup
         btnStockIn.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
+        btnStockIn.ForeColor = SystemColors.ButtonHighlight
         btnStockIn.Location = New Point(616, 31)
         btnStockIn.Name = "btnStockIn"
         btnStockIn.Size = New Size(102, 23)
@@ -222,10 +225,11 @@ Partial Class tabInventory
         ' 
         ' btnStockOut
         ' 
-        btnStockOut.BackColor = Color.Linen
+        btnStockOut.BackColor = Color.FromArgb(CByte(135), CByte(125), CByte(107))
         btnStockOut.FlatAppearance.BorderSize = 0
         btnStockOut.FlatStyle = FlatStyle.Popup
         btnStockOut.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
+        btnStockOut.ForeColor = SystemColors.ButtonHighlight
         btnStockOut.Location = New Point(724, 31)
         btnStockOut.Name = "btnStockOut"
         btnStockOut.Size = New Size(102, 23)
@@ -235,10 +239,11 @@ Partial Class tabInventory
         ' 
         ' btnHistoryStock
         ' 
-        btnHistoryStock.BackColor = Color.Linen
+        btnHistoryStock.BackColor = Color.FromArgb(CByte(165), CByte(161), CByte(141))
         btnHistoryStock.FlatAppearance.BorderSize = 0
         btnHistoryStock.FlatStyle = FlatStyle.Popup
         btnHistoryStock.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
+        btnHistoryStock.ForeColor = SystemColors.ButtonHighlight
         btnHistoryStock.Location = New Point(724, 562)
         btnHistoryStock.Name = "btnHistoryStock"
         btnHistoryStock.Size = New Size(102, 23)
@@ -249,7 +254,7 @@ Partial Class tabInventory
         ' DataGridView2
         ' 
         DataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        DataGridView2.BackgroundColor = Color.SeaShell
+        DataGridView2.BackgroundColor = Color.FromArgb(CByte(89), CByte(82), CByte(71))
         DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle4.BackColor = SystemColors.Control
         DataGridViewCellStyle4.Font = New Font("Segoe UI", 9F)

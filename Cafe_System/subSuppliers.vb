@@ -6,7 +6,7 @@ Public Class subSuppliers
     Private Sub subSuppliers_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadCategories()
 
-        If tabOrderRequests.purpose = "Edit Supplier" Then
+        If tabOrderRequests.purpose = "View Supplier" Then
             lblTitle.Text = tabOrderRequests.purpose
             LoadSupplierDetails()
         ElseIf tabOrderRequests.purpose = "Add New Supplier" Then
@@ -46,7 +46,7 @@ Public Class subSuppliers
         Dim namePattern As String = "^[A-Za-z\s]+$"
         Dim contactPattern As String = "^\d+$"
         Dim emailPattern As String = "^[^@\s]+@[^@\s]+\.[^@\s]+$"
-        Dim addressPattern As String = "^[A-Za-z0-9\s]+$"
+        Dim addressPattern As String = "^[A-Za-z0-9\s,\.]+$"
         Dim userPassPattern As String = "^\S+$"
 
         If Not Regex.IsMatch(txtSName.Text, namePattern) Then
@@ -76,8 +76,12 @@ Public Class subSuppliers
         Return True
     End Function
     Private Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
-        Dim result As String
-        result = MessageBox.Show("Are you sure you want to submit?", "Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        Dim result As String = ""
+        If tabOrderRequests.purpose = "View Supplier" Then
+            result = MessageBox.Show("Are you sure you want to submit changes?", "Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        ElseIf tabOrderRequests.purpose = "Add New Supplier" Then
+            result = MessageBox.Show("Are you sure you want to add supplier?", "Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        End If
 
         If result = DialogResult.Yes Then
             If Not ValidateInputs() Then Exit Sub
@@ -173,6 +177,5 @@ Public Class subSuppliers
         btnCancel.BackgroundImage = My.Resources.btngeneral
         btnCancel.BackgroundImageLayout = ImageLayout.Zoom
     End Sub
-
 
 End Class

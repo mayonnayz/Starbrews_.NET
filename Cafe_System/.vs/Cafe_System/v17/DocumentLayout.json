@@ -3,36 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\taborderrequests.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:taborderrequests.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\taborderrequests.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:taborderrequests.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\subsuppliers.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:subsuppliers.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\subsuppliers.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:subsuppliers.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\tabaccounts.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:tabaccounts.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\tabitems.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:tabitems.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\tabaccounts.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:tabaccounts.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\subaccounts.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
       "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:subaccounts.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\subaccounts.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:subaccounts.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\tabitems.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:tabitems.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\tabaccounts.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:tabaccounts.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+      "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\subitems.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:subitems.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\subcategory.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:subcategory.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\subaccounts.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:subaccounts.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,83 +50,94 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "subSuppliers.vb",
-              "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subSuppliers.vb",
-              "RelativeDocumentMoniker": "subSuppliers.vb",
-              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subSuppliers.vb",
-              "RelativeToolTip": "subSuppliers.vb",
-              "ViewState": "AgIAAG4AAAAAAAAAAAAIwHYAAAAEAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "tabItems.vb",
+              "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\tabItems.vb",
+              "RelativeDocumentMoniker": "tabItems.vb",
+              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\tabItems.vb",
+              "RelativeToolTip": "tabItems.vb",
+              "ViewState": "AgIAAMwAAAAAAAAAAAApwOAAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-03-23T16:44:51.519Z",
+              "WhenOpened": "2026-03-24T14:44:15.354Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "subSuppliers.vb [Design]",
-              "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subSuppliers.vb",
-              "RelativeDocumentMoniker": "subSuppliers.vb",
-              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subSuppliers.vb [Design]",
-              "RelativeToolTip": "subSuppliers.vb [Design]",
+              "DocumentIndex": 5,
+              "Title": "subItems.vb [Design]",
+              "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subItems.vb",
+              "RelativeDocumentMoniker": "subItems.vb",
+              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subItems.vb [Design]",
+              "RelativeToolTip": "subItems.vb [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-03-23T16:38:24.979Z",
+              "WhenOpened": "2026-03-24T15:20:44.061Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "tabOrderRequests.vb",
-              "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\tabOrderRequests.vb",
-              "RelativeDocumentMoniker": "tabOrderRequests.vb",
-              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\tabOrderRequests.vb",
-              "RelativeToolTip": "tabOrderRequests.vb",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAowEwAAAAfAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "tabItems.vb [Design]",
+              "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\tabItems.vb",
+              "RelativeDocumentMoniker": "tabItems.vb",
+              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\tabItems.vb [Design]",
+              "RelativeToolTip": "tabItems.vb [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-03-23T15:53:56.641Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "tabOrderRequests.vb [Design]",
-              "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\tabOrderRequests.vb",
-              "RelativeDocumentMoniker": "tabOrderRequests.vb",
-              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\tabOrderRequests.vb [Design]",
-              "RelativeToolTip": "tabOrderRequests.vb [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-03-23T16:00:50.538Z",
+              "WhenOpened": "2026-03-24T14:39:58.577Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "subAccounts.vb",
-              "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subAccounts.vb",
-              "RelativeDocumentMoniker": "subAccounts.vb",
-              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subAccounts.vb",
-              "RelativeToolTip": "subAccounts.vb",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwBsAAAAEAAAAAAAAAA==",
+              "Title": "subCategory.vb [Design]",
+              "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subCategory.vb",
+              "RelativeDocumentMoniker": "subCategory.vb",
+              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subCategory.vb [Design]",
+              "RelativeToolTip": "subCategory.vb [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-03-23T12:30:21.023Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T14:45:22.745Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "tabAccounts.vb",
               "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\tabAccounts.vb",
               "RelativeDocumentMoniker": "tabAccounts.vb",
               "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\tabAccounts.vb",
               "RelativeToolTip": "tabAccounts.vb",
-              "ViewState": "AgIAACIAAAAAAAAAAAAYwCcAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAMIAAAAAAAAAAAAAAM4AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-03-23T16:10:30.072Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
+              "Title": "tabAccounts.vb [Design]",
+              "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\tabAccounts.vb",
+              "RelativeDocumentMoniker": "tabAccounts.vb",
+              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\tabAccounts.vb [Design]",
+              "RelativeToolTip": "tabAccounts.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-03-24T15:11:54.777Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "subAccounts.vb",
+              "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subAccounts.vb",
+              "RelativeDocumentMoniker": "subAccounts.vb",
+              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subAccounts.vb",
+              "RelativeToolTip": "subAccounts.vb",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAAAFYAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-03-23T12:30:21.023Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "subAccounts.vb [Design]",
               "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subAccounts.vb",
               "RelativeDocumentMoniker": "subAccounts.vb",
@@ -134,18 +145,6 @@
               "RelativeToolTip": "subAccounts.vb [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-03-23T16:34:07.764Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "tabAccounts.vb [Design]",
-              "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\tabAccounts.vb",
-              "RelativeDocumentMoniker": "tabAccounts.vb",
-              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\tabAccounts.vb [Design]",
-              "RelativeToolTip": "tabAccounts.vb [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-03-23T16:05:06.193Z",
               "EditorCaption": " [Design]"
             }
           ]

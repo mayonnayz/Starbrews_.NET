@@ -89,6 +89,7 @@ Partial Class subSuppliers
         ' 
         ' cmbCategory
         ' 
+        cmbCategory.DropDownStyle = ComboBoxStyle.DropDownList
         cmbCategory.Font = New Font("Consolas", 9F)
         cmbCategory.FormattingEnabled = True
         cmbCategory.Location = New Point(183, 57)

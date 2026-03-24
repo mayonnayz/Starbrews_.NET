@@ -194,7 +194,7 @@ Public Class tabOrderRequests
 
             Dim subSup As New subSuppliers()
 
-            purpose = "Edit Supplier"
+            purpose = "View Supplier"
             suppID = Convert.ToInt32(lstSupplier.SelectedValue)
 
             subSup.ShowDialog()

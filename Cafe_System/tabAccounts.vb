@@ -11,10 +11,7 @@ Public Class tabAccounts
     Private Sub tabAccounts_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         status = 1
         btnArchives.Text = "VIEW ARCHIVED ACCOUNTS"
-        btnDeleteAccount.Text = "DELETE ACCOUNT"
-        btnEditAccount.Visible = True
         btnAddAccount.Visible = True
-        UpdateButtonState()
 
         dgridAccounts.ReadOnly = True
         dgridAccounts.SelectionMode = DataGridViewSelectionMode.FullRowSelect
@@ -33,8 +30,41 @@ Public Class tabAccounts
         End Using
 
         dgridAccounts.DataSource = dt
-
         dgridAccounts.AllowUserToAddRows = False
+
+        SetupGrid()
+        AddButtonColumns()
+
+        If status = 0 Then
+            If dgridAccounts.Columns.Contains("colView") Then
+                dgridAccounts.Columns("colView").Visible = False
+            End If
+        Else
+            If dgridAccounts.Columns.Contains("colView") Then
+                dgridAccounts.Columns("colView").Visible = True
+            End If
+        End If
+
+        dgridAccounts.EnableHeadersVisualStyles = False
+
+        CType(dgridAccounts.Columns("colView"), DataGridViewButtonColumn).FlatStyle = FlatStyle.Flat
+        CType(dgridAccounts.Columns("colArchive"), DataGridViewButtonColumn).FlatStyle = FlatStyle.Flat
+
+        Dim btnCol As DataGridViewButtonColumn = CType(dgridAccounts.Columns("colArchive"), DataGridViewButtonColumn)
+
+        If status = 1 Then
+            btnCol.HeaderText = "Archive"
+            btnCol.Text = "ACTIVE"
+        Else
+            btnCol.HeaderText = "Restore"
+            btnCol.Text = "RESTORE"
+        End If
+
+        Me.BeginInvoke(Sub()
+                           dgridAccounts.ClearSelection()
+                           dgridAccounts.CurrentCell = Nothing
+                       End Sub)
+
     End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
@@ -96,62 +126,125 @@ Public Class tabAccounts
         subAcc.ShowDialog()
         LoadAccounts()
     End Sub
+    Private Sub dgridAccounts_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgridAccounts.CellContentClick
 
-    Private Sub btnEditAccount_Click(sender As Object, e As EventArgs) Handles btnEditAccount.Click
-        If dgridAccounts.CurrentRow IsNot Nothing Then
+        If e.RowIndex < 0 Then Exit Sub
+
+        Dim row As DataGridViewRow = dgridAccounts.Rows(e.RowIndex)
+
+        ' VIEW BUTTON
+        If dgridAccounts.Columns(e.ColumnIndex).Name = "colView" Then
 
             Dim subAcc As New subAccounts()
 
-            purpose = "Edit Account"
+            purpose = "Account Info"
 
-            accId = Convert.ToInt32(dgridAccounts.CurrentRow.Cells("AccountID").Value)
-            fname = dgridAccounts.CurrentRow.Cells("FirstName").Value.ToString()
-            lname = dgridAccounts.CurrentRow.Cells("LastName").Value.ToString()
-            uname = dgridAccounts.CurrentRow.Cells("Username").Value.ToString()
-            pass = dgridAccounts.CurrentRow.Cells("Password").Value.ToString()
-            userlvl = Convert.ToInt32(dgridAccounts.CurrentRow.Cells("UserLvl").Value)
+            accId = Convert.ToInt32(row.Cells("AccountID").Value)
+            fname = row.Cells("FirstName").Value.ToString()
+            lname = row.Cells("LastName").Value.ToString()
+            uname = row.Cells("Username").Value.ToString()
+            pass = row.Cells("Password").Value.ToString()
+            userlvl = Convert.ToInt32(row.Cells("UserLvl").Value)
 
             subAcc.ShowDialog()
             dt.Clear()
             LoadAccounts()
-        Else
-            MessageBox.Show("Please select a row to edit.")
+
+        End If
+
+        ' ARCHIVE / RESTORE BUTTON
+        If dgridAccounts.Columns(e.ColumnIndex).Name = "colArchive" Then
+
+            Dim lvl As Integer = Convert.ToInt32(row.Cells("UserLvl").Value)
+
+            If lvl = 0 Then
+                MessageBox.Show("Super Admin accounts cannot be archived.")
+                Exit Sub
+            End If
+
+            Dim result As String
+            Dim dialogue As String = ""
+
+            If status = 1 Then
+                dialogue = "Are you sure you want to delete this account? (it will be stored in the archived accounts)"
+            ElseIf status = 0 Then
+                dialogue = "Are you sure you want to restore this account?"
+            End If
+
+            result = MessageBox.Show(dialogue, "Delete Account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+
+            If result = DialogResult.Yes Then
+
+                If status = 1 Then
+                    Dim sql As String = "UPDATE AccountsTbl SET Status = 0 WHERE AccountId = ?"
+
+                    Using cmd As New OleDbCommand(sql, oledbCnn)
+                        cmd.Parameters.AddWithValue("?", Convert.ToInt32(row.Cells("AccountID").Value))
+                        cmd.ExecuteNonQuery()
+                    End Using
+
+                    MessageBox.Show("Account archived!")
+
+                ElseIf status = 0 Then
+                    Dim sql As String = "UPDATE AccountsTbl SET Status = 1 WHERE AccountId = ?"
+
+                    Using cmd As New OleDbCommand(sql, oledbCnn)
+                        cmd.Parameters.AddWithValue("?", Convert.ToInt32(row.Cells("AccountID").Value))
+                        cmd.ExecuteNonQuery()
+                    End Using
+
+                    MessageBox.Show("Account restored!")
+                End If
+                LoadAccounts()
+            End If
         End If
     End Sub
 
-    Private Sub btnDeleteAccount_Click(sender As Object, e As EventArgs) Handles btnDeleteAccount.Click
-        Dim result As String
-        Dim dialogue As String = ""
-        If status = 1 Then
-            dialogue = "Are you sure you want to delete this account? (it will be stored in the archived accounts)"
-        ElseIf status = 0 Then
-            dialogue = "Are you sure you want to restore this account?"
+
+    Sub SetupGrid()
+        For Each col As DataGridViewColumn In dgridAccounts.Columns
+            If TypeOf col IsNot DataGridViewButtonColumn Then
+                col.Visible = False
+            End If
+        Next
+
+        dgridAccounts.Columns("FirstName").Visible = True
+        dgridAccounts.Columns("LastName").Visible = True
+        dgridAccounts.Columns("UserLvl").Visible = True
+
+        dgridAccounts.Columns("FirstName").HeaderText = "First Name"
+        dgridAccounts.Columns("LastName").HeaderText = "Last Name"
+        dgridAccounts.Columns("UserLvl").HeaderText = "User Level"
+    End Sub
+    Sub AddButtonColumns()
+        If Not dgridAccounts.Columns.Contains("colView") Then
+            Dim btnView As New DataGridViewButtonColumn()
+            btnView.Name = "colView"
+            btnView.HeaderText = "View"
+            btnView.Text = "VIEW"
+            btnView.UseColumnTextForButtonValue = True
+
+            btnView.DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#a5a18d")
+            btnView.DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#808271")
+            btnView.DefaultCellStyle.ForeColor = Color.White
+            btnView.DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 9, FontStyle.Bold)
+
+            dgridAccounts.Columns.Add(btnView)
         End If
 
-        result = MessageBox.Show(dialogue, "Delete Account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        If Not dgridAccounts.Columns.Contains("colArchive") Then
+            Dim btnArchive As New DataGridViewButtonColumn()
+            btnArchive.Name = "colArchive"
+            btnArchive.HeaderText = "Archive"
+            btnArchive.Text = "ARCHIVE"
+            btnArchive.UseColumnTextForButtonValue = True
 
-        If result = DialogResult.Yes Then
-            If btnDeleteAccount.Text = "DELETE ACCOUNT" Then
-                Dim sql As String = "UPDATE AccountsTbl SET Status = 0 WHERE AccountId = ?"
+            btnArchive.DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#a5a18d")
+            btnArchive.DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#808271")
+            btnArchive.DefaultCellStyle.ForeColor = Color.White
+            btnArchive.DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 9, FontStyle.Bold)
 
-                Using cmd As New OleDbCommand(sql, oledbCnn)
-                    cmd.Parameters.AddWithValue("?", Convert.ToInt32(dgridAccounts.CurrentRow.Cells("AccountID").Value))
-                    cmd.ExecuteNonQuery()
-                End Using
-
-                MessageBox.Show("Account archived!")
-                LoadAccounts()
-            ElseIf btnDeleteAccount.Text = "RESTORE ACCOUNT" Then
-                Dim sql As String = "UPDATE AccountsTbl SET Status = 1 WHERE AccountId = ?"
-
-                Using cmd As New OleDbCommand(sql, oledbCnn)
-                    cmd.Parameters.AddWithValue("?", Convert.ToInt32(dgridAccounts.CurrentRow.Cells("AccountID").Value))
-                    cmd.ExecuteNonQuery()
-                End Using
-
-                MessageBox.Show("Account restored!")
-                LoadAccounts()
-            End If
+            dgridAccounts.Columns.Add(btnArchive)
         End If
     End Sub
 
@@ -170,29 +263,18 @@ Public Class tabAccounts
 
             e.FormattingApplied = True
         End If
-    End Sub
 
-    Private Sub DataGridView1_SelectionChanged(sender As Object, e As EventArgs) Handles dgridAccounts.SelectionChanged
-        UpdateButtonState()
-    End Sub
+        If dgridAccounts.Columns(e.ColumnIndex).Name = "colArchive" AndAlso e.RowIndex >= 0 Then
 
-    Private Sub UpdateButtonState()
-        If dgridAccounts.SelectedRows.Count > 0 Then
+            Dim lvl As Integer = Convert.ToInt32(dgridAccounts.Rows(e.RowIndex).Cells("UserLvl").Value)
 
-            Dim selectedRow As DataGridViewRow = dgridAccounts.SelectedRows(0)
-            Dim userLevel As Integer = Convert.ToInt32(selectedRow.Cells("UserLvl").Value)
-
-            btnEditAccount.Enabled = True
-
-            If userLevel = 0 Then
-                btnDeleteAccount.Enabled = False
-            Else
-                btnDeleteAccount.Enabled = True
+            If lvl = 0 Then
+                e.CellStyle.BackColor = Color.LightGray
+                e.CellStyle.ForeColor = Color.DarkGray
+                e.Value = "LOCKED"
+                e.FormattingApplied = True
             End If
 
-        Else
-            btnEditAccount.Enabled = False
-            btnDeleteAccount.Enabled = False
         End If
     End Sub
 
@@ -200,19 +282,16 @@ Public Class tabAccounts
         If btnArchives.Text = "VIEW ARCHIVED ACCOUNTS" Then
             dt.Clear()
             btnArchives.Text = "VIEW ACTIVE ACCOUNTS"
-            btnDeleteAccount.Text = "RESTORE ACCOUNT"
-            btnEditAccount.Visible = False
             btnAddAccount.Visible = False
             status = 0
             LoadAccounts()
         ElseIf btnArchives.Text = "VIEW ACTIVE ACCOUNTS" Then
             dt.Clear()
             btnArchives.Text = "VIEW ARCHIVED ACCOUNTS"
-            btnDeleteAccount.Text = "DELETE ACCOUNT"
-            btnEditAccount.Visible = True
             btnAddAccount.Visible = True
             status = 1
             LoadAccounts()
         End If
     End Sub
+
 End Class
