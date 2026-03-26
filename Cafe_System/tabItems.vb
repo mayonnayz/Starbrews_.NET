@@ -58,23 +58,15 @@ Public Class tabItems
         AddButtonColumns()
         dgridItems.Refresh()
 
-        If Form1.UserLvl = 3 Or Form1.UserLvl = 2 Then
-            If dgridItems.Columns.Contains("colView") Then
-                dgridItems.Columns("colView").Visible = False
-            End If
 
-            If dgridItems.Columns.Contains("colArchive") Then
-                dgridItems.Columns("colArchive").Visible = False
-            End If
-        Else
-            If dgridItems.Columns.Contains("colView") Then
-                dgridItems.Columns("colView").Visible = True
-            End If
-
-            If dgridItems.Columns.Contains("colArchive") Then
-                dgridItems.Columns("colArchive").Visible = True
-            End If
+        If dgridItems.Columns.Contains("colView") Then
+            dgridItems.Columns("colView").Visible = (status = 1 AndAlso Not (Form1.UserLvl = 2 Or Form1.UserLvl = 3))
         End If
+
+        If dgridItems.Columns.Contains("colArchive") Then
+            dgridItems.Columns("colArchive").Visible = Not (Form1.UserLvl = 2 Or Form1.UserLvl = 3)
+        End If
+
 
 
 
@@ -139,8 +131,8 @@ Public Class tabItems
         sql = "SELECT i.ItemID, i.ItemName, i.ItemDesc, c.CatName AS Category, " &
               "i.UnitPrice, i.Unit, i.ItemCategory " &
               "FROM ItemsTbl i " &
-              "INNER JOIN CategoriesTbl c ON i.ItemCategory = c.CategoryID AND c.CatStatus = 1 " &
-              "WHERE i.ItemStatus = " & status &
+              "INNER JOIN CategoriesTbl c ON i.ItemCategory = c.CategoryID " &
+              "WHERE c.CatStatus = 1 AND i.ItemStatus = " & status &
               " AND i.ItemName LIKE ?"
 
         If cmbCategory.SelectedValue IsNot Nothing AndAlso CInt(cmbCategory.SelectedValue) <> 0 Then

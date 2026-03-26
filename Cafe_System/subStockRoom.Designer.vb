@@ -25,57 +25,57 @@ Partial Class subStockRoom
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        ComboBox1 = New ComboBox()
-        Label4 = New Label()
-        Label3 = New Label()
+        cmbBarista = New ComboBox()
+        lblDate = New Label()
+        lblSvisor = New Label()
         Label2 = New Label()
         Label1 = New Label()
-        btnStock = New Button()
         DataGridView1 = New DataGridView()
-        ItemID = New DataGridViewTextBoxColumn()
         ItemName = New DataGridViewTextBoxColumn()
         Quantity = New DataGridViewTextBoxColumn()
         Category = New DataGridViewTextBoxColumn()
         Price = New DataGridViewTextBoxColumn()
+        btnStock = New Button()
+        btnCancel = New Button()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' ComboBox1
+        ' cmbBarista
         ' 
-        ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(315, 17)
-        ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(166, 23)
-        ComboBox1.TabIndex = 26
+        cmbBarista.FormattingEnabled = True
+        cmbBarista.Location = New Point(303, 8)
+        cmbBarista.Name = "cmbBarista"
+        cmbBarista.Size = New Size(187, 23)
+        cmbBarista.TabIndex = 26
         ' 
-        ' Label4
+        ' lblDate
         ' 
-        Label4.AutoSize = True
-        Label4.BackColor = Color.Transparent
-        Label4.Font = New Font("Consolas", 9F)
-        Label4.Location = New Point(34, 47)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(42, 14)
-        Label4.TabIndex = 25
-        Label4.Text = "Date:"
+        lblDate.AutoSize = True
+        lblDate.BackColor = Color.Transparent
+        lblDate.Font = New Font("Consolas", 9F)
+        lblDate.Location = New Point(14, 40)
+        lblDate.Name = "lblDate"
+        lblDate.Size = New Size(42, 14)
+        lblDate.TabIndex = 25
+        lblDate.Text = "Date:"
         ' 
-        ' Label3
+        ' lblSvisor
         ' 
-        Label3.AutoSize = True
-        Label3.BackColor = Color.Transparent
-        Label3.Font = New Font("Consolas", 9F)
-        Label3.Location = New Point(254, 47)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(126, 14)
-        Label3.TabIndex = 24
-        Label3.Text = "Shift Supervisor:"
+        lblSvisor.AutoSize = True
+        lblSvisor.BackColor = Color.Transparent
+        lblSvisor.Font = New Font("Consolas", 9F)
+        lblSvisor.Location = New Point(240, 35)
+        lblSvisor.Name = "lblSvisor"
+        lblSvisor.Size = New Size(126, 14)
+        lblSvisor.TabIndex = 24
+        lblSvisor.Text = "Shift Supervisor:"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
         Label2.BackColor = Color.Transparent
         Label2.Font = New Font("Consolas", 9F)
-        Label2.Location = New Point(254, 21)
+        Label2.Location = New Point(240, 12)
         Label2.Name = "Label2"
         Label2.Size = New Size(70, 14)
         Label2.TabIndex = 23
@@ -86,25 +86,11 @@ Partial Class subStockRoom
         Label1.AutoSize = True
         Label1.BackColor = Color.Transparent
         Label1.Font = New Font("Lucida Sans Unicode", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(11, 12)
+        Label1.Location = New Point(11, 9)
         Label1.Name = "Label1"
         Label1.Size = New Size(207, 28)
         Label1.TabIndex = 22
         Label1.Text = "Stock Inventory"
-        ' 
-        ' btnStock
-        ' 
-        btnStock.BackColor = Color.FromArgb(CByte(135), CByte(125), CByte(107))
-        btnStock.FlatAppearance.BorderSize = 0
-        btnStock.FlatStyle = FlatStyle.Popup
-        btnStock.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
-        btnStock.ForeColor = SystemColors.ButtonHighlight
-        btnStock.Location = New Point(668, 42)
-        btnStock.Name = "btnStock"
-        btnStock.Size = New Size(140, 22)
-        btnStock.TabIndex = 21
-        btnStock.Text = "STOCK IN"
-        btnStock.UseVisualStyleBackColor = False
         ' 
         ' DataGridView1
         ' 
@@ -112,23 +98,23 @@ Partial Class subStockRoom
         DataGridView1.BackgroundColor = Color.FromArgb(CByte(89), CByte(82), CByte(71))
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = SystemColors.Control
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle1.Font = New Font("Consolas", 9F)
         DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle1.SelectionBackColor = SystemColors.Control
         DataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText
         DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
         DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Columns.AddRange(New DataGridViewColumn() {ItemID, ItemName, Quantity, Category, Price})
+        DataGridView1.Columns.AddRange(New DataGridViewColumn() {ItemName, Quantity, Category, Price})
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = SystemColors.Window
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.Font = New Font("Consolas", 9F)
         DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
         DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(80), CByte(82), CByte(71))
         DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
         DataGridView1.DefaultCellStyle = DataGridViewCellStyle2
-        DataGridView1.Location = New Point(11, 73)
+        DataGridView1.Location = New Point(11, 58)
         DataGridView1.Name = "DataGridView1"
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = SystemColors.Control
@@ -138,13 +124,8 @@ Partial Class subStockRoom
         DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
         DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
         DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-        DataGridView1.Size = New Size(798, 530)
+        DataGridView1.Size = New Size(798, 542)
         DataGridView1.TabIndex = 20
-        ' 
-        ' ItemID
-        ' 
-        ItemID.HeaderText = "Item ID"
-        ItemID.Name = "ItemID"
         ' 
         ' ItemName
         ' 
@@ -163,8 +144,36 @@ Partial Class subStockRoom
         ' 
         ' Price
         ' 
-        Price.HeaderText = "Price"
+        Price.HeaderText = "Unit Price"
         Price.Name = "Price"
+        ' 
+        ' btnStock
+        ' 
+        btnStock.BackColor = Color.FromArgb(CByte(84), CByte(122), CByte(70))
+        btnStock.FlatAppearance.BorderSize = 0
+        btnStock.FlatStyle = FlatStyle.Popup
+        btnStock.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
+        btnStock.ForeColor = SystemColors.ButtonHighlight
+        btnStock.Location = New Point(676, 4)
+        btnStock.Name = "btnStock"
+        btnStock.Size = New Size(132, 22)
+        btnStock.TabIndex = 28
+        btnStock.Text = "STOCK IN"
+        btnStock.UseVisualStyleBackColor = False
+        ' 
+        ' btnCancel
+        ' 
+        btnCancel.BackColor = Color.FromArgb(CByte(122), CByte(72), CByte(70))
+        btnCancel.FlatAppearance.BorderSize = 0
+        btnCancel.FlatStyle = FlatStyle.Popup
+        btnCancel.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
+        btnCancel.ForeColor = SystemColors.ButtonHighlight
+        btnCancel.Location = New Point(676, 30)
+        btnCancel.Name = "btnCancel"
+        btnCancel.Size = New Size(132, 22)
+        btnCancel.TabIndex = 27
+        btnCancel.Text = "CANCEL"
+        btnCancel.UseVisualStyleBackColor = False
         ' 
         ' subStockRoom
         ' 
@@ -172,28 +181,30 @@ Partial Class subStockRoom
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = My.Resources.Resources.mainPanelBg
         ClientSize = New Size(820, 614)
-        Controls.Add(ComboBox1)
-        Controls.Add(Label4)
-        Controls.Add(Label3)
+        Controls.Add(btnStock)
+        Controls.Add(btnCancel)
+        Controls.Add(cmbBarista)
+        Controls.Add(lblDate)
+        Controls.Add(lblSvisor)
         Controls.Add(Label2)
         Controls.Add(Label1)
-        Controls.Add(btnStock)
         Controls.Add(DataGridView1)
         Name = "subStockRoom"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "subStockRoom"
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents cmbBarista As ComboBox
+    Friend WithEvents lblDate As Label
+    Friend WithEvents lblSvisor As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents btnStock As Button
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents ItemID As DataGridViewTextBoxColumn
+    Friend WithEvents btnStock As Button
+    Friend WithEvents btnCancel As Button
     Friend WithEvents ItemName As DataGridViewTextBoxColumn
     Friend WithEvents Quantity As DataGridViewTextBoxColumn
     Friend WithEvents Category As DataGridViewTextBoxColumn

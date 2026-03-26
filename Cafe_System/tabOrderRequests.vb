@@ -14,8 +14,6 @@ Public Class tabOrderRequests
         End If
         btnViewArch.Text = "VIEW ARCHIVED"
         btnArchiveSupplier.Text = "ARCHIVE SUPPLIER"
-        btnEditSupplier.Visible = True
-        btnAddSupplier.Visible = True
 
         LoadCategories()
         UpdateSupplierButtons()
@@ -51,7 +49,10 @@ Public Class tabOrderRequests
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         Dim dtSuppliers As New DataTable()
-        Dim sql As String = "SELECT SupplierID, SupplierName FROM SupplierTbl WHERE SupplierStatus = ?"
+        Dim sql As String = "SELECT s.SupplierID, s.SupplierName " &
+                    "FROM SupplierTbl s " &
+                    "INNER JOIN CategoriesTbl c ON s.SupplierCategory = c.CategoryID " &
+                    "WHERE s.SupplierStatus = ? AND c.CatStatus = 1"
 
         If txtSearch.Text.Trim <> "" Then
             sql &= " AND SupplierName LIKE ?"
@@ -93,7 +94,12 @@ Public Class tabOrderRequests
     Sub LoadSuppliers(suppStatus As Integer)
         dt.Clear()
         Dim dtSuppliers As New DataTable()
-        Dim sql As String = "SELECT SupplierID, SupplierName FROM SupplierTbl WHERE SupplierStatus = ?"
+        Dim sql As String = ""
+
+        sql = "SELECT s.SupplierID, s.SupplierName " &
+          "FROM SupplierTbl s " &
+          "INNER JOIN CategoriesTbl c ON s.SupplierCategory = c.CategoryID " &
+          "WHERE s.SupplierStatus = ? AND c.CatStatus = 1"
 
         Using da As New OleDbDataAdapter(sql, oledbCnn)
             da.SelectCommand.Parameters.AddWithValue("?", suppStatus)
@@ -133,8 +139,17 @@ Public Class tabOrderRequests
             dt.Clear()
             btnViewArch.Text = "VIEW ARCHIVED"
             btnArchiveSupplier.Text = "ARCHIVE SUPPLIER"
-            btnEditSupplier.Visible = True
-            btnAddSupplier.Visible = True
+
+            If Form1.UserLvl = 2 Then
+                btnAddSupplier.Visible = False
+                btnArchiveSupplier.Visible = False
+                btnEditSupplier.Visible = False
+            Else
+                btnEditSupplier.Visible = True
+                btnAddSupplier.Visible = True
+            End If
+
+
             LoadSuppliers(1)
         End If
     End Sub

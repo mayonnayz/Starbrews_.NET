@@ -52,6 +52,14 @@ Public Class subCategory
         SetupGrid()
         AddButtonColumns()
 
+        If dgridCategories.Columns.Contains("colView") Then
+            dgridCategories.Columns("colView").Visible = (status = 1 AndAlso Not (Form1.UserLvl = 2 Or Form1.UserLvl = 3))
+        End If
+
+        If dgridCategories.Columns.Contains("colArchive") Then
+            dgridCategories.Columns("colArchive").Visible = Not (Form1.UserLvl = 2 Or Form1.UserLvl = 3)
+        End If
+
         Me.BeginInvoke(Sub()
                            dgridCategories.ClearSelection()
                            dgridCategories.CurrentCell = Nothing
@@ -86,12 +94,14 @@ Public Class subCategory
 
     End Sub
 
-    Private Sub btnSearch_Click(sender As Object, e As EventArgs)
+
+
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
 
         dt.Clear()
 
         sql = "SELECT CategoryID, CatName, CatDesc FROM CategoriesTbl WHERE CatStatus = " & status &
-              " AND CatName LIKE ?"
+          " AND CatName LIKE ?"
 
         Using da As New OleDbDataAdapter(sql, oledbCnn)
             da.SelectCommand.Parameters.AddWithValue("?", "%" & txtCatName.Text & "%")
@@ -99,6 +109,17 @@ Public Class subCategory
         End Using
 
         dgridCategories.DataSource = dt
+
+        SetupGrid()
+        AddButtonColumns()
+
+        If dgridCategories.Columns.Contains("colView") Then
+            dgridCategories.Columns("colView").Visible = (status = 1 AndAlso Not (Form1.UserLvl = 2 Or Form1.UserLvl = 3))
+        End If
+
+        If dgridCategories.Columns.Contains("colArchive") Then
+            dgridCategories.Columns("colArchive").Visible = Not (Form1.UserLvl = 2 Or Form1.UserLvl = 3)
+        End If
 
     End Sub
 
@@ -111,6 +132,7 @@ Public Class subCategory
 
         ' VIEW
         If dgridCategories.Columns(e.ColumnIndex).Name = "colView" Then
+            If status = 0 Then Exit Sub
 
             Dim subCat As New subCat()
 
@@ -215,8 +237,13 @@ Public Class subCategory
         dgridCategories.Columns("CatName").HeaderText = "Category Name"
         dgridCategories.Columns("CatDesc").HeaderText = "Description"
 
-        If dgridCategories.Columns.Contains("colView") Then dgridCategories.Columns("colView").Visible = True
-        If dgridCategories.Columns.Contains("colArchive") Then dgridCategories.Columns("colArchive").Visible = True
+        If dgridCategories.Columns.Contains("colView") Then
+            dgridCategories.Columns("colView").Visible = (status = 1 AndAlso Not (Form1.UserLvl = 2 Or Form1.UserLvl = 3))
+        End If
+
+        If dgridCategories.Columns.Contains("colArchive") Then
+            dgridCategories.Columns("colArchive").Visible = Not (Form1.UserLvl = 2 Or Form1.UserLvl = 3)
+        End If
 
         dgridCategories.EnableHeadersVisualStyles = False
         dgridCategories.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal

@@ -2,8 +2,8 @@
 Imports System.Resources
 
 Public Class Form1
-    Public UserId, UserLvl As Integer
-    Public FirstName, LastName As String
+    Public Shared UserId, UserLvl As Integer
+    Public Shared FirstName, LastName As String
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         OpenConnection()
         accountsSet()
@@ -65,5 +65,9 @@ Public Class Form1
     Private Sub btnLogin_MouseLeave(sender As Object, e As EventArgs) Handles btnLogin.MouseLeave
         btnLogin.BackgroundImage = My.Resources.loginbtn
         btnLogin.BackgroundImageLayout = ImageLayout.Zoom
+    End Sub
+
+    Private Sub txtUsername_TextChanged(sender As Object, e As EventArgs) Handles txtUsername.TextChanged
+
     End Sub
 End Class

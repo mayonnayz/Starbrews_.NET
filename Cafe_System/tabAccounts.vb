@@ -54,7 +54,7 @@ Public Class tabAccounts
 
         If status = 1 Then
             btnCol.HeaderText = "Archive"
-            btnCol.Text = "ACTIVE"
+            btnCol.Text = "ARCHIVE"
         Else
             btnCol.HeaderText = "Restore"
             btnCol.Text = "RESTORE"
@@ -216,6 +216,7 @@ Public Class tabAccounts
         dgridAccounts.Columns("LastName").HeaderText = "Last Name"
         dgridAccounts.Columns("UserLvl").HeaderText = "User Level"
     End Sub
+
     Sub AddButtonColumns()
         If Not dgridAccounts.Columns.Contains("colView") Then
             Dim btnView As New DataGridViewButtonColumn()

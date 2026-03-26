@@ -66,11 +66,11 @@ Partial Class Form1
         ' 
         chkShowPass.AutoSize = True
         chkShowPass.BackColor = Color.Transparent
-        chkShowPass.Font = New Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        chkShowPass.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         chkShowPass.ForeColor = SystemColors.ButtonHighlight
         chkShowPass.Location = New Point(281, 336)
         chkShowPass.Name = "chkShowPass"
-        chkShowPass.Size = New Size(117, 21)
+        chkShowPass.Size = New Size(114, 19)
         chkShowPass.TabIndex = 4
         chkShowPass.Text = "Show Password"
         chkShowPass.UseVisualStyleBackColor = False

@@ -15,7 +15,7 @@ Public Class subSuppliers
             txtContact.Text = ""
             txtEmail.Text = ""
             txtAddress.Text = ""
-            cmbCategory.SelectedIndex = -1
+            cmbCategory.SelectedIndex = 0
         End If
     End Sub
     Private Sub LoadSupplierDetails()

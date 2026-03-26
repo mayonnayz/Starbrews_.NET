@@ -236,6 +236,7 @@ Partial Class subItems
         MaximizeBox = False
         MinimizeBox = False
         Name = "subItems"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "subItems"
         GroupBox2.ResumeLayout(False)
         GroupBox2.PerformLayout()

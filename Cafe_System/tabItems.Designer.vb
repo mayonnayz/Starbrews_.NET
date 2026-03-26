@@ -23,6 +23,7 @@ Partial Class tabItems
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Label1 = New Label()
         btnAddItem = New Button()
         dgridItems = New DataGridView()
@@ -63,15 +64,23 @@ Partial Class tabItems
         ' 
         dgridItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgridItems.BackgroundColor = Color.FromArgb(CByte(89), CByte(82), CByte(71))
-        dgridItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = SystemColors.Window
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle1.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(CByte(80), CByte(82), CByte(71))
+        DataGridViewCellStyle1.BackColor = SystemColors.Control
+        DataGridViewCellStyle1.Font = New Font("Consolas", 9F)
+        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.False
-        dgridItems.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        dgridItems.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        dgridItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = SystemColors.Window
+        DataGridViewCellStyle2.Font = New Font("Consolas", 9F)
+        DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(80), CByte(82), CByte(71))
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        dgridItems.DefaultCellStyle = DataGridViewCellStyle2
         dgridItems.GridColor = Color.Black
         dgridItems.Location = New Point(13, 78)
         dgridItems.Name = "dgridItems"
