@@ -88,7 +88,7 @@ Partial Class Form1
         Controls.Add(txtPassword)
         Controls.Add(txtUsername)
         DoubleBuffered = True
-        FormBorderStyle = FormBorderStyle.FixedSingle
+        FormBorderStyle = FormBorderStyle.None
         MaximizeBox = False
         MinimizeBox = False
         Name = "Form1"

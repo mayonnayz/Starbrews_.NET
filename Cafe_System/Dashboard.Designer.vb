@@ -173,9 +173,10 @@ Partial Class Dashboard
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1122, 646)
+        ControlBox = False
         Controls.Add(pnlContent)
         Controls.Add(Panel4)
-        FormBorderStyle = FormBorderStyle.FixedSingle
+        FormBorderStyle = FormBorderStyle.None
         MaximizeBox = False
         MinimizeBox = False
         Name = "Dashboard"

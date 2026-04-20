@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("Cafe_System"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Debug"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c75c2d09ce5a305449ebbfee2dc39f986cbbdf35"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b72411a234b3033b95d09841a66ec8bc61af102b"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("Cafe_System"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("Cafe_System"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0"),  _
