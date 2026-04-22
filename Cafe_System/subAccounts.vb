@@ -92,7 +92,7 @@ Public Class subAccounts
         If result = DialogResult.Yes Then
             If Not ValidateInputs() Then Exit Sub
 
-            If tabAccounts.purpose = "Edit Account" Then
+            If tabAccounts.purpose = "Account Info" Then
                 Dim sql As String = "UPDATE AccountsTbl SET FirstName = ?, LastName = ?, Username = ?, [Password] = ?, UserLvl = ? WHERE AccountId = ?"
 
                 Using cmd As New OleDbCommand(sql, oledbCnn)

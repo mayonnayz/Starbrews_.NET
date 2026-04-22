@@ -9,4 +9,11 @@
             Me.Close()
         End If
     End Sub
+
+    Private Sub subOrderReq_Load(sender As Object, e As EventArgs) Handles Me.Load
+        If Form1.UserLvl = 2 Then
+            btnApprove.Visible = False
+            btnReject.Visible = False
+        End If
+    End Sub
 End Class

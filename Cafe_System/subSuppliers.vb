@@ -6,7 +6,7 @@ Public Class subSuppliers
     Private Sub subSuppliers_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadCategories()
 
-        If tabOrderRequests.purpose = "View Supplier" Then
+        If tabOrderRequests.purpose = "Edit Supplier" Then
             lblTitle.Text = tabOrderRequests.purpose
             LoadSupplierDetails()
         ElseIf tabOrderRequests.purpose = "Add New Supplier" Then
@@ -77,7 +77,7 @@ Public Class subSuppliers
     End Function
     Private Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
         Dim result As String = ""
-        If tabOrderRequests.purpose = "View Supplier" Then
+        If tabOrderRequests.purpose = "Edit Supplier" Then
             result = MessageBox.Show("Are you sure you want to submit changes?", "Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         ElseIf tabOrderRequests.purpose = "Add New Supplier" Then
             result = MessageBox.Show("Are you sure you want to add supplier?", "Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -177,5 +177,6 @@ Public Class subSuppliers
         btnCancel.BackgroundImage = My.Resources.btngeneral
         btnCancel.BackgroundImageLayout = ImageLayout.Zoom
     End Sub
+
 
 End Class
