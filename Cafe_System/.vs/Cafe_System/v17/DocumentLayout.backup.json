@@ -70,8 +70,8 @@
               "Title": "subClosing.vb",
               "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subClosing.vb",
               "RelativeDocumentMoniker": "subClosing.vb",
-              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subClosing.vb*",
-              "RelativeToolTip": "subClosing.vb*",
+              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subClosing.vb",
+              "RelativeToolTip": "subClosing.vb",
               "ViewState": "AgIAAGcAAAAAAAAAAAAgwHoAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-04-28T17:19:28.704Z",
@@ -83,8 +83,8 @@
               "Title": "subClosing.vb [Design]",
               "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subClosing.vb",
               "RelativeDocumentMoniker": "subClosing.vb",
-              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subClosing.vb [Design]*",
-              "RelativeToolTip": "subClosing.vb [Design]*",
+              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subClosing.vb [Design]",
+              "RelativeToolTip": "subClosing.vb [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-04-28T17:19:26.608Z",
               "EditorCaption": " [Design]"
@@ -99,8 +99,7 @@
               "RelativeToolTip": "subSuppliers.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-04-28T17:10:52.362Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-28T17:10:52.362Z"
             },
             {
               "$type": "Document",
@@ -112,8 +111,7 @@
               "RelativeToolTip": "tabOrderRequests.vb",
               "ViewState": "AgIAAAwBAAAAAAAAAAAAADcBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-04-28T17:11:29.525Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-28T17:11:29.525Z"
             },
             {
               "$type": "Document",
@@ -137,8 +135,7 @@
               "RelativeToolTip": "subCreateReq.vb",
               "ViewState": "AgIAAHYAAAAAAAAAAAAwwJYAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-04-28T17:04:40.859Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-28T17:04:40.859Z"
             },
             {
               "$type": "Document",
@@ -162,8 +159,7 @@
               "RelativeToolTip": "subAccounts.vb",
               "ViewState": "AgIAAIMAAAAAAAAAAAAgwJkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-04-28T16:31:40.659Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-28T16:31:40.659Z"
             },
             {
               "$type": "Document",
@@ -187,8 +183,7 @@
               "RelativeToolTip": "tabAccounts.vb",
               "ViewState": "AgIAAA8AAAAAAAAAAADwvxoAAAB+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-04-28T16:28:18.521Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-28T16:28:18.521Z"
             },
             {
               "$type": "Document",
