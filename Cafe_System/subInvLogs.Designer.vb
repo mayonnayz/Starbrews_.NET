@@ -27,15 +27,11 @@ Partial Class subInvLogs
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         lstDates = New ListBox()
         DataGridView1 = New DataGridView()
-        ItemName = New DataGridViewTextBoxColumn()
-        Quantity = New DataGridViewTextBoxColumn()
-        Category = New DataGridViewTextBoxColumn()
-        Price = New DataGridViewTextBoxColumn()
         lblTitle = New Label()
-        Label2 = New Label()
-        Label1 = New Label()
-        Label3 = New Label()
-        Label4 = New Label()
+        lblBarista = New Label()
+        lblSuper = New Label()
+        lblDate = New Label()
+        lblTransac = New Label()
         datePicker = New DateTimePicker()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -45,7 +41,6 @@ Partial Class subInvLogs
         lstDates.Font = New Font("Consolas", 9F)
         lstDates.FormattingEnabled = True
         lstDates.ItemHeight = 14
-        lstDates.Items.AddRange(New Object() {"09/20/2025 8:00 AM", "09/30/2025 8:00 PM"})
         lstDates.Location = New Point(9, 92)
         lstDates.Name = "lstDates"
         lstDates.Size = New Size(153, 508)
@@ -64,7 +59,6 @@ Partial Class subInvLogs
         DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
         DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Columns.AddRange(New DataGridViewColumn() {ItemName, Quantity, Category, Price})
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = SystemColors.Window
         DataGridViewCellStyle2.Font = New Font("Consolas", 9F)
@@ -86,26 +80,6 @@ Partial Class subInvLogs
         DataGridView1.Size = New Size(642, 542)
         DataGridView1.TabIndex = 10
         ' 
-        ' ItemName
-        ' 
-        ItemName.HeaderText = "Item Name"
-        ItemName.Name = "ItemName"
-        ' 
-        ' Quantity
-        ' 
-        Quantity.HeaderText = "Quantity"
-        Quantity.Name = "Quantity"
-        ' 
-        ' Category
-        ' 
-        Category.HeaderText = "Category"
-        Category.Name = "Category"
-        ' 
-        ' Price
-        ' 
-        Price.HeaderText = "Price"
-        Price.Name = "Price"
-        ' 
         ' lblTitle
         ' 
         lblTitle.AutoSize = True
@@ -117,49 +91,49 @@ Partial Class subInvLogs
         lblTitle.TabIndex = 16
         lblTitle.Text = "Store Inventory Logs"
         ' 
-        ' Label2
+        ' lblBarista
         ' 
-        Label2.AutoSize = True
-        Label2.BackColor = Color.Transparent
-        Label2.Font = New Font("Consolas", 9F)
-        Label2.Location = New Point(292, 13)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(70, 14)
-        Label2.TabIndex = 17
-        Label2.Text = "Barista: "
+        lblBarista.AutoSize = True
+        lblBarista.BackColor = Color.Transparent
+        lblBarista.Font = New Font("Consolas", 9F)
+        lblBarista.Location = New Point(292, 13)
+        lblBarista.Name = "lblBarista"
+        lblBarista.Size = New Size(70, 14)
+        lblBarista.TabIndex = 17
+        lblBarista.Text = "Barista: "
         ' 
-        ' Label1
+        ' lblSuper
         ' 
-        Label1.AutoSize = True
-        Label1.BackColor = Color.Transparent
-        Label1.Font = New Font("Consolas", 9F)
-        Label1.Location = New Point(292, 34)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(91, 14)
-        Label1.TabIndex = 18
-        Label1.Text = "Supervisor: "
+        lblSuper.AutoSize = True
+        lblSuper.BackColor = Color.Transparent
+        lblSuper.Font = New Font("Consolas", 9F)
+        lblSuper.Location = New Point(292, 34)
+        lblSuper.Name = "lblSuper"
+        lblSuper.Size = New Size(91, 14)
+        lblSuper.TabIndex = 18
+        lblSuper.Text = "Supervisor: "
         ' 
-        ' Label3
+        ' lblDate
         ' 
-        Label3.AutoSize = True
-        Label3.BackColor = Color.Transparent
-        Label3.Font = New Font("Consolas", 9F)
-        Label3.Location = New Point(563, 13)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(77, 14)
-        Label3.TabIndex = 19
-        Label3.Text = "Date/Time:"
+        lblDate.AutoSize = True
+        lblDate.BackColor = Color.Transparent
+        lblDate.Font = New Font("Consolas", 9F)
+        lblDate.Location = New Point(563, 13)
+        lblDate.Name = "lblDate"
+        lblDate.Size = New Size(77, 14)
+        lblDate.TabIndex = 19
+        lblDate.Text = "Date/Time:"
         ' 
-        ' Label4
+        ' lblTransac
         ' 
-        Label4.AutoSize = True
-        Label4.BackColor = Color.Transparent
-        Label4.Font = New Font("Consolas", 9F)
-        Label4.Location = New Point(563, 34)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(112, 14)
-        Label4.TabIndex = 20
-        Label4.Text = "Transaction ID:"
+        lblTransac.AutoSize = True
+        lblTransac.BackColor = Color.Transparent
+        lblTransac.Font = New Font("Consolas", 9F)
+        lblTransac.Location = New Point(563, 34)
+        lblTransac.Name = "lblTransac"
+        lblTransac.Size = New Size(112, 14)
+        lblTransac.TabIndex = 20
+        lblTransac.Text = "Transaction ID:"
         ' 
         ' datePicker
         ' 
@@ -176,10 +150,10 @@ Partial Class subInvLogs
         BackgroundImage = My.Resources.Resources.mainPanelBg
         ClientSize = New Size(820, 614)
         Controls.Add(datePicker)
-        Controls.Add(Label4)
-        Controls.Add(Label3)
-        Controls.Add(Label1)
-        Controls.Add(Label2)
+        Controls.Add(lblTransac)
+        Controls.Add(lblDate)
+        Controls.Add(lblSuper)
+        Controls.Add(lblBarista)
         Controls.Add(lblTitle)
         Controls.Add(DataGridView1)
         Controls.Add(lstDates)
@@ -195,14 +169,10 @@ Partial Class subInvLogs
 
     Friend WithEvents lstDates As ListBox
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents ItemName As DataGridViewTextBoxColumn
-    Friend WithEvents Quantity As DataGridViewTextBoxColumn
-    Friend WithEvents Category As DataGridViewTextBoxColumn
-    Friend WithEvents Price As DataGridViewTextBoxColumn
     Friend WithEvents lblTitle As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
+    Friend WithEvents lblBarista As Label
+    Friend WithEvents lblSuper As Label
+    Friend WithEvents lblDate As Label
+    Friend WithEvents lblTransac As Label
     Friend WithEvents datePicker As DateTimePicker
 End Class

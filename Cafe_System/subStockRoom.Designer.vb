@@ -31,10 +31,6 @@ Partial Class subStockRoom
         Label2 = New Label()
         Label1 = New Label()
         DataGridView1 = New DataGridView()
-        ItemName = New DataGridViewTextBoxColumn()
-        Quantity = New DataGridViewTextBoxColumn()
-        Category = New DataGridViewTextBoxColumn()
-        Price = New DataGridViewTextBoxColumn()
         btnStock = New Button()
         btnCancel = New Button()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
@@ -105,7 +101,6 @@ Partial Class subStockRoom
         DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
         DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Columns.AddRange(New DataGridViewColumn() {ItemName, Quantity, Category, Price})
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = SystemColors.Window
         DataGridViewCellStyle2.Font = New Font("Consolas", 9F)
@@ -126,26 +121,6 @@ Partial Class subStockRoom
         DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DataGridView1.Size = New Size(798, 542)
         DataGridView1.TabIndex = 20
-        ' 
-        ' ItemName
-        ' 
-        ItemName.HeaderText = "Item Name"
-        ItemName.Name = "ItemName"
-        ' 
-        ' Quantity
-        ' 
-        Quantity.HeaderText = "Quantity"
-        Quantity.Name = "Quantity"
-        ' 
-        ' Category
-        ' 
-        Category.HeaderText = "Category"
-        Category.Name = "Category"
-        ' 
-        ' Price
-        ' 
-        Price.HeaderText = "Unit Price"
-        Price.Name = "Price"
         ' 
         ' btnStock
         ' 
@@ -205,8 +180,4 @@ Partial Class subStockRoom
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents btnStock As Button
     Friend WithEvents btnCancel As Button
-    Friend WithEvents ItemName As DataGridViewTextBoxColumn
-    Friend WithEvents Quantity As DataGridViewTextBoxColumn
-    Friend WithEvents Category As DataGridViewTextBoxColumn
-    Friend WithEvents Price As DataGridViewTextBoxColumn
 End Class

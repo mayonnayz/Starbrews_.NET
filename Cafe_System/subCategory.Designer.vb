@@ -25,7 +25,6 @@ Partial Class subCategory
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         dgridCategories = New DataGridView()
         lblTitle = New Label()
-        btnViewArch = New Button()
         btnAddCategory = New Button()
         btnSearch = New Button()
         txtCatName = New TextBox()
@@ -62,20 +61,6 @@ Partial Class subCategory
         lblTitle.Text = "Item Categories"
         lblTitle.TextAlign = ContentAlignment.MiddleLeft
         ' 
-        ' btnViewArch
-        ' 
-        btnViewArch.BackColor = Color.FromArgb(CByte(135), CByte(125), CByte(107))
-        btnViewArch.FlatAppearance.BorderSize = 0
-        btnViewArch.FlatStyle = FlatStyle.Popup
-        btnViewArch.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
-        btnViewArch.ForeColor = SystemColors.ActiveCaptionText
-        btnViewArch.Location = New Point(571, 7)
-        btnViewArch.Name = "btnViewArch"
-        btnViewArch.Size = New Size(217, 22)
-        btnViewArch.TabIndex = 14
-        btnViewArch.Text = "VIEW ARCHIVED CATEGORIES"
-        btnViewArch.UseVisualStyleBackColor = False
-        ' 
         ' btnAddCategory
         ' 
         btnAddCategory.BackColor = Color.FromArgb(CByte(165), CByte(161), CByte(141))
@@ -83,7 +68,7 @@ Partial Class subCategory
         btnAddCategory.FlatStyle = FlatStyle.Popup
         btnAddCategory.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
         btnAddCategory.ForeColor = SystemColors.ActiveCaptionText
-        btnAddCategory.Location = New Point(425, 7)
+        btnAddCategory.Location = New Point(647, 8)
         btnAddCategory.Name = "btnAddCategory"
         btnAddCategory.Size = New Size(140, 22)
         btnAddCategory.TabIndex = 13
@@ -120,7 +105,6 @@ Partial Class subCategory
         ClientSize = New Size(800, 461)
         Controls.Add(btnSearch)
         Controls.Add(txtCatName)
-        Controls.Add(btnViewArch)
         Controls.Add(btnAddCategory)
         Controls.Add(lblTitle)
         Controls.Add(dgridCategories)
@@ -137,7 +121,6 @@ Partial Class subCategory
 
     Friend WithEvents dgridCategories As DataGridView
     Friend WithEvents lblTitle As Label
-    Friend WithEvents btnViewArch As Button
     Friend WithEvents btnAddCategory As Button
     Friend WithEvents btnSearch As Button
     Friend WithEvents txtCatName As TextBox

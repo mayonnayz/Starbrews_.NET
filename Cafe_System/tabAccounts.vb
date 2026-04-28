@@ -5,7 +5,8 @@ Public Class tabAccounts
     Dim dt As New DataTable()
     Dim sql As String
     Dim status As Integer
-    Public Shared purpose, fname, lname, uname, pass As String
+    Public Shared purpose, fname, lname, uname, pass, email, contact, address As String
+    Public Shared birthdate As Date
     Public Shared userlvl, accId As Integer
 
     Private Sub tabAccounts_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -23,7 +24,7 @@ Public Class tabAccounts
 
     Sub LoadAccounts()
         dt.Clear()
-        sql = "SELECT AccountID, FirstName, LastName, Username, [Password], UserLvl FROM AccountsTbl WHERE Status = " & status
+        sql = "SELECT AccountID, FirstName, LastName, Username, [Password], UserLvl, Email, ContactNumber, Address, Birthdate FROM AccountsTbl WHERE Status = " & status
 
         Using da As New OleDbDataAdapter(sql, oledbCnn)
             da.Fill(dt)
@@ -46,6 +47,14 @@ Public Class tabAccounts
         End If
 
         dgridAccounts.EnableHeadersVisualStyles = False
+
+        dgridAccounts.AllowUserToAddRows = False
+        dgridAccounts.RowHeadersVisible = False
+
+        dgridAccounts.EnableHeadersVisualStyles = False
+        dgridAccounts.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(220, 214, 200)
+        dgridAccounts.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
+        dgridAccounts.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
         CType(dgridAccounts.Columns("colView"), DataGridViewButtonColumn).FlatStyle = FlatStyle.Flat
         CType(dgridAccounts.Columns("colArchive"), DataGridViewButtonColumn).FlatStyle = FlatStyle.Flat
@@ -97,14 +106,15 @@ Public Class tabAccounts
 
         Else
             If userlvl = -1 Then
-                sql = "SELECT AccountID, FirstName, LastName, Username, [Password], UserLvl FROM AccountsTbl WHERE (FirstName LIKE ? OR LastName LIKE ?) AND Status = " & status
+                sql = "SELECT AccountID, FirstName, LastName, Username, [Password], UserLvl, Email, ContactNumber, Address, Birthdate FROM AccountsTbl
+                    WHERE (FirstName LIKE ? OR LastName LIKE ?) AND Status = " & status
                 Using da As New OleDbDataAdapter(sql, oledbCnn)
                     da.SelectCommand.Parameters.AddWithValue("?", "%" & txtSearch.Text & "%")
                     da.SelectCommand.Parameters.AddWithValue("?", "%" & txtSearch.Text & "%")
                     da.Fill(dt)
                 End Using
             Else
-                sql = "SELECT AccountID, FirstName, LastName, Username, [Password], UserLvl FROM AccountsTbl 
+                sql = "SELECT AccountID, FirstName, LastName, Username, [Password], UserLvl, Email, ContactNumber, Address, Birthdate FROM AccountsTbl 
                    WHERE (FirstName LIKE ? OR LastName LIKE ?) AND UserLvl = ? AND Status = " & status
                 Using da As New OleDbDataAdapter(sql, oledbCnn)
                     da.SelectCommand.Parameters.AddWithValue("?", "%" & txtSearch.Text & "%")
@@ -132,7 +142,6 @@ Public Class tabAccounts
 
         Dim row As DataGridViewRow = dgridAccounts.Rows(e.RowIndex)
 
-        ' VIEW BUTTON
         If dgridAccounts.Columns(e.ColumnIndex).Name = "colView" Then
 
             Dim subAcc As New subAccounts()
@@ -145,6 +154,10 @@ Public Class tabAccounts
             uname = row.Cells("Username").Value.ToString()
             pass = row.Cells("Password").Value.ToString()
             userlvl = Convert.ToInt32(row.Cells("UserLvl").Value)
+            email = row.Cells("Email").Value.ToString()
+            contact = row.Cells("ContactNumber").Value.ToString()
+            address = row.Cells("Address").Value.ToString()
+            birthdate = Convert.ToDateTime(row.Cells("Birthdate").Value)
 
             subAcc.ShowDialog()
             dt.Clear()
@@ -152,7 +165,6 @@ Public Class tabAccounts
 
         End If
 
-        ' ARCHIVE / RESTORE BUTTON
         If dgridAccounts.Columns(e.ColumnIndex).Name = "colArchive" Then
 
             Dim lvl As Integer = Convert.ToInt32(row.Cells("UserLvl").Value)

@@ -22,20 +22,16 @@ Partial Class subOrderReq
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
         btnApprove = New Button()
         btnReject = New Button()
         DataGridView1 = New DataGridView()
-        ItemName = New DataGridViewTextBoxColumn()
-        Quantity = New DataGridViewTextBoxColumn()
-        Category = New DataGridViewTextBoxColumn()
-        Price = New DataGridViewTextBoxColumn()
         lblTitle = New Label()
-        Label4 = New Label()
-        Label1 = New Label()
-        Label2 = New Label()
+        lblTransac = New Label()
+        lblDate = New Label()
+        lblReq = New Label()
         btnCancel = New Button()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -72,56 +68,35 @@ Partial Class subOrderReq
         ' 
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataGridView1.BackgroundColor = Color.FromArgb(CByte(89), CByte(82), CByte(71))
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = SystemColors.Control
-        DataGridViewCellStyle1.Font = New Font("Consolas", 9F)
-        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Control
-        DataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText
-        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
-        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = SystemColors.Control
+        DataGridViewCellStyle4.Font = New Font("Consolas", 9F)
+        DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = SystemColors.Control
+        DataGridViewCellStyle4.SelectionForeColor = SystemColors.WindowText
+        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
+        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Columns.AddRange(New DataGridViewColumn() {ItemName, Quantity, Category, Price})
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = SystemColors.Window
-        DataGridViewCellStyle2.Font = New Font("Consolas", 9F)
-        DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(80), CByte(82), CByte(71))
-        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
-        DataGridView1.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = SystemColors.Window
+        DataGridViewCellStyle5.Font = New Font("Consolas", 9F)
+        DataGridViewCellStyle5.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(CByte(80), CByte(82), CByte(71))
+        DataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.False
+        DataGridView1.DefaultCellStyle = DataGridViewCellStyle5
         DataGridView1.Location = New Point(14, 62)
         DataGridView1.Name = "DataGridView1"
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = SystemColors.Control
-        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
-        DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = SystemColors.Control
+        DataGridViewCellStyle6.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
+        DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         DataGridView1.Size = New Size(793, 542)
         DataGridView1.TabIndex = 27
-        ' 
-        ' ItemName
-        ' 
-        ItemName.HeaderText = "Item Name"
-        ItemName.Name = "ItemName"
-        ' 
-        ' Quantity
-        ' 
-        Quantity.HeaderText = "Quantity"
-        Quantity.Name = "Quantity"
-        ' 
-        ' Category
-        ' 
-        Category.HeaderText = "Category"
-        Category.Name = "Category"
-        ' 
-        ' Price
-        ' 
-        Price.HeaderText = "Price"
-        Price.Name = "Price"
         ' 
         ' lblTitle
         ' 
@@ -134,38 +109,38 @@ Partial Class subOrderReq
         lblTitle.TabIndex = 26
         lblTitle.Text = "Order Request"
         ' 
-        ' Label4
+        ' lblTransac
         ' 
-        Label4.AutoSize = True
-        Label4.BackColor = Color.Transparent
-        Label4.Font = New Font("Consolas", 9F)
-        Label4.Location = New Point(17, 40)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(112, 14)
-        Label4.TabIndex = 30
-        Label4.Text = "Transaction ID:"
+        lblTransac.AutoSize = True
+        lblTransac.BackColor = Color.Transparent
+        lblTransac.Font = New Font("Consolas", 9F)
+        lblTransac.Location = New Point(17, 40)
+        lblTransac.Name = "lblTransac"
+        lblTransac.Size = New Size(112, 14)
+        lblTransac.TabIndex = 30
+        lblTransac.Text = "Transaction ID:"
         ' 
-        ' Label1
+        ' lblDate
         ' 
-        Label1.AutoSize = True
-        Label1.BackColor = Color.Transparent
-        Label1.Font = New Font("Consolas", 9F)
-        Label1.Location = New Point(249, 39)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(42, 14)
-        Label1.TabIndex = 29
-        Label1.Text = "Date:"
+        lblDate.AutoSize = True
+        lblDate.BackColor = Color.Transparent
+        lblDate.Font = New Font("Consolas", 9F)
+        lblDate.Location = New Point(249, 39)
+        lblDate.Name = "lblDate"
+        lblDate.Size = New Size(42, 14)
+        lblDate.TabIndex = 29
+        lblDate.Text = "Date:"
         ' 
-        ' Label2
+        ' lblReq
         ' 
-        Label2.AutoSize = True
-        Label2.BackColor = Color.Transparent
-        Label2.Font = New Font("Consolas", 9F)
-        Label2.Location = New Point(249, 18)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(105, 14)
-        Label2.TabIndex = 28
-        Label2.Text = "Requested by: "
+        lblReq.AutoSize = True
+        lblReq.BackColor = Color.Transparent
+        lblReq.Font = New Font("Consolas", 9F)
+        lblReq.Location = New Point(249, 18)
+        lblReq.Name = "lblReq"
+        lblReq.Size = New Size(105, 14)
+        lblReq.TabIndex = 28
+        lblReq.Text = "Requested by: "
         ' 
         ' btnCancel
         ' 
@@ -188,9 +163,9 @@ Partial Class subOrderReq
         BackgroundImage = My.Resources.Resources.mainPanelBg
         ClientSize = New Size(820, 614)
         Controls.Add(btnCancel)
-        Controls.Add(Label4)
-        Controls.Add(Label1)
-        Controls.Add(Label2)
+        Controls.Add(lblTransac)
+        Controls.Add(lblDate)
+        Controls.Add(lblReq)
         Controls.Add(DataGridView1)
         Controls.Add(lblTitle)
         Controls.Add(btnApprove)
@@ -208,13 +183,9 @@ Partial Class subOrderReq
     Friend WithEvents btnApprove As Button
     Friend WithEvents btnReject As Button
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents ItemName As DataGridViewTextBoxColumn
-    Friend WithEvents Quantity As DataGridViewTextBoxColumn
-    Friend WithEvents Category As DataGridViewTextBoxColumn
-    Friend WithEvents Price As DataGridViewTextBoxColumn
     Friend WithEvents lblTitle As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
+    Friend WithEvents lblTransac As Label
+    Friend WithEvents lblDate As Label
+    Friend WithEvents lblReq As Label
     Friend WithEvents btnCancel As Button
 End Class

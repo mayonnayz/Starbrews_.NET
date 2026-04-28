@@ -32,16 +32,5 @@ Module Module1
     End Sub
 
 
-    'Public Sub BuilderConn(ByVal b As OleDbDataAdapter)
-    '    Dim builder As New OleDbCommandBuilder(b)
-    '    builder.GetUpdateCommand()
-    '    builder.ConflictOption = ConflictOption.OverwriteChanges
-    'End Sub
-
-    'Public Sub updateTable(ByVal a As OleDbDataAdapter, ByVal d As DataSet, ByVal t As String, ByVal m As String)
-    '    BuilderConn(a)
-    '    a.Update(d, t)
-    '    MessageBox.Show(m, "Information")
-    'End Sub
 
 End Module

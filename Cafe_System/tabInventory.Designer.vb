@@ -32,11 +32,6 @@ Partial Class tabInventory
         TabPage1 = New TabPage()
         btnHistoryStore = New Button()
         DataGridView1 = New DataGridView()
-        ItemID = New DataGridViewTextBoxColumn()
-        ItemName = New DataGridViewTextBoxColumn()
-        Quantity = New DataGridViewTextBoxColumn()
-        Category = New DataGridViewTextBoxColumn()
-        Price = New DataGridViewTextBoxColumn()
         btnClosingCount = New Button()
         lblDate = New Label()
         TabPage2 = New TabPage()
@@ -45,11 +40,6 @@ Partial Class tabInventory
         btnStockOut = New Button()
         btnHistoryStock = New Button()
         DataGridView2 = New DataGridView()
-        DataGridViewTextBoxColumn1 = New DataGridViewTextBoxColumn()
-        DataGridViewTextBoxColumn2 = New DataGridViewTextBoxColumn()
-        DataGridViewTextBoxColumn3 = New DataGridViewTextBoxColumn()
-        DataGridViewTextBoxColumn4 = New DataGridViewTextBoxColumn()
-        DataGridViewTextBoxColumn5 = New DataGridViewTextBoxColumn()
         TabControl1.SuspendLayout()
         TabPage1.SuspendLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
@@ -111,7 +101,6 @@ Partial Class tabInventory
         DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
         DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Columns.AddRange(New DataGridViewColumn() {ItemID, ItemName, Quantity, Category, Price})
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = SystemColors.Window
         DataGridViewCellStyle2.Font = New Font("Consolas", 9F)
@@ -132,31 +121,6 @@ Partial Class tabInventory
         DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DataGridView1.Size = New Size(809, 493)
         DataGridView1.TabIndex = 8
-        ' 
-        ' ItemID
-        ' 
-        ItemID.HeaderText = "Item ID"
-        ItemID.Name = "ItemID"
-        ' 
-        ' ItemName
-        ' 
-        ItemName.HeaderText = "Item Name"
-        ItemName.Name = "ItemName"
-        ' 
-        ' Quantity
-        ' 
-        Quantity.HeaderText = "Quantity"
-        Quantity.Name = "Quantity"
-        ' 
-        ' Category
-        ' 
-        Category.HeaderText = "Category"
-        Category.Name = "Category"
-        ' 
-        ' Price
-        ' 
-        Price.HeaderText = "Price"
-        Price.Name = "Price"
         ' 
         ' btnClosingCount
         ' 
@@ -259,17 +223,16 @@ Partial Class tabInventory
         DataGridViewCellStyle4.BackColor = SystemColors.Control
         DataGridViewCellStyle4.Font = New Font("Consolas", 9F)
         DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(CByte(80), CByte(82), CByte(71))
         DataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText
         DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
         DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         DataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView2.Columns.AddRange(New DataGridViewColumn() {DataGridViewTextBoxColumn1, DataGridViewTextBoxColumn2, DataGridViewTextBoxColumn3, DataGridViewTextBoxColumn4, DataGridViewTextBoxColumn5})
         DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = SystemColors.Window
         DataGridViewCellStyle5.Font = New Font("Consolas", 9F)
         DataGridViewCellStyle5.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(CByte(80), CByte(82), CByte(71))
         DataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText
         DataGridViewCellStyle5.WrapMode = DataGridViewTriState.False
         DataGridView2.DefaultCellStyle = DataGridViewCellStyle5
@@ -279,37 +242,12 @@ Partial Class tabInventory
         DataGridViewCellStyle6.BackColor = SystemColors.Control
         DataGridViewCellStyle6.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(CByte(80), CByte(82), CByte(71))
         DataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText
         DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
         DataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         DataGridView2.Size = New Size(809, 493)
         DataGridView2.TabIndex = 9
-        ' 
-        ' DataGridViewTextBoxColumn1
-        ' 
-        DataGridViewTextBoxColumn1.HeaderText = "Item ID"
-        DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        ' 
-        ' DataGridViewTextBoxColumn2
-        ' 
-        DataGridViewTextBoxColumn2.HeaderText = "Item Name"
-        DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        ' 
-        ' DataGridViewTextBoxColumn3
-        ' 
-        DataGridViewTextBoxColumn3.HeaderText = "Quantity"
-        DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        ' 
-        ' DataGridViewTextBoxColumn4
-        ' 
-        DataGridViewTextBoxColumn4.HeaderText = "Category"
-        DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        ' 
-        ' DataGridViewTextBoxColumn5
-        ' 
-        DataGridViewTextBoxColumn5.HeaderText = "Price"
-        DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         ' 
         ' tabInventory
         ' 
@@ -333,22 +271,12 @@ Partial Class tabInventory
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents btnHistoryStore As Button
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents ItemID As DataGridViewTextBoxColumn
-    Friend WithEvents ItemName As DataGridViewTextBoxColumn
-    Friend WithEvents Quantity As DataGridViewTextBoxColumn
-    Friend WithEvents Category As DataGridViewTextBoxColumn
-    Friend WithEvents Price As DataGridViewTextBoxColumn
     Friend WithEvents btnClosingCount As Button
     Friend WithEvents lblDate As Label
     Friend WithEvents lblDate2 As Label
     Friend WithEvents btnStockOut As Button
     Friend WithEvents btnHistoryStock As Button
     Friend WithEvents DataGridView2 As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents btnStockIn As Button
 
 End Class

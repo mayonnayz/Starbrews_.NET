@@ -11,12 +11,17 @@ Public Class subSuppliers
             LoadSupplierDetails()
         ElseIf tabOrderRequests.purpose = "Add New Supplier" Then
             lblTitle.Text = tabOrderRequests.purpose
-            txtSName.Text = ""
-            txtContact.Text = ""
-            txtEmail.Text = ""
-            txtAddress.Text = ""
-            cmbCategory.SelectedIndex = 0
+
+            txtSName.Clear()
+            txtContact.Clear()
+            txtEmail.Clear()
+            txtAddress.Clear()
+
+            If cmbCategory.DataSource IsNot Nothing AndAlso cmbCategory.Items.Count > 0 Then
+                cmbCategory.SelectedIndex = 0
+            End If
         End If
+
     End Sub
     Private Sub LoadSupplierDetails()
         LoadCategories()
@@ -121,23 +126,19 @@ Public Class subSuppliers
     End Sub
 
     Private Sub LoadCategories()
-        Try
-            Dim sql As String = "SELECT CategoryID, CatName FROM CategoriesTbl WHERE CatStatus = 1"
+        Dim sql As String = "SELECT CategoryID, CatName FROM CategoriesTbl"
 
-            Using cmd As New OleDbCommand(sql, oledbCnn)
-                Using adapter As New OleDbDataAdapter(cmd)
-                    Dim dt As New DataTable()
-                    adapter.Fill(dt)
+        Dim dt As New DataTable()
 
-                    cmbCategory.DataSource = dt
-                    cmbCategory.DisplayMember = "CatName"
-                    cmbCategory.ValueMember = "CategoryID"
-                End Using
+        Using cmd As New OleDbCommand(sql, oledbCnn)
+            Using da As New OleDbDataAdapter(cmd)
+                da.Fill(dt)
             End Using
+        End Using
 
-        Catch ex As Exception
-            MessageBox.Show("Error loading categories: " & ex.Message)
-        End Try
+        cmbCategory.DataSource = dt
+        cmbCategory.DisplayMember = "CatName"
+        cmbCategory.ValueMember = "CategoryID"
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click

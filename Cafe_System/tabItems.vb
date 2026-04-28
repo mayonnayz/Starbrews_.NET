@@ -44,15 +44,21 @@ Public Class tabItems
           "FROM ItemsTbl i " &
           "INNER JOIN CategoriesTbl c " &
           "ON i.ItemCategory = c.CategoryID " &
-          "WHERE i.ItemStatus = " & status &
-          " AND c.CatStatus = 1"
+          "WHERE i.ItemStatus = " & status
 
         Using da As New OleDbDataAdapter(sql, oledbCnn)
             da.Fill(dt)
         End Using
 
         dgridItems.DataSource = dt
+
         dgridItems.AllowUserToAddRows = False
+        dgridItems.RowHeadersVisible = False
+
+        dgridItems.EnableHeadersVisualStyles = False
+        dgridItems.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(220, 214, 200)
+        dgridItems.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
+        dgridItems.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
         SetupGrid()
         AddButtonColumns()
@@ -66,8 +72,6 @@ Public Class tabItems
         If dgridItems.Columns.Contains("colArchive") Then
             dgridItems.Columns("colArchive").Visible = Not (Form1.UserLvl = 2 Or Form1.UserLvl = 3)
         End If
-
-
 
 
         Me.BeginInvoke(Sub()
@@ -107,7 +111,7 @@ Public Class tabItems
 
         Dim dtCat As New DataTable()
 
-        sql = "SELECT CategoryID, CatName FROM CategoriesTbl WHERE CatStatus = 1"
+        sql = "SELECT CategoryID, CatName FROM CategoriesTbl"
 
         Using da As New OleDbDataAdapter(sql, oledbCnn)
             da.Fill(dtCat)
@@ -132,7 +136,7 @@ Public Class tabItems
               "i.UnitPrice, i.Unit, i.ItemCategory " &
               "FROM ItemsTbl i " &
               "INNER JOIN CategoriesTbl c ON i.ItemCategory = c.CategoryID " &
-              "WHERE c.CatStatus = 1 AND i.ItemStatus = " & status &
+              "WHERE i.ItemStatus = " & status &
               " AND i.ItemName LIKE ?"
 
         If cmbCategory.SelectedValue IsNot Nothing AndAlso CInt(cmbCategory.SelectedValue) <> 0 Then

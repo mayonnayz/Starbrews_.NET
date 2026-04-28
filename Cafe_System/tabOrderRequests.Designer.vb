@@ -22,12 +22,11 @@ Partial Class tabOrderRequests
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Label1 = New Label()
         DataGridView1 = New DataGridView()
-        ReqNo = New DataGridViewTextBoxColumn()
-        Date_Requested = New DataGridViewTextBoxColumn()
-        RequestedBy = New DataGridViewTextBoxColumn()
-        Status = New DataGridViewTextBoxColumn()
         lstSupplier = New ListBox()
         Label2 = New Label()
         btnAddSupplier = New Button()
@@ -58,32 +57,35 @@ Partial Class tabOrderRequests
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataGridView1.BackgroundColor = Color.FromArgb(CByte(89), CByte(82), CByte(71))
         DataGridView1.BorderStyle = BorderStyle.Fixed3D
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = SystemColors.Control
+        DataGridViewCellStyle1.Font = New Font("Consolas", 9F)
+        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Columns.AddRange(New DataGridViewColumn() {ReqNo, Date_Requested, RequestedBy, Status})
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = SystemColors.Window
+        DataGridViewCellStyle2.Font = New Font("Consolas", 9F)
+        DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(80), CByte(82), CByte(71))
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        DataGridView1.DefaultCellStyle = DataGridViewCellStyle2
         DataGridView1.Location = New Point(13, 93)
         DataGridView1.Name = "DataGridView1"
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = SystemColors.Control
+        DataGridViewCellStyle3.Font = New Font("Consolas", 9F)
+        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(80), CByte(82), CByte(71))
+        DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DataGridView1.Size = New Size(510, 493)
         DataGridView1.TabIndex = 5
-        ' 
-        ' ReqNo
-        ' 
-        ReqNo.HeaderText = "Req. No."
-        ReqNo.Name = "ReqNo"
-        ' 
-        ' Date_Requested
-        ' 
-        Date_Requested.HeaderText = "Date Requested"
-        Date_Requested.Name = "Date_Requested"
-        ' 
-        ' RequestedBy
-        ' 
-        RequestedBy.HeaderText = "Requested by"
-        RequestedBy.Name = "RequestedBy"
-        ' 
-        ' Status
-        ' 
-        Status.HeaderText = "Status"
-        Status.Name = "Status"
         ' 
         ' lstSupplier
         ' 
@@ -257,10 +259,6 @@ Partial Class tabOrderRequests
     Friend WithEvents btnEditSupplier As Button
     Friend WithEvents btnCreateRequest As Button
     Friend WithEvents btnViewRequest As Button
-    Friend WithEvents ReqNo As DataGridViewTextBoxColumn
-    Friend WithEvents Date_Requested As DataGridViewTextBoxColumn
-    Friend WithEvents RequestedBy As DataGridViewTextBoxColumn
-    Friend WithEvents Status As DataGridViewTextBoxColumn
     Friend WithEvents btnViewArch As Button
     Friend WithEvents btnSearch As Button
     Friend WithEvents txtSearch As TextBox

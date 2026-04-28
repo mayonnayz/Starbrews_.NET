@@ -17,6 +17,10 @@ Public Class subAccounts
             txtUname.Text = tabAccounts.uname
             txtPass.Text = tabAccounts.pass
             cmbUlvl.SelectedIndex = tabAccounts.userlvl
+            txtEmail.Text = tabAccounts.email
+            txtContact.Text = tabAccounts.contact
+            txtAddress.Text = tabAccounts.address
+            DateTimePicker1.Value = tabAccounts.birthdate
         ElseIf tabAccounts.purpose = "Create New Account" Then
             txtFName.Text = ""
             txtLName.Text = ""
@@ -32,8 +36,9 @@ Public Class subAccounts
 
     Private Function ValidateInputs() As Boolean
         Dim namePattern As String = "^[A-Za-z\s]+$"
-
         Dim userPassPattern As String = "^\S+$"
+        Dim emailPattern As String = "^[^@\s]+@[^@\s]+\.[^@\s]+$"
+        Dim contactPattern As String = "^[0-9]{7,15}$"
 
         If Not Regex.IsMatch(txtFName.Text, namePattern) Then
             MessageBox.Show("First name must contain letters only (no numbers or special characters).")
@@ -56,6 +61,39 @@ Public Class subAccounts
         If Not Regex.IsMatch(txtPass.Text, userPassPattern) Then
             MessageBox.Show("Password must not contain spaces.")
             txtPass.Focus()
+            Return False
+        End If
+
+        If Not Regex.IsMatch(txtEmail.Text, emailPattern) Then
+            MessageBox.Show("Invalid email format.")
+            txtEmail.Focus()
+            Return False
+        End If
+
+        If Not Regex.IsMatch(txtContact.Text, contactPattern) Then
+            MessageBox.Show("Contact number must be 7–15 digits only.")
+            txtContact.Focus()
+            Return False
+        End If
+
+        If txtAddress.Text.Trim = "" Then
+            MessageBox.Show("Address is required.")
+            txtAddress.Focus()
+            Return False
+        End If
+
+        Dim today As Date = Date.Today
+        Dim birthDate As Date = DateTimePicker1.Value
+
+        Dim age As Integer = today.Year - birthDate.Year
+
+        If birthDate > today.AddYears(-age) Then
+            age -= 1
+        End If
+
+        If age < 18 Then
+            MessageBox.Show("User must be 18 years old and above.")
+            DateTimePicker1.Focus()
             Return False
         End If
 
@@ -93,29 +131,51 @@ Public Class subAccounts
             If Not ValidateInputs() Then Exit Sub
 
             If tabAccounts.purpose = "Account Info" Then
-                Dim sql As String = "UPDATE AccountsTbl SET FirstName = ?, LastName = ?, Username = ?, [Password] = ?, UserLvl = ? WHERE AccountId = ?"
+                Dim sql As String = "UPDATE AccountsTbl SET FirstName = ?, LastName = ?, Username = ?, [Password] = ?, UserLvl = ?, Email = ?, ContactNumber = ?, Address = ?, Birthdate = ?
+                                       WHERE AccountId = ?"
 
                 Using cmd As New OleDbCommand(sql, oledbCnn)
-                    cmd.Parameters.AddWithValue("?", txtFName.Text)
-                    cmd.Parameters.AddWithValue("?", txtLName.Text)
-                    cmd.Parameters.AddWithValue("?", txtUname.Text)
-                    cmd.Parameters.AddWithValue("?", txtPass.Text)
-                    cmd.Parameters.AddWithValue("?", cmbUlvl.SelectedIndex)
-                    cmd.Parameters.AddWithValue("?", tabAccounts.accId)
+                    cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtFName.Text
+                    cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtLName.Text
+                    cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtUname.Text
+                    cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtPass.Text
+
+                    cmd.Parameters.Add("?", OleDbType.Integer).Value = cmbUlvl.SelectedIndex
+
+                    cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtEmail.Text
+                    cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtContact.Text
+                    cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtAddress.Text
+
+                    cmd.Parameters.Add("?", OleDbType.Date).Value = DateTimePicker1.Value
+
+                    cmd.Parameters.Add("?", OleDbType.Integer).Value = tabAccounts.accId
+
                     cmd.ExecuteNonQuery()
+
                 End Using
 
                 MessageBox.Show("Account updated successfully!")
             ElseIf tabAccounts.purpose = "Create New Account" Then
-                Dim sql As String = "INSERT INTO AccountsTbl (FirstName, LastName, Username, [Password], UserLvl, Status) VALUES (?, ?, ?, ?, ?, ?)"
+                Dim sql As String =
+                "INSERT INTO AccountsTbl 
+                (FirstName, LastName, Username, [Password], UserLvl, Status, Email, ContactNumber, Address, Birthdate) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
                 Using cmd As New OleDbCommand(sql, oledbCnn)
-                    cmd.Parameters.AddWithValue("?", txtFName.Text)
-                    cmd.Parameters.AddWithValue("?", txtLName.Text)
-                    cmd.Parameters.AddWithValue("?", txtUname.Text)
-                    cmd.Parameters.AddWithValue("?", txtPass.Text)
-                    cmd.Parameters.AddWithValue("?", cmbUlvl.SelectedIndex)
-                    cmd.Parameters.AddWithValue("?", "1")
+                    cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtFName.Text
+                    cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtLName.Text
+                    cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtUname.Text
+                    cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtPass.Text
+
+                    cmd.Parameters.Add("?", OleDbType.Integer).Value = cmbUlvl.SelectedIndex
+                    cmd.Parameters.Add("?", OleDbType.Integer).Value = 1
+
+                    cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtEmail.Text
+                    cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtContact.Text
+                    cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtAddress.Text
+
+                    cmd.Parameters.Add("?", OleDbType.Date).Value = DateTimePicker1.Value
+
                     cmd.ExecuteNonQuery()
                 End Using
 
@@ -165,5 +225,7 @@ Public Class subAccounts
         btnCancel.BackgroundImageLayout = ImageLayout.Zoom
     End Sub
 
+    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
 
+    End Sub
 End Class

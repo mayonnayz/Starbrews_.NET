@@ -28,14 +28,10 @@ Partial Class subCreateReq
         lblTitle = New Label()
         btnCancel = New Button()
         DataGridView1 = New DataGridView()
-        ItemName = New DataGridViewTextBoxColumn()
-        Quantity = New DataGridViewTextBoxColumn()
-        Category = New DataGridViewTextBoxColumn()
-        Price = New DataGridViewTextBoxColumn()
         lblDate = New Label()
         lblReqBy = New Label()
         Label4 = New Label()
-        btnCreate = New Button()
+        btnRequest = New Button()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -77,7 +73,6 @@ Partial Class subCreateReq
         DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
         DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Columns.AddRange(New DataGridViewColumn() {ItemName, Quantity, Category, Price})
         DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = SystemColors.Window
         DataGridViewCellStyle5.Font = New Font("Consolas", 9F)
@@ -99,32 +94,12 @@ Partial Class subCreateReq
         DataGridView1.Size = New Size(793, 542)
         DataGridView1.TabIndex = 19
         ' 
-        ' ItemName
-        ' 
-        ItemName.HeaderText = "Item Name"
-        ItemName.Name = "ItemName"
-        ' 
-        ' Quantity
-        ' 
-        Quantity.HeaderText = "Quantity"
-        Quantity.Name = "Quantity"
-        ' 
-        ' Category
-        ' 
-        Category.HeaderText = "Category"
-        Category.Name = "Category"
-        ' 
-        ' Price
-        ' 
-        Price.HeaderText = "Price"
-        Price.Name = "Price"
-        ' 
         ' lblDate
         ' 
         lblDate.AutoSize = True
         lblDate.BackColor = Color.Transparent
         lblDate.Font = New Font("Consolas", 9F)
-        lblDate.Location = New Point(312, 37)
+        lblDate.Location = New Point(326, 37)
         lblDate.Name = "lblDate"
         lblDate.Size = New Size(42, 14)
         lblDate.TabIndex = 21
@@ -135,7 +110,7 @@ Partial Class subCreateReq
         lblReqBy.AutoSize = True
         lblReqBy.BackColor = Color.Transparent
         lblReqBy.Font = New Font("Consolas", 9F)
-        lblReqBy.Location = New Point(312, 16)
+        lblReqBy.Location = New Point(326, 16)
         lblReqBy.Name = "lblReqBy"
         lblReqBy.Size = New Size(105, 14)
         lblReqBy.TabIndex = 20
@@ -145,26 +120,26 @@ Partial Class subCreateReq
         ' 
         Label4.AutoSize = True
         Label4.BackColor = Color.Transparent
-        Label4.Font = New Font("Consolas", 9F)
+        Label4.Font = New Font("Consolas", 7.5F)
         Label4.Location = New Point(15, 38)
         Label4.Name = "Label4"
-        Label4.Size = New Size(112, 14)
+        Label4.Size = New Size(290, 12)
         Label4.TabIndex = 22
-        Label4.Text = "Transaction ID:"
+        Label4.Text = "*Input 0 in the Quantity field if the item is not needed."
         ' 
-        ' btnCreate
+        ' btnRequest
         ' 
-        btnCreate.BackColor = Color.FromArgb(CByte(84), CByte(122), CByte(70))
-        btnCreate.FlatAppearance.BorderSize = 0
-        btnCreate.FlatStyle = FlatStyle.Popup
-        btnCreate.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
-        btnCreate.ForeColor = SystemColors.ButtonHighlight
-        btnCreate.Location = New Point(652, 7)
-        btnCreate.Name = "btnCreate"
-        btnCreate.Size = New Size(152, 22)
-        btnCreate.TabIndex = 23
-        btnCreate.Text = "CREATE REQUEST"
-        btnCreate.UseVisualStyleBackColor = False
+        btnRequest.BackColor = Color.FromArgb(CByte(84), CByte(122), CByte(70))
+        btnRequest.FlatAppearance.BorderSize = 0
+        btnRequest.FlatStyle = FlatStyle.Popup
+        btnRequest.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
+        btnRequest.ForeColor = SystemColors.ButtonHighlight
+        btnRequest.Location = New Point(652, 7)
+        btnRequest.Name = "btnRequest"
+        btnRequest.Size = New Size(152, 22)
+        btnRequest.TabIndex = 23
+        btnRequest.Text = "CREATE REQUEST"
+        btnRequest.UseVisualStyleBackColor = False
         ' 
         ' subCreateReq
         ' 
@@ -172,7 +147,7 @@ Partial Class subCreateReq
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = My.Resources.Resources.mainPanelBg
         ClientSize = New Size(820, 614)
-        Controls.Add(btnCreate)
+        Controls.Add(btnRequest)
         Controls.Add(Label4)
         Controls.Add(lblDate)
         Controls.Add(lblReqBy)
@@ -191,12 +166,8 @@ Partial Class subCreateReq
     Friend WithEvents lblTitle As Label
     Friend WithEvents btnCancel As Button
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents ItemName As DataGridViewTextBoxColumn
-    Friend WithEvents Quantity As DataGridViewTextBoxColumn
-    Friend WithEvents Category As DataGridViewTextBoxColumn
-    Friend WithEvents Price As DataGridViewTextBoxColumn
     Friend WithEvents lblDate As Label
     Friend WithEvents lblReqBy As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents btnCreate As Button
+    Friend WithEvents btnRequest As Button
 End Class

@@ -19,7 +19,6 @@ Public Class subCategory
             btnAddCategory.Visible = False
         End If
 
-        btnViewArch.Text = "VIEW ARCHIVED CATEGORIES"
 
         dgridCategories.ReadOnly = True
         dgridCategories.SelectionMode = DataGridViewSelectionMode.FullRowSelect
@@ -29,7 +28,6 @@ Public Class subCategory
 
         If Form1.UserLvl = 3 Or Form1.UserLvl = 2 Then
             btnAddCategory.Visible = False
-            btnViewArch.Visible = False
         End If
 
     End Sub
@@ -40,7 +38,7 @@ Public Class subCategory
         dgridCategories.DataSource = Nothing
         dgridCategories.Columns.Clear()
 
-        sql = "SELECT CategoryID, CatName, CatDesc FROM CategoriesTbl WHERE CatStatus = " & status
+        sql = "SELECT CategoryID, CatName, CatDesc FROM CategoriesTbl"
 
         Using da As New OleDbDataAdapter(sql, oledbCnn)
             da.Fill(dt)
@@ -48,6 +46,12 @@ Public Class subCategory
 
         dgridCategories.DataSource = dt
         dgridCategories.AllowUserToAddRows = False
+        dgridCategories.RowHeadersVisible = False
+
+        dgridCategories.EnableHeadersVisualStyles = False
+        dgridCategories.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(220, 214, 200)
+        dgridCategories.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
+        dgridCategories.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
         SetupGrid()
         AddButtonColumns()
@@ -56,31 +60,12 @@ Public Class subCategory
             dgridCategories.Columns("colView").Visible = (status = 1 AndAlso Not (Form1.UserLvl = 2 Or Form1.UserLvl = 3))
         End If
 
-        If dgridCategories.Columns.Contains("colArchive") Then
-            dgridCategories.Columns("colArchive").Visible = Not (Form1.UserLvl = 2 Or Form1.UserLvl = 3)
-        End If
 
         Me.BeginInvoke(Sub()
                            dgridCategories.ClearSelection()
                            dgridCategories.CurrentCell = Nothing
                        End Sub)
 
-        If dgridCategories.Columns.Contains("colArchive") Then
-
-            Dim btnArchive As DataGridViewButtonColumn =
-                CType(dgridCategories.Columns("colArchive"), DataGridViewButtonColumn)
-
-            btnArchive.UseColumnTextForButtonValue = True
-
-            If status = 1 Then
-                btnArchive.HeaderText = "Archive"
-                btnArchive.Text = "ARCHIVE"
-            Else
-                btnArchive.HeaderText = "Restore"
-                btnArchive.Text = "RESTORE"
-            End If
-
-        End If
 
         If dgridCategories.Columns.Contains("colView") Then
 
@@ -100,8 +85,7 @@ Public Class subCategory
 
         dt.Clear()
 
-        sql = "SELECT CategoryID, CatName, CatDesc FROM CategoriesTbl WHERE CatStatus = " & status &
-          " AND CatName LIKE ?"
+        sql = "SELECT CategoryID, CatName, CatDesc FROM CategoriesTbl WHERE CatName LIKE ?"
 
         Using da As New OleDbDataAdapter(sql, oledbCnn)
             da.SelectCommand.Parameters.AddWithValue("?", "%" & txtCatName.Text & "%")
@@ -117,9 +101,6 @@ Public Class subCategory
             dgridCategories.Columns("colView").Visible = (status = 1 AndAlso Not (Form1.UserLvl = 2 Or Form1.UserLvl = 3))
         End If
 
-        If dgridCategories.Columns.Contains("colArchive") Then
-            dgridCategories.Columns("colArchive").Visible = Not (Form1.UserLvl = 2 Or Form1.UserLvl = 3)
-        End If
 
     End Sub
 
@@ -147,31 +128,6 @@ Public Class subCategory
 
         End If
 
-        ' ARCHIVE / RESTORE
-        If dgridCategories.Columns(e.ColumnIndex).Name = "colArchive" Then
-
-            Dim result = MessageBox.Show("Proceed?", "Category", MessageBoxButtons.YesNo)
-
-            If result = DialogResult.Yes Then
-
-                Dim sql As String
-
-                If status = 1 Then
-                    sql = "UPDATE CategoriesTbl SET CatStatus = 0 WHERE CategoryID = ?"
-                Else
-                    sql = "UPDATE CategoriesTbl SET CatStatus = 1 WHERE CategoryID = ?"
-                End If
-
-                Using cmd As New OleDbCommand(sql, oledbCnn)
-                    cmd.Parameters.AddWithValue("?", Convert.ToInt32(row.Cells("CategoryID").Value))
-                    cmd.ExecuteNonQuery()
-                End Using
-
-                LoadCategories()
-
-            End If
-
-        End If
 
     End Sub
 
@@ -200,26 +156,6 @@ Public Class subCategory
 
         End If
 
-        If Not dgridCategories.Columns.Contains("colArchive") Then
-
-            Dim btnArchive As New DataGridViewButtonColumn()
-            btnArchive.Name = "colArchive"
-            btnArchive.HeaderText = "Archive"
-            btnArchive.Text = "ARCHIVE"
-            btnArchive.UseColumnTextForButtonValue = True
-
-            btnArchive.FlatStyle = FlatStyle.Flat
-
-            btnArchive.DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#a5a18d")
-            btnArchive.DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#808271")
-            btnArchive.DefaultCellStyle.ForeColor = Color.White
-            btnArchive.DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 9, FontStyle.Bold)
-
-            btnArchive.Visible = Not hideButtons
-
-            dgridCategories.Columns.Add(btnArchive)
-
-        End If
 
     End Sub
 
@@ -241,30 +177,12 @@ Public Class subCategory
             dgridCategories.Columns("colView").Visible = (status = 1 AndAlso Not (Form1.UserLvl = 2 Or Form1.UserLvl = 3))
         End If
 
-        If dgridCategories.Columns.Contains("colArchive") Then
-            dgridCategories.Columns("colArchive").Visible = Not (Form1.UserLvl = 2 Or Form1.UserLvl = 3)
-        End If
 
         dgridCategories.EnableHeadersVisualStyles = False
         dgridCategories.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
 
     End Sub
 
-    Private Sub btnViewArch_Click(sender As Object, e As EventArgs) Handles btnViewArch.Click
-
-        If btnViewArch.Text = "VIEW ARCHIVED CATEGORIES" Then
-            status = 0
-            btnViewArch.Text = "VIEW ACTIVE CATEGORIES"
-            btnAddCategory.Visible = False
-        Else
-            status = 1
-            btnViewArch.Text = "VIEW ARCHIVED CATEGORIES"
-            btnAddCategory.Visible = True
-        End If
-
-        LoadCategories()
-
-    End Sub
 
     Private Sub btnAddCategory_Click(sender As Object, e As EventArgs) Handles btnAddCategory.Click
 

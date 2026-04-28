@@ -108,8 +108,10 @@ Public Class subItems
 
         ElseIf tabItems.purpose = "Create New Item" Then
 
+            Dim itemID As Integer
+
             Dim sql As String =
-                "INSERT INTO ItemsTbl (ItemName, ItemDesc, ItemCategory, UnitPrice, Unit, ItemStatus) VALUES (?, ?, ?, ?, ?, ?)"
+                "INSERT INTO ItemsTbl (ItemName, ItemDesc, ItemCategory, UnitPrice, Unit, ItemStatus, Quantity) VALUES (?, ?, ?, ?, ?, ?, ?)"
 
             Using cmd As New OleDbCommand(sql, oledbCnn)
                 cmd.Parameters.AddWithValue("?", txtIName.Text)
@@ -118,8 +120,23 @@ Public Class subItems
                 cmd.Parameters.AddWithValue("?", price)
                 cmd.Parameters.AddWithValue("?", txtUnit.Text)
                 cmd.Parameters.AddWithValue("?", 1)
+                cmd.Parameters.AddWithValue("?", 0)
                 cmd.ExecuteNonQuery()
             End Using
+
+            Using cmd As New OleDbCommand("SELECT @@IDENTITY", oledbCnn)
+                itemID = Convert.ToInt32(cmd.ExecuteScalar())
+            End Using
+
+            Dim sqlStock As String = "INSERT INTO StockRoomTbl (ItemID, CurrentQuantity) VALUES (?, ?)"
+
+            Using cmdStock As New OleDbCommand(sqlStock, oledbCnn)
+                cmdStock.Parameters.AddWithValue("?", itemID)
+                cmdStock.Parameters.AddWithValue("?", 0)
+
+                cmdStock.ExecuteNonQuery()
+            End Using
+
 
             MessageBox.Show("Item created successfully!")
 

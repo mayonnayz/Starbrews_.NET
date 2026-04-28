@@ -37,8 +37,18 @@ Partial Class subAccounts
         GroupBox2 = New GroupBox()
         btnSubmit = New Button()
         btnCancel = New Button()
+        GroupBox3 = New GroupBox()
+        Label9 = New Label()
+        txtAddress = New TextBox()
+        Label6 = New Label()
+        txtEmail = New TextBox()
+        txtContact = New TextBox()
+        Label7 = New Label()
+        Label8 = New Label()
+        DateTimePicker1 = New DateTimePicker()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
+        GroupBox3.SuspendLayout()
         SuspendLayout()
         ' 
         ' Label3
@@ -124,13 +134,14 @@ Partial Class subAccounts
         GroupBox1.Controls.Add(Label1)
         GroupBox1.Controls.Add(txtLName)
         GroupBox1.Controls.Add(txtFName)
-        GroupBox1.ForeColor = Color.Transparent
+        GroupBox1.Font = New Font("Consolas", 9F)
+        GroupBox1.ForeColor = Color.White
         GroupBox1.Location = New Point(35, 72)
         GroupBox1.Name = "GroupBox1"
         GroupBox1.Size = New Size(346, 94)
         GroupBox1.TabIndex = 12
         GroupBox1.TabStop = False
-        GroupBox1.Text = "GroupBox1"
+        GroupBox1.Text = "Employee Name"
         ' 
         ' Label2
         ' 
@@ -182,13 +193,14 @@ Partial Class subAccounts
         GroupBox2.Controls.Add(cmbUlvl)
         GroupBox2.Controls.Add(Label4)
         GroupBox2.Controls.Add(Label5)
-        GroupBox2.ForeColor = Color.Transparent
+        GroupBox2.Font = New Font("Consolas", 9F)
+        GroupBox2.ForeColor = Color.White
         GroupBox2.Location = New Point(35, 187)
         GroupBox2.Name = "GroupBox2"
         GroupBox2.Size = New Size(346, 147)
         GroupBox2.TabIndex = 17
         GroupBox2.TabStop = False
-        GroupBox2.Text = "GroupBox2"
+        GroupBox2.Text = "Account Information"
         ' 
         ' btnSubmit
         ' 
@@ -199,7 +211,7 @@ Partial Class subAccounts
         btnSubmit.FlatStyle = FlatStyle.Flat
         btnSubmit.Font = New Font("Cascadia Mono", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnSubmit.ForeColor = SystemColors.ControlText
-        btnSubmit.Location = New Point(71, 370)
+        btnSubmit.Location = New Point(72, 590)
         btnSubmit.Name = "btnSubmit"
         btnSubmit.Size = New Size(123, 34)
         btnSubmit.TabIndex = 18
@@ -214,19 +226,120 @@ Partial Class subAccounts
         btnCancel.FlatAppearance.BorderSize = 0
         btnCancel.FlatStyle = FlatStyle.Flat
         btnCancel.Font = New Font("Cascadia Mono", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btnCancel.Location = New Point(222, 370)
+        btnCancel.Location = New Point(223, 590)
         btnCancel.Name = "btnCancel"
         btnCancel.Size = New Size(123, 34)
         btnCancel.TabIndex = 19
         btnCancel.Text = "CANCEL"
         btnCancel.UseVisualStyleBackColor = False
         ' 
+        ' GroupBox3
+        ' 
+        GroupBox3.BackColor = Color.Transparent
+        GroupBox3.Controls.Add(DateTimePicker1)
+        GroupBox3.Controls.Add(Label9)
+        GroupBox3.Controls.Add(txtAddress)
+        GroupBox3.Controls.Add(Label6)
+        GroupBox3.Controls.Add(txtEmail)
+        GroupBox3.Controls.Add(txtContact)
+        GroupBox3.Controls.Add(Label7)
+        GroupBox3.Controls.Add(Label8)
+        GroupBox3.Font = New Font("Consolas", 9F)
+        GroupBox3.ForeColor = Color.White
+        GroupBox3.Location = New Point(35, 364)
+        GroupBox3.Name = "GroupBox3"
+        GroupBox3.Size = New Size(346, 193)
+        GroupBox3.TabIndex = 18
+        GroupBox3.TabStop = False
+        GroupBox3.Text = "Personal Information"
+        ' 
+        ' Label9
+        ' 
+        Label9.AutoSize = True
+        Label9.BackColor = Color.Transparent
+        Label9.Font = New Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label9.ForeColor = SystemColors.ButtonFace
+        Label9.Location = New Point(6, 159)
+        Label9.Name = "Label9"
+        Label9.Size = New Size(99, 19)
+        Label9.TabIndex = 11
+        Label9.Text = "Birthday :"
+        ' 
+        ' txtAddress
+        ' 
+        txtAddress.Font = New Font("Consolas", 9F)
+        txtAddress.Location = New Point(138, 80)
+        txtAddress.Multiline = True
+        txtAddress.Name = "txtAddress"
+        txtAddress.Size = New Size(199, 70)
+        txtAddress.TabIndex = 10
+        ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.BackColor = Color.Transparent
+        Label6.Font = New Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label6.ForeColor = SystemColors.ButtonFace
+        Label6.Location = New Point(6, 19)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(72, 19)
+        Label6.TabIndex = 5
+        Label6.Text = "Email :"
+        ' 
+        ' txtEmail
+        ' 
+        txtEmail.Font = New Font("Consolas", 9F)
+        txtEmail.Location = New Point(138, 17)
+        txtEmail.Name = "txtEmail"
+        txtEmail.Size = New Size(199, 22)
+        txtEmail.TabIndex = 4
+        ' 
+        ' txtContact
+        ' 
+        txtContact.Font = New Font("Consolas", 9F)
+        txtContact.Location = New Point(138, 48)
+        txtContact.Name = "txtContact"
+        txtContact.Size = New Size(199, 22)
+        txtContact.TabIndex = 6
+        ' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.BackColor = Color.Transparent
+        Label7.Font = New Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label7.ForeColor = SystemColors.ButtonFace
+        Label7.Location = New Point(6, 50)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(126, 19)
+        Label7.TabIndex = 7
+        Label7.Text = "Contact No. :"
+        ' 
+        ' Label8
+        ' 
+        Label8.AutoSize = True
+        Label8.BackColor = Color.Transparent
+        Label8.Font = New Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label8.ForeColor = SystemColors.ButtonFace
+        Label8.Location = New Point(6, 79)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(90, 19)
+        Label8.TabIndex = 9
+        Label8.Text = "Address :"
+        ' 
+        ' DateTimePicker1
+        ' 
+        DateTimePicker1.Location = New Point(137, 159)
+        DateTimePicker1.Name = "DateTimePicker1"
+        DateTimePicker1.Size = New Size(200, 22)
+        DateTimePicker1.TabIndex = 12
+        ' 
         ' subAccounts
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = My.Resources.Resources.subModbg
-        ClientSize = New Size(416, 450)
+        ClientSize = New Size(416, 643)
+        Controls.Add(GroupBox3)
         Controls.Add(btnCancel)
         Controls.Add(btnSubmit)
         Controls.Add(GroupBox2)
@@ -239,6 +352,8 @@ Partial Class subAccounts
         GroupBox1.PerformLayout()
         GroupBox2.ResumeLayout(False)
         GroupBox2.PerformLayout()
+        GroupBox3.ResumeLayout(False)
+        GroupBox3.PerformLayout()
         ResumeLayout(False)
     End Sub
     Friend WithEvents Label3 As Label
@@ -256,4 +371,13 @@ Partial Class subAccounts
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents btnSubmit As Button
     Friend WithEvents btnCancel As Button
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents txtAddress As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents txtEmail As TextBox
+    Friend WithEvents txtContact As TextBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents DateTimePicker1 As DateTimePicker
 End Class

@@ -18,11 +18,53 @@ Public Class tabOrderRequests
         LoadCategories()
         UpdateSupplierButtons()
         LoadSuppliers(1)
+        LoadOrders()
+    End Sub
+
+    Sub LoadOrders()
+
+        Dim dt As New DataTable()
+
+        Dim sql As String =
+        "SELECT 
+            o.OrderReqID AS [ID],
+            o.DateRequested AS [Date Requested],
+            a.FirstName & ' ' & a.LastName AS [Requested By],
+            IIF(r.AccountID IS NULL, '', r.FirstName & ' ' & r.LastName) AS [Reviewed By],
+            o.Status
+         FROM (OrderReqTbl o
+         INNER JOIN AccountsTbl a ON o.RequestedBy = a.AccountID)
+         LEFT JOIN AccountsTbl r ON o.ReviewedBy = r.AccountID
+         ORDER BY o.DateRequested DESC"
+
+        Using da As New OleDbDataAdapter(sql, oledbCnn)
+            da.Fill(dt)
+        End Using
+
+        DataGridView1.DataSource = dt
+
+        DataGridView1.AllowUserToAddRows = False
+        DataGridView1.RowHeadersVisible = False
+
+        DataGridView1.EnableHeadersVisualStyles = False
+        DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(220, 214, 200)
+        DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
+        DataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+        DataGridView1.Columns("ID").Width = 30
+        DataGridView1.Columns("Status").Width = 67
+
+        DataGridView1.Columns("Date Requested").DefaultCellStyle.Format = "MM/dd/yyyy hh:mm tt"
+
+        For Each col As DataGridViewColumn In DataGridView1.Columns
+            col.ReadOnly = True
+        Next
+
     End Sub
 
     Private Sub LoadCategories()
         Try
-            Dim sql As String = "SELECT CategoryID, CatName FROM CategoriesTbl WHERE CatStatus = 1"
+            Dim sql As String = "SELECT CategoryID, CatName FROM CategoriesTbl"
 
             Using cmd As New OleDbCommand(sql, oledbCnn)
                 Using adapter As New OleDbDataAdapter(cmd)
@@ -52,7 +94,7 @@ Public Class tabOrderRequests
         Dim sql As String = "SELECT s.SupplierID, s.SupplierName " &
                     "FROM SupplierTbl s " &
                     "INNER JOIN CategoriesTbl c ON s.SupplierCategory = c.CategoryID " &
-                    "WHERE s.SupplierStatus = ? AND c.CatStatus = 1"
+                    "WHERE s.SupplierStatus = ?"
 
         If txtSearch.Text.Trim <> "" Then
             sql &= " AND SupplierName LIKE ?"
@@ -99,7 +141,7 @@ Public Class tabOrderRequests
         sql = "SELECT s.SupplierID, s.SupplierName " &
           "FROM SupplierTbl s " &
           "INNER JOIN CategoriesTbl c ON s.SupplierCategory = c.CategoryID " &
-          "WHERE s.SupplierStatus = ? AND c.CatStatus = 1"
+          "WHERE s.SupplierStatus = ?"
 
         Using da As New OleDbDataAdapter(sql, oledbCnn)
             da.SelectCommand.Parameters.AddWithValue("?", suppStatus)
@@ -219,17 +261,51 @@ Public Class tabOrderRequests
         End If
     End Sub
 
-    Private Sub btnViewRequest_Click(sender As Object, e As EventArgs) Handles btnViewRequest.Click
-        Dim subView As New subOrderReq()
+    Private Sub DataGridView1_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataGridView1.CellFormatting
 
-        subView.ShowDialog()
+        If DataGridView1.Columns(e.ColumnIndex).Name = "Status" Then
+
+            If e.Value Is Nothing Then Exit Sub
+
+            Select Case e.Value.ToString().ToLower()
+
+                Case "pending"
+                    e.CellStyle.BackColor = Color.FromArgb(255, 255, 204)
+                    e.CellStyle.ForeColor = Color.Black
+
+                Case "rejected"
+                    e.CellStyle.BackColor = Color.FromArgb(255, 204, 204)
+                    e.CellStyle.ForeColor = Color.Black
+
+                Case "approved"
+                    e.CellStyle.BackColor = Color.FromArgb(204, 255, 204)
+                    e.CellStyle.ForeColor = Color.Black
+
+            End Select
+
+        End If
+
+    End Sub
+
+    Private Sub btnViewRequest_Click(sender As Object, e As EventArgs) Handles btnViewRequest.Click
+
+        If DataGridView1.CurrentRow Is Nothing Then Exit Sub
+
+        Dim reqID As Integer = Convert.ToInt32(DataGridView1.CurrentRow.Cells("ID").Value)
+
+        Dim frm As New subOrderReq()
+        frm.OrderReqID = reqID
+        frm.ShowDialog()
+
+        LoadOrders()
+
     End Sub
 
     Private Sub btnCreateRequest_Click(sender As Object, e As EventArgs) Handles btnCreateRequest.Click
         Dim subAdd As New subCreateReq()
-
         subAdd.ShowDialog()
-    End Sub
 
+        LoadOrders()
+    End Sub
 
 End Class
