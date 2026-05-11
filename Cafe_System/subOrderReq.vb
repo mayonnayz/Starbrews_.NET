@@ -125,7 +125,29 @@ Public Class subOrderReq
     End Sub
 
     Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
-        UpdateRequestStatus("Approved")
+        Dim confirm = MessageBox.Show("Approve this request?", "Confirm", MessageBoxButtons.YesNo)
+        If confirm <> DialogResult.Yes Then Exit Sub
+
+        Dim sql As String =
+        "UPDATE OrderReqTbl 
+         SET Status = ?, 
+             OrderStatus = 1,
+             ReviewedBy = ?, 
+             DateReviewed = ?
+         WHERE OrderReqID = ?"
+
+        Using cmd As New OleDbCommand(sql, oledbCnn)
+
+            cmd.Parameters.Add("?", OleDbType.VarWChar).Value = "Approved"
+            cmd.Parameters.Add("?", OleDbType.Integer).Value = Form1.UserId
+            cmd.Parameters.Add("?", OleDbType.Date).Value = DateTime.Now
+            cmd.Parameters.Add("?", OleDbType.Integer).Value = OrderReqID
+
+            cmd.ExecuteNonQuery()
+        End Using
+
+        MessageBox.Show("Request Approved!")
+        Me.Close()
     End Sub
 
     Private Sub btnReject_Click(sender As Object, e As EventArgs) Handles btnReject.Click
@@ -142,4 +164,5 @@ Public Class subOrderReq
         LoadRequestDetails()
         LoadRequestItems()
     End Sub
+
 End Class

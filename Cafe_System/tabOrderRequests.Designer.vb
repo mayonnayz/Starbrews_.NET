@@ -38,6 +38,12 @@ Partial Class tabOrderRequests
         btnSearch = New Button()
         txtSearch = New TextBox()
         cmbCategory = New ComboBox()
+        dtStart = New DateTimePicker()
+        btnAll = New Button()
+        btnSearchDate = New Button()
+        dtEnd = New DateTimePicker()
+        Label3 = New Label()
+        Label4 = New Label()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -159,9 +165,9 @@ Partial Class tabOrderRequests
         btnCreateRequest.FlatStyle = FlatStyle.Popup
         btnCreateRequest.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
         btnCreateRequest.ForeColor = SystemColors.ButtonHighlight
-        btnCreateRequest.Location = New Point(15, 60)
+        btnCreateRequest.Location = New Point(13, 592)
         btnCreateRequest.Name = "btnCreateRequest"
-        btnCreateRequest.Size = New Size(167, 23)
+        btnCreateRequest.Size = New Size(205, 23)
         btnCreateRequest.TabIndex = 11
         btnCreateRequest.Text = "CREATE ORDER REQUEST"
         btnCreateRequest.UseVisualStyleBackColor = False
@@ -173,7 +179,7 @@ Partial Class tabOrderRequests
         btnViewRequest.FlatStyle = FlatStyle.Popup
         btnViewRequest.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
         btnViewRequest.ForeColor = SystemColors.ButtonHighlight
-        btnViewRequest.Location = New Point(13, 601)
+        btnViewRequest.Location = New Point(224, 592)
         btnViewRequest.Name = "btnViewRequest"
         btnViewRequest.Size = New Size(187, 23)
         btnViewRequest.TabIndex = 12
@@ -225,11 +231,85 @@ Partial Class tabOrderRequests
         cmbCategory.Size = New Size(138, 22)
         cmbCategory.TabIndex = 16
         ' 
+        ' dtStart
+        ' 
+        dtStart.CustomFormat = "MMM dd, yyyy"
+        dtStart.Format = DateTimePickerFormat.Custom
+        dtStart.Location = New Point(13, 59)
+        dtStart.Name = "dtStart"
+        dtStart.Size = New Size(148, 23)
+        dtStart.TabIndex = 17
+        ' 
+        ' btnAll
+        ' 
+        btnAll.BackColor = Color.FromArgb(CByte(196), CByte(188), CByte(171))
+        btnAll.FlatAppearance.BorderSize = 0
+        btnAll.FlatStyle = FlatStyle.Popup
+        btnAll.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
+        btnAll.ForeColor = SystemColors.ButtonHighlight
+        btnAll.Location = New Point(377, 59)
+        btnAll.Name = "btnAll"
+        btnAll.Size = New Size(55, 23)
+        btnAll.TabIndex = 18
+        btnAll.Text = "ALL"
+        btnAll.UseVisualStyleBackColor = False
+        ' 
+        ' btnSearchDate
+        ' 
+        btnSearchDate.BackColor = Color.FromArgb(CByte(196), CByte(188), CByte(171))
+        btnSearchDate.FlatAppearance.BorderSize = 0
+        btnSearchDate.FlatStyle = FlatStyle.Popup
+        btnSearchDate.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
+        btnSearchDate.ForeColor = SystemColors.ButtonHighlight
+        btnSearchDate.Location = New Point(321, 59)
+        btnSearchDate.Name = "btnSearchDate"
+        btnSearchDate.Size = New Size(38, 23)
+        btnSearchDate.TabIndex = 19
+        btnSearchDate.Text = "🔍︎"
+        btnSearchDate.UseVisualStyleBackColor = False
+        ' 
+        ' dtEnd
+        ' 
+        dtEnd.CustomFormat = "MMM dd, yyyy"
+        dtEnd.Format = DateTimePickerFormat.Custom
+        dtEnd.Location = New Point(166, 59)
+        dtEnd.Name = "dtEnd"
+        dtEnd.Size = New Size(148, 23)
+        dtEnd.TabIndex = 20
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.BackColor = Color.Transparent
+        Label3.Font = New Font("Consolas", 8F)
+        Label3.Location = New Point(13, 45)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(109, 13)
+        Label3.TabIndex = 21
+        Label3.Text = "Start Date Range:"
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.BackColor = Color.Transparent
+        Label4.Font = New Font("Consolas", 8F)
+        Label4.Location = New Point(166, 45)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(97, 13)
+        Label4.TabIndex = 22
+        Label4.Text = "End Date Range:"
+        ' 
         ' tabOrderRequests
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = My.Resources.Resources.mainPanelBg
+        Controls.Add(Label4)
+        Controls.Add(Label3)
+        Controls.Add(dtEnd)
+        Controls.Add(btnSearchDate)
+        Controls.Add(btnAll)
+        Controls.Add(dtStart)
         Controls.Add(cmbCategory)
         Controls.Add(btnSearch)
         Controls.Add(txtSearch)
@@ -263,5 +343,11 @@ Partial Class tabOrderRequests
     Friend WithEvents btnSearch As Button
     Friend WithEvents txtSearch As TextBox
     Friend WithEvents cmbCategory As ComboBox
+    Friend WithEvents dtStart As DateTimePicker
+    Friend WithEvents btnAll As Button
+    Friend WithEvents btnSearchDate As Button
+    Friend WithEvents dtEnd As DateTimePicker
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
 
 End Class

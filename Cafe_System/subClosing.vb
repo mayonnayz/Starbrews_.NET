@@ -20,7 +20,7 @@ Public Class subClosing
         sql = "SELECT i.ItemID, i.ItemName, c.CatName AS Category, i.Quantity, i.Unit, " &
           "i.UnitPrice " &
           "FROM ItemsTbl i " &
-          "INNER JOIN CategoriesTbl c ON i.ItemCategory = c.CategoryID WHERE ItemStatus = 1"
+          "INNER JOIN CategoriesTbl c ON i.ItemCategory = c.CategoryID WHERE ItemStatus = 1 AND i.Quantity <> 0"
 
         Using da As New OleDbDataAdapter(sql, oledbCnn)
             da.Fill(dtItems)
@@ -45,13 +45,12 @@ Public Class subClosing
         Next
 
         DataGridView1.Columns("ClosingQty").ReadOnly = False
-        DataGridView1.Columns("ClosingQty").HeaderText = "Used Qty"
+        DataGridView1.Columns("ClosingQty").HeaderText = "Closing Qty"
         DataGridView1.Columns("ClosingQty").Width = 80
     End Sub
 
     Private Sub btnCreate_Click(sender As Object, e As EventArgs) Handles btnCreate.Click
 
-        ' Prevent double click
         btnCreate.Enabled = False
 
         If cmbSupervisor.SelectedValue Is Nothing OrElse IsDBNull(cmbSupervisor.SelectedValue) Then
@@ -73,29 +72,35 @@ Public Class subClosing
             If row.IsNewRow Then Continue For
 
             Dim originalQty As Integer = Convert.ToInt32(row.Cells("Quantity").Value)
-            Dim usedQty As Integer
+            Dim closingQty As Integer
 
             If row.Cells("ClosingQty").Value Is Nothing OrElse row.Cells("ClosingQty").Value.ToString() = "" Then
-                MessageBox.Show("Please enter all used quantities.")
+                MessageBox.Show("Please enter all closing quantities.")
                 btnCreate.Enabled = True
                 Exit Sub
             End If
 
-            If Not Integer.TryParse(row.Cells("ClosingQty").Value.ToString(), usedQty) Then
+            If Not Integer.TryParse(row.Cells("ClosingQty").Value.ToString(), closingQty) Then
                 MessageBox.Show("Invalid quantity input.")
                 btnCreate.Enabled = True
                 Exit Sub
             End If
 
-            If usedQty > originalQty Then
-                MessageBox.Show("Used quantity cannot exceed current stock.", "Error")
+            If closingQty < 0 Then
+                MessageBox.Show("Closing quantity cannot be negative.")
+                btnCreate.Enabled = True
+                Exit Sub
+            End If
+
+            If closingQty > originalQty Then
+                MessageBox.Show("Closing quantity cannot exceed starting quantity.")
                 btnCreate.Enabled = True
                 Exit Sub
             End If
         Next
 
         ' =========================
-        ' INSERT CLOSING HEADER
+        ' INSERT HEADER
         ' =========================
         Dim closingID As Integer
 
@@ -120,32 +125,42 @@ Public Class subClosing
 
             Dim itemID As Integer = Convert.ToInt32(row.Cells("ItemID").Value)
             Dim originalQty As Integer = Convert.ToInt32(row.Cells("Quantity").Value)
-            Dim usedQty As Integer = Convert.ToInt32(row.Cells("ClosingQty").Value)
+            Dim closingQty As Integer = Convert.ToInt32(row.Cells("ClosingQty").Value)
 
-            Dim newQty As Integer = originalQty - usedQty
+            ' ✅ COMPUTE USED
+            Dim quantityUsed As Integer = originalQty - closingQty
 
             ' SAFETY CHECK
-            If newQty < 0 Then
-                MessageBox.Show("Resulting stock cannot be negative.")
+            If quantityUsed < 0 Then
+                MessageBox.Show("Closing quantity cannot exceed starting quantity.")
                 btnCreate.Enabled = True
                 Exit Sub
             End If
 
-            ' INSERT USED ITEM RECORD
-            Dim sqlItem As String = "INSERT INTO ClosingItemsTbl (ItemID, ClosingQuantity, ClosingID) VALUES (?, ?, ?)"
+            ' =========================
+            ' INSERT LOG
+            ' =========================
+            Dim sqlItem As String = "
+        INSERT INTO ClosingItemsTbl 
+        (ItemID, StartingQuantity, ClosingQuantity, QuantityUsed, ClosingID) 
+        VALUES (?, ?, ?, ?, ?)"
 
             Using cmd As New OleDbCommand(sqlItem, oledbCnn)
                 cmd.Parameters.Add("?", OleDbType.Integer).Value = itemID
-                cmd.Parameters.Add("?", OleDbType.Integer).Value = usedQty
+                cmd.Parameters.Add("?", OleDbType.Integer).Value = originalQty
+                cmd.Parameters.Add("?", OleDbType.Integer).Value = closingQty
+                cmd.Parameters.Add("?", OleDbType.Integer).Value = quantityUsed
                 cmd.Parameters.Add("?", OleDbType.Integer).Value = closingID
                 cmd.ExecuteNonQuery()
             End Using
 
-            ' UPDATE INVENTORY
+            ' =========================
+            ' UPDATE INVENTORY (FINAL COUNT)
+            ' =========================
             Dim sqlUpdate As String = "UPDATE ItemsTbl SET Quantity = ? WHERE ItemID = ?"
 
             Using cmdUpdate As New OleDbCommand(sqlUpdate, oledbCnn)
-                cmdUpdate.Parameters.Add("?", OleDbType.Integer).Value = newQty
+                cmdUpdate.Parameters.Add("?", OleDbType.Integer).Value = closingQty
                 cmdUpdate.Parameters.Add("?", OleDbType.Integer).Value = itemID
                 cmdUpdate.ExecuteNonQuery()
             End Using

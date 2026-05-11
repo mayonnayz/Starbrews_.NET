@@ -97,16 +97,14 @@ Public Class tabInventory
     End Sub
 
     Private Sub btnStockIn_Click(sender As Object, e As EventArgs) Handles btnStockIn.Click
-        purpose = "STOCK IN"
         Dim subStk As New subStockRoom()
         subStk.ShowDialog()
         LoadItems()
     End Sub
 
     Private Sub btnStockOut_Click(sender As Object, e As EventArgs) Handles btnStockOut.Click
-        purpose = "STOCK OUT"
-        Dim subStk As New subStockRoom()
-        subStk.ShowDialog()
+        Dim subStkOut As New subStockOutRoom()
+        subStkOut.ShowDialog()
         LoadItems()
     End Sub
 

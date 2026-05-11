@@ -15,30 +15,51 @@ Public Class tabOrderRequests
         btnViewArch.Text = "VIEW ARCHIVED"
         btnArchiveSupplier.Text = "ARCHIVE SUPPLIER"
 
+        dtStart.MaxDate = dtEnd.Value.Date
+        dtEnd.MinDate = dtStart.Value.Date
+
         LoadCategories()
         UpdateSupplierButtons()
         LoadSuppliers(1)
         LoadOrders()
     End Sub
 
-    Sub LoadOrders()
+    Sub LoadOrders(Optional startDate As Date? = Nothing,
+               Optional endDate As Date? = Nothing)
 
         Dim dt As New DataTable()
 
         Dim sql As String =
-        "SELECT 
-            o.OrderReqID AS [ID],
-            o.DateRequested AS [Date Requested],
-            a.FirstName & ' ' & a.LastName AS [Requested By],
-            IIF(r.AccountID IS NULL, '', r.FirstName & ' ' & r.LastName) AS [Reviewed By],
-            o.Status
-         FROM (OrderReqTbl o
-         INNER JOIN AccountsTbl a ON o.RequestedBy = a.AccountID)
-         LEFT JOIN AccountsTbl r ON o.ReviewedBy = r.AccountID
-         ORDER BY o.DateRequested DESC"
+    "SELECT 
+        o.OrderReqID AS [ID],
+        o.DateRequested AS [Date Requested],
+        a.FirstName & ' ' & a.LastName AS [Requested By],
+        IIF(r.AccountID IS NULL, '', r.FirstName & ' ' & r.LastName) AS [Reviewed By],
+        o.Status
+     FROM (OrderReqTbl o
+     INNER JOIN AccountsTbl a ON o.RequestedBy = a.AccountID)
+     LEFT JOIN AccountsTbl r ON o.ReviewedBy = r.AccountID"
 
-        Using da As New OleDbDataAdapter(sql, oledbCnn)
-            da.Fill(dt)
+        If startDate.HasValue AndAlso endDate.HasValue Then
+            sql &= " WHERE o.DateRequested >= ? AND o.DateRequested < ?"
+        End If
+
+        sql &= " ORDER BY o.DateRequested DESC"
+
+        Using cmd As New OleDbCommand(sql, oledbCnn)
+
+            If startDate.HasValue AndAlso endDate.HasValue Then
+
+                cmd.Parameters.AddWithValue("?", startDate.Value.Date)
+
+                cmd.Parameters.AddWithValue("?", endDate.Value.Date.AddDays(1))
+
+            End If
+
+            Using da As New OleDbDataAdapter(cmd)
+                da.Fill(dt)
+            End Using
+
         End Using
 
         DataGridView1.DataSource = dt
@@ -306,6 +327,22 @@ Public Class tabOrderRequests
         subAdd.ShowDialog()
 
         LoadOrders()
+    End Sub
+
+    Private Sub btnSearchDate_Click(sender As Object, e As EventArgs) Handles btnSearchDate.Click
+        LoadOrders(dtStart.Value.Date, dtEnd.Value.Date)
+    End Sub
+
+    Private Sub btnAll_Click(sender As Object, e As EventArgs) Handles btnAll.Click
+        LoadOrders()
+    End Sub
+
+    Private Sub dtStart_ValueChanged(sender As Object, e As EventArgs) Handles dtStart.ValueChanged
+        dtEnd.MinDate = dtStart.Value.Date
+    End Sub
+
+    Private Sub dtEnd_ValueChanged(sender As Object, e As EventArgs) Handles dtEnd.ValueChanged
+        dtStart.MaxDate = dtEnd.Value.Date
     End Sub
 
 End Class
