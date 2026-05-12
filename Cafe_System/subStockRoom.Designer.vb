@@ -267,6 +267,8 @@ Partial Class subStockRoom
         Controls.Add(Label2)
         Controls.Add(Label1)
         Controls.Add(DataGridView1)
+        MaximizeBox = False
+        MinimizeBox = False
         Name = "subStockRoom"
         StartPosition = FormStartPosition.CenterScreen
         Text = "subStockRoom"

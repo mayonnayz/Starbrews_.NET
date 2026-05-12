@@ -59,22 +59,16 @@ Public Class subClosing
             Exit Sub
         End If
 
-        Dim result = MessageBox.Show("Are all quantities final?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If result <> DialogResult.Yes Then
-            btnCreate.Enabled = True
-            Exit Sub
-        End If
-
-        ' =========================
-        ' VALIDATION
-        ' =========================
         For Each row As DataGridViewRow In DataGridView1.Rows
+
             If row.IsNewRow Then Continue For
 
             Dim originalQty As Integer = Convert.ToInt32(row.Cells("Quantity").Value)
             Dim closingQty As Integer
 
-            If row.Cells("ClosingQty").Value Is Nothing OrElse row.Cells("ClosingQty").Value.ToString() = "" Then
+            If row.Cells("ClosingQty").Value Is Nothing OrElse
+           row.Cells("ClosingQty").Value.ToString() = "" Then
+
                 MessageBox.Show("Please enter all closing quantities.")
                 btnCreate.Enabled = True
                 Exit Sub
@@ -97,72 +91,78 @@ Public Class subClosing
                 btnCreate.Enabled = True
                 Exit Sub
             End If
+
         Next
 
-        ' =========================
-        ' INSERT HEADER
-        ' =========================
+        Dim result = MessageBox.Show(
+        "Are all quantities final?",
+        "Confirm",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Question)
+
+        If result <> DialogResult.Yes Then
+            btnCreate.Enabled = True
+            Exit Sub
+        End If
+
         Dim closingID As Integer
 
-        Dim sqlClosing As String = "INSERT INTO ClosingTbl (BaristaID, SupervisorID, DateSubmitted) VALUES (?, ?, ?)"
+        Dim sqlClosing As String =
+        "INSERT INTO ClosingTbl 
+         (BaristaID, SupervisorID, DateSubmitted) 
+         VALUES (?, ?, ?)"
 
         Using cmd As New OleDbCommand(sqlClosing, oledbCnn)
+
             cmd.Parameters.Add("?", OleDbType.Integer).Value = Convert.ToInt32(Form1.UserId)
             cmd.Parameters.Add("?", OleDbType.Integer).Value = Convert.ToInt32(cmbSupervisor.SelectedValue)
             cmd.Parameters.Add("?", OleDbType.Date).Value = DateTime.Now
+
             cmd.ExecuteNonQuery()
+
         End Using
 
         Using cmd As New OleDbCommand("SELECT @@IDENTITY", oledbCnn)
             closingID = Convert.ToInt32(cmd.ExecuteScalar())
         End Using
 
-        ' =========================
-        ' INSERT ITEMS + UPDATE STOCK
-        ' =========================
         For Each row As DataGridViewRow In DataGridView1.Rows
+
             If row.IsNewRow Then Continue For
 
             Dim itemID As Integer = Convert.ToInt32(row.Cells("ItemID").Value)
             Dim originalQty As Integer = Convert.ToInt32(row.Cells("Quantity").Value)
             Dim closingQty As Integer = Convert.ToInt32(row.Cells("ClosingQty").Value)
 
-            ' ✅ COMPUTE USED
             Dim quantityUsed As Integer = originalQty - closingQty
 
-            ' SAFETY CHECK
-            If quantityUsed < 0 Then
-                MessageBox.Show("Closing quantity cannot exceed starting quantity.")
-                btnCreate.Enabled = True
-                Exit Sub
-            End If
-
-            ' =========================
-            ' INSERT LOG
-            ' =========================
-            Dim sqlItem As String = "
-        INSERT INTO ClosingItemsTbl 
-        (ItemID, StartingQuantity, ClosingQuantity, QuantityUsed, ClosingID) 
-        VALUES (?, ?, ?, ?, ?)"
+            Dim sqlItem As String =
+            "INSERT INTO ClosingItemsTbl
+             (ItemID, StartingQuantity, ClosingQuantity, QuantityUsed, ClosingID)
+             VALUES (?, ?, ?, ?, ?)"
 
             Using cmd As New OleDbCommand(sqlItem, oledbCnn)
+
                 cmd.Parameters.Add("?", OleDbType.Integer).Value = itemID
                 cmd.Parameters.Add("?", OleDbType.Integer).Value = originalQty
                 cmd.Parameters.Add("?", OleDbType.Integer).Value = closingQty
                 cmd.Parameters.Add("?", OleDbType.Integer).Value = quantityUsed
                 cmd.Parameters.Add("?", OleDbType.Integer).Value = closingID
+
                 cmd.ExecuteNonQuery()
+
             End Using
 
-            ' =========================
-            ' UPDATE INVENTORY (FINAL COUNT)
-            ' =========================
-            Dim sqlUpdate As String = "UPDATE ItemsTbl SET Quantity = ? WHERE ItemID = ?"
+            Dim sqlUpdate As String =
+            "UPDATE ItemsTbl SET Quantity = ? WHERE ItemID = ?"
 
             Using cmdUpdate As New OleDbCommand(sqlUpdate, oledbCnn)
+
                 cmdUpdate.Parameters.Add("?", OleDbType.Integer).Value = closingQty
                 cmdUpdate.Parameters.Add("?", OleDbType.Integer).Value = itemID
+
                 cmdUpdate.ExecuteNonQuery()
+
             End Using
 
         Next

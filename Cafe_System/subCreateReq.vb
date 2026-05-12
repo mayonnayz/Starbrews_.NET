@@ -86,7 +86,7 @@ Public Class subCreateReq
         If lstItem.SelectedValue Is Nothing Then Exit Sub
         If TypeOf lstItem.SelectedValue Is DataRowView Then Exit Sub
 
-        Dim sqlUnit As String =
+        Dim sqlUnit =
         "SELECT Unit, UnitPrice
          FROM ItemsTbl
          WHERE ItemID = ?"
@@ -95,10 +95,10 @@ Public Class subCreateReq
 
             cmd.Parameters.AddWithValue("?", lstItem.SelectedValue)
 
-            Using reader = cmd.ExecuteReader()
+            Using reader = cmd.ExecuteReader
 
-                If reader.Read() Then
-                    txtUnit.Text = reader("Unit").ToString()
+                If reader.Read Then
+                    txtUnit.Text = reader("Unit").ToString
                     txtPrice.Text = "$" & Convert.ToDecimal(reader("UnitPrice")).ToString("0.00")
                 End If
 
@@ -106,9 +106,9 @@ Public Class subCreateReq
 
         End Using
 
-        Dim dt As New DataTable()
+        Dim dt As New DataTable
 
-        Dim sqlSupp As String =
+        Dim sqlSupp =
         "SELECT SupplierID, SupplierName
          FROM SupplierTbl
          WHERE SupplierStatus = 1
@@ -200,10 +200,35 @@ Public Class subCreateReq
             Exit Sub
         End If
 
+        Dim itemID As Integer = Convert.ToInt32(lstItem.SelectedValue)
+        Dim supplierID As Integer = Convert.ToInt32(cmbSupplier.SelectedValue)
+
+        For Each row As DataGridViewRow In DataGridView1.Rows
+
+            If row.IsNewRow Then Continue For
+
+            Dim existingItemID As Integer = Convert.ToInt32(row.Cells("ItemID").Value)
+            Dim existingSupplierID As Integer = Convert.ToInt32(row.Cells("SupplierID").Value)
+
+            If existingItemID = itemID AndAlso existingSupplierID = supplierID Then
+
+                Dim existingQty As Integer = Convert.ToInt32(row.Cells("Quantity").Value)
+
+                row.Cells("Quantity").Value = existingQty + qty
+
+                txtQuantity.Clear()
+                btnAdd.Enabled = False
+
+                Exit Sub
+
+            End If
+
+        Next
+
         DataGridView1.Rows.Add(
-        lstItem.SelectedValue,
+        itemID,
         lstItem.Text,
-        cmbSupplier.SelectedValue,
+        supplierID,
         cmbSupplier.Text,
         qty,
         txtUnit.Text,
@@ -378,4 +403,7 @@ Public Class subCreateReq
 
     End Sub
 
+    Private Sub Label3_Click(sender As Object, e As EventArgs)
+
+    End Sub
 End Class

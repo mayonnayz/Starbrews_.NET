@@ -1,8 +1,8 @@
 ﻿Imports System.Data.OleDb
 Imports System.Globalization
 
+
 Public Class tabInventory
-    Public Shared purpose As String
     Private Sub tabInventory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblDate.Text = "Date: " & DateTime.Now.ToString("MM/dd/yyyy")
         lblDate2.Text = "Date: " & DateTime.Now.ToString("MM/dd/yyyy")
@@ -109,16 +109,12 @@ Public Class tabInventory
     End Sub
 
     Private Sub btnHistoryStock_Click(sender As Object, e As EventArgs) Handles btnHistoryStock.Click
-        purpose = "Stock Room Logs"
-        Dim subInv As New subInvLogs()
-        subInv.ShowDialog()
+        Dim subSto As New subStoLogs()
+        subSto.ShowDialog()
     End Sub
 
     Private Sub btnHistoryStore_Click(sender As Object, e As EventArgs) Handles btnHistoryStore.Click
-        purpose = "Store Inventory Logs"
         Dim subInv As New subInvLogs()
         subInv.ShowDialog()
     End Sub
-
-
 End Class

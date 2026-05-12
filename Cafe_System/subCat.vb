@@ -74,42 +74,57 @@ Public Class subCat
 
     Private Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
 
+        If Not ValidateInputs() Then Exit Sub
+
         Dim result As DialogResult
 
         If subCategory.purpose = "Create Category" Then
-            result = MessageBox.Show("Create this category?", "Confirm", MessageBoxButtons.YesNo)
+            result = MessageBox.Show(
+            "Create this category?",
+            "Confirm",
+            MessageBoxButtons.YesNo)
         Else
-            result = MessageBox.Show("Update this category?", "Confirm", MessageBoxButtons.YesNo)
+            result = MessageBox.Show(
+            "Update this category?",
+            "Confirm",
+            MessageBoxButtons.YesNo)
         End If
 
         If result = DialogResult.No Then Exit Sub
-        If Not ValidateInputs() Then Exit Sub
 
-        ' UPDATE 
         If subCategory.purpose = "Category Info" Then
 
             Dim sql As String =
-                "UPDATE CategoriesTbl SET CatName=?, CatDesc=? WHERE CategoryID=?"
+            "UPDATE CategoriesTbl 
+             SET CatName=?, CatDesc=? 
+             WHERE CategoryID=?"
 
             Using cmd As New OleDbCommand(sql, oledbCnn)
+
                 cmd.Parameters.AddWithValue("?", txtCName.Text)
                 cmd.Parameters.AddWithValue("?", txtDesc.Text)
                 cmd.Parameters.AddWithValue("?", subCategory.categoryId)
+
                 cmd.ExecuteNonQuery()
+
             End Using
 
             MessageBox.Show("Category updated successfully!")
 
-            ' INSERT
         ElseIf subCategory.purpose = "Create Category" Then
 
             Dim sql As String =
-                "INSERT INTO CategoriesTbl (CatName, CatDesc, CatStatus) VALUES (?, ?, 1)"
+            "INSERT INTO CategoriesTbl 
+             (CatName, CatDesc, CatStatus) 
+             VALUES (?, ?, 1)"
 
             Using cmd As New OleDbCommand(sql, oledbCnn)
+
                 cmd.Parameters.AddWithValue("?", txtCName.Text)
                 cmd.Parameters.AddWithValue("?", txtDesc.Text)
+
                 cmd.ExecuteNonQuery()
+
             End Using
 
             MessageBox.Show("Category created successfully!")

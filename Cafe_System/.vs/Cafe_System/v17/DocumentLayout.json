@@ -1,24 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\substockoutroom.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:substockoutroom.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\substockoutroom.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:substockoutroom.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\subcreatereq.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:subcreatereq.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|c:\\users\\zyann\\documents\\.net\\starbrews\\starbrews_.net\\cafe_system\\subcreatereq.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{366F189B-F969-4825-AF33-4F2FFA2B5402}|Cafe_System.vbproj|solutionrelative:subcreatereq.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -26,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,56 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "subStockOutRoom.vb",
-              "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subStockOutRoom.vb",
-              "RelativeDocumentMoniker": "subStockOutRoom.vb",
-              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subStockOutRoom.vb",
-              "RelativeToolTip": "subStockOutRoom.vb",
-              "ViewState": "AgIAAAwBAAAAAAAAAAAwwP8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-11T17:29:04.964Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "subCreateReq.vb",
-              "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subCreateReq.vb",
-              "RelativeDocumentMoniker": "subCreateReq.vb",
-              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subCreateReq.vb",
-              "RelativeToolTip": "subCreateReq.vb",
-              "ViewState": "AgIAAFoBAAAAAAAAAAAhwGEBAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-11T16:40:41.326Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "subStockOutRoom.vb [Design]",
-              "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subStockOutRoom.vb",
-              "RelativeDocumentMoniker": "subStockOutRoom.vb",
-              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subStockOutRoom.vb [Design]",
-              "RelativeToolTip": "subStockOutRoom.vb [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-11T17:29:01.838Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "subCreateReq.vb [Design]",
-              "DocumentMoniker": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subCreateReq.vb",
-              "RelativeDocumentMoniker": "subCreateReq.vb",
-              "ToolTip": "C:\\Users\\zyann\\Documents\\.Net\\Starbrews\\Starbrews_.NET\\Cafe_System\\subCreateReq.vb [Design]",
-              "RelativeToolTip": "subCreateReq.vb [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-11T17:29:15.967Z",
-              "EditorCaption": " [Design]"
             }
           ]
         }

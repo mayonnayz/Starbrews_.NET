@@ -138,6 +138,8 @@ Partial Class subInvLogs
         ' datePicker
         ' 
         datePicker.CalendarFont = New Font("Consolas", 9F)
+        datePicker.CustomFormat = "MMM dd, yyyy"
+        datePicker.Format = DateTimePickerFormat.Custom
         datePicker.Location = New Point(9, 61)
         datePicker.Name = "datePicker"
         datePicker.Size = New Size(153, 23)

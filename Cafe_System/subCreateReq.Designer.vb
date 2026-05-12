@@ -35,8 +35,6 @@ Partial Class subCreateReq
         Label1 = New Label()
         Label2 = New Label()
         Label3 = New Label()
-        cmbSupplier = New ComboBox()
-        lstItem = New ListBox()
         btnAdd = New Button()
         btnRemove = New Button()
         Label4 = New Label()
@@ -44,6 +42,8 @@ Partial Class subCreateReq
         txtUnit = New TextBox()
         txtPrice = New TextBox()
         Label5 = New Label()
+        cmbSupplier = New ComboBox()
+        lstItem = New ListBox()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -183,23 +183,6 @@ Partial Class subCreateReq
         Label3.TabIndex = 29
         Label3.Text = "Supplier:"
         ' 
-        ' cmbSupplier
-        ' 
-        cmbSupplier.FormattingEnabled = True
-        cmbSupplier.Location = New Point(9, 430)
-        cmbSupplier.Name = "cmbSupplier"
-        cmbSupplier.Size = New Size(186, 23)
-        cmbSupplier.TabIndex = 28
-        ' 
-        ' lstItem
-        ' 
-        lstItem.FormattingEnabled = True
-        lstItem.ItemHeight = 15
-        lstItem.Location = New Point(9, 192)
-        lstItem.Name = "lstItem"
-        lstItem.Size = New Size(186, 214)
-        lstItem.TabIndex = 30
-        ' 
         ' btnAdd
         ' 
         btnAdd.BackColor = Color.FromArgb(CByte(84), CByte(122), CByte(70))
@@ -271,6 +254,23 @@ Partial Class subCreateReq
         Label5.TabIndex = 36
         Label5.Text = "Price:"
         ' 
+        ' cmbSupplier
+        ' 
+        cmbSupplier.FormattingEnabled = True
+        cmbSupplier.Location = New Point(9, 430)
+        cmbSupplier.Name = "cmbSupplier"
+        cmbSupplier.Size = New Size(186, 23)
+        cmbSupplier.TabIndex = 28
+        ' 
+        ' lstItem
+        ' 
+        lstItem.FormattingEnabled = True
+        lstItem.ItemHeight = 15
+        lstItem.Location = New Point(9, 192)
+        lstItem.Name = "lstItem"
+        lstItem.Size = New Size(186, 214)
+        lstItem.TabIndex = 30
+        ' 
         ' subCreateReq
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -315,8 +315,6 @@ Partial Class subCreateReq
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents cmbSupplier As ComboBox
-    Friend WithEvents lstItem As ListBox
     Friend WithEvents btnAdd As Button
     Friend WithEvents btnRemove As Button
     Friend WithEvents Label4 As Label
@@ -324,4 +322,6 @@ Partial Class subCreateReq
     Friend WithEvents txtUnit As TextBox
     Friend WithEvents txtPrice As TextBox
     Friend WithEvents Label5 As Label
+    Friend WithEvents cmbSupplier As ComboBox
+    Friend WithEvents lstItem As ListBox
 End Class

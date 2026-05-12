@@ -196,17 +196,47 @@ Public Class subStockRoom
             Exit Sub
         End If
 
+        For Each row As DataGridViewRow In DataGridView1.Rows
 
-        If MessageBox.Show("Confirm stock transaction?", "Confirm", MessageBoxButtons.YesNo) <> DialogResult.Yes Then
+            If row.IsNewRow Then Continue For
+
+            If row.Cells("ReceivedQty").Value Is Nothing OrElse
+       row.Cells("ReceivedQty").Value.ToString().Trim = "" Then
+
+                row.Cells("ReceivedQty").Value = 0
+
+            End If
+
+            Dim receivedQty As Integer
+
+            If Not Integer.TryParse(row.Cells("ReceivedQty").Value.ToString(), receivedQty) Then
+                MessageBox.Show("Invalid received quantity.")
+                Exit Sub
+            End If
+
+            If receivedQty < 0 Then
+                MessageBox.Show("Received quantity cannot be negative.")
+                Exit Sub
+            End If
+
+        Next
+
+        If MessageBox.Show(
+    "Confirm stock transaction?",
+    "Confirm",
+    MessageBoxButtons.YesNo,
+    MessageBoxIcon.Question) <> DialogResult.Yes Then
+
             Exit Sub
+
         End If
 
         Dim stockMoveID As Integer
 
         Dim sqlMove As String =
             "INSERT INTO StockMovementTbl 
-            (SupervisorID, BaristaID, MovementType, DateSubmitted, OrderReqID)
-            VALUES (?, ?, ?, ?, ?)"
+            (SupervisorID, BaristaID, MovementType, DateSubmitted, OrderReqID, DiscStatus)
+            VALUES (?, ?, ?, ?, ?, ?)"
 
         Using cmd As New OleDbCommand(sqlMove, oledbCnn)
 
@@ -217,12 +247,17 @@ Public Class subStockRoom
 
             cmd.Parameters.Add("?", OleDbType.Integer).Value = Convert.ToInt32(selectedOrderID)
 
+            cmd.Parameters.Add("?", OleDbType.Integer).Value = 0
+
             cmd.ExecuteNonQuery()
         End Using
 
         Using cmd As New OleDbCommand("SELECT @@IDENTITY", oledbCnn)
             stockMoveID = Convert.ToInt32(cmd.ExecuteScalar())
         End Using
+
+        Dim hasPositiveDiscrepancy As Boolean = False
+        Dim hasNegativeDiscrepancy As Boolean = False
 
         For Each row As DataGridViewRow In DataGridView1.Rows
 
@@ -256,6 +291,12 @@ Public Class subStockRoom
             Dim newQty As Integer = currentQty + receivedQty
             Dim discrepancy As Integer = requestedQty - receivedQty
 
+            If discrepancy > 0 Then
+                hasPositiveDiscrepancy = True
+            ElseIf discrepancy < 0 Then
+                hasNegativeDiscrepancy = True
+            End If
+
             Dim updateSql As String =
                 "UPDATE StockRoomTbl SET CurrentQuantity = ? WHERE ItemID = ?"
 
@@ -282,17 +323,40 @@ Public Class subStockRoom
 
         Next
 
-        If tabInventory.purpose = "STOCK IN" Then
+        Dim discStatus As Integer = 0
 
-            Dim updateOrder As String =
+        If hasPositiveDiscrepancy Then
+
+            discStatus = 1
+
+        ElseIf hasNegativeDiscrepancy Then
+
+            discStatus = 2
+
+        End If
+
+        Dim discSql As String =
+        "UPDATE StockMovementTbl
+         SET DiscStatus = ?
+         WHERE StockMovementID = ?"
+
+        Using cmdDisc As New OleDbCommand(discSql, oledbCnn)
+
+            cmdDisc.Parameters.Add("?", OleDbType.Integer).Value = discStatus
+            cmdDisc.Parameters.Add("?", OleDbType.Integer).Value = stockMoveID
+
+            cmdDisc.ExecuteNonQuery()
+
+        End Using
+
+
+        Dim updateOrder As String =
                 "UPDATE OrderReqTbl SET OrderStatus = 2 WHERE OrderReqID = ?"
 
             Using cmd As New OleDbCommand(updateOrder, oledbCnn)
                 cmd.Parameters.Add("?", OleDbType.Integer).Value = selectedOrderID
                 cmd.ExecuteNonQuery()
             End Using
-
-        End If
 
 
         MessageBox.Show("Stock transaction completed!")
@@ -313,8 +377,11 @@ Public Class subStockRoom
 
         If DataGridView1.CurrentCell Is Nothing Then Exit Sub
 
-        If DataGridView1.Columns.Contains("MoveQty") AndAlso
-           DataGridView1.CurrentCell.ColumnIndex = DataGridView1.Columns("MoveQty").Index Then
+        If (DataGridView1.Columns.Contains("MoveQty") AndAlso
+        DataGridView1.CurrentCell.ColumnIndex = DataGridView1.Columns("MoveQty").Index) _
+    OrElse
+       (DataGridView1.Columns.Contains("ReceivedQty") AndAlso
+        DataGridView1.CurrentCell.ColumnIndex = DataGridView1.Columns("ReceivedQty").Index) Then
 
             Dim tb As TextBox = TryCast(e.Control, TextBox)
 

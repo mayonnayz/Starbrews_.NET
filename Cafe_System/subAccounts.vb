@@ -119,35 +119,45 @@ Public Class subAccounts
     End Sub
 
     Private Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
-        Dim result As String = ""
+        If Not ValidateInputs() Then Exit Sub
+
+        Dim result As DialogResult
 
         If tabAccounts.purpose = "Account Info" Then
-            result = MessageBox.Show("Are you sure you want to submit changes?", "Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            result = MessageBox.Show(
+            "Are you sure you want to submit changes?",
+            "Submit",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question)
         ElseIf tabAccounts.purpose = "Create New Account" Then
-            result = MessageBox.Show("Are you sure you want to create account?", "Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            result = MessageBox.Show(
+            "Are you sure you want to create account?",
+            "Submit",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question)
         End If
 
         If result = DialogResult.Yes Then
-            If Not ValidateInputs() Then Exit Sub
 
             If tabAccounts.purpose = "Account Info" Then
-                Dim sql As String = "UPDATE AccountsTbl SET FirstName = ?, LastName = ?, Username = ?, [Password] = ?, UserLvl = ?, Email = ?, ContactNumber = ?, Address = ?, Birthdate = ?
-                                       WHERE AccountId = ?"
+
+                Dim sql As String =
+            "UPDATE AccountsTbl 
+             SET FirstName = ?, LastName = ?, Username = ?, [Password] = ?, 
+                 UserLvl = ?, Email = ?, ContactNumber = ?, Address = ?, Birthdate = ?
+             WHERE AccountId = ?"
 
                 Using cmd As New OleDbCommand(sql, oledbCnn)
+
                     cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtFName.Text
                     cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtLName.Text
                     cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtUname.Text
                     cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtPass.Text
-
                     cmd.Parameters.Add("?", OleDbType.Integer).Value = cmbUlvl.SelectedIndex
-
                     cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtEmail.Text
                     cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtContact.Text
                     cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtAddress.Text
-
                     cmd.Parameters.Add("?", OleDbType.Date).Value = DateTimePicker1.Value
-
                     cmd.Parameters.Add("?", OleDbType.Integer).Value = tabAccounts.accId
 
                     cmd.ExecuteNonQuery()
@@ -155,34 +165,38 @@ Public Class subAccounts
                 End Using
 
                 MessageBox.Show("Account updated successfully!")
+
             ElseIf tabAccounts.purpose = "Create New Account" Then
+
                 Dim sql As String =
-                "INSERT INTO AccountsTbl 
-                (FirstName, LastName, Username, [Password], UserLvl, Status, Email, ContactNumber, Address, Birthdate) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            "INSERT INTO AccountsTbl
+            (FirstName, LastName, Username, [Password], UserLvl, Status,
+             Email, ContactNumber, Address, Birthdate)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
                 Using cmd As New OleDbCommand(sql, oledbCnn)
+
                     cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtFName.Text
                     cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtLName.Text
                     cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtUname.Text
                     cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtPass.Text
-
                     cmd.Parameters.Add("?", OleDbType.Integer).Value = cmbUlvl.SelectedIndex
                     cmd.Parameters.Add("?", OleDbType.Integer).Value = 1
-
                     cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtEmail.Text
                     cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtContact.Text
                     cmd.Parameters.Add("?", OleDbType.VarWChar).Value = txtAddress.Text
-
                     cmd.Parameters.Add("?", OleDbType.Date).Value = DateTimePicker1.Value
 
                     cmd.ExecuteNonQuery()
+
                 End Using
 
                 MessageBox.Show("Account created successfully!")
 
             End If
+
             Me.Close()
+
         End If
     End Sub
 

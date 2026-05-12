@@ -237,3 +237,7 @@ D:\ZYANN\.NET\Starbrews_.NET\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows
 D:\ZYANN\.NET\Starbrews_.NET\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.genruntimeconfig.cache
 D:\ZYANN\.NET\Starbrews_.NET\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\ref\Cafe_System.dll
 C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.subStockOutRoom.resources
+C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.subStoLogs.resources
+C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\obj\Debug\net8.0-windows\Cafe_System.subReqDiscrepancy.resources
+C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
+C:\Users\zyann\Documents\.Net\Starbrews\Starbrews_.NET\Cafe_System\bin\Debug\net8.0-windows\itextsharp.dll

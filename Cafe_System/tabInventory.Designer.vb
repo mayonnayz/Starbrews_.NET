@@ -208,11 +208,11 @@ Partial Class tabInventory
         btnHistoryStock.FlatStyle = FlatStyle.Popup
         btnHistoryStock.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold)
         btnHistoryStock.ForeColor = SystemColors.ButtonHighlight
-        btnHistoryStock.Location = New Point(724, 562)
+        btnHistoryStock.Location = New Point(616, 562)
         btnHistoryStock.Name = "btnHistoryStock"
-        btnHistoryStock.Size = New Size(102, 23)
+        btnHistoryStock.Size = New Size(210, 23)
         btnHistoryStock.TabIndex = 13
-        btnHistoryStock.Text = "VIEW LOGS"
+        btnHistoryStock.Text = "VIEW SUMMARY LOGS"
         btnHistoryStock.UseVisualStyleBackColor = False
         ' 
         ' DataGridView2
