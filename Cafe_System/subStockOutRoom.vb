@@ -3,13 +3,52 @@
 Public Class subStockOutRoom
     Private Sub subStockOutRoom_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        lblSvisor.Text = "Supervisor: " & Form1.FirstName & " " & Form1.LastName
+        lblSvisor.Text = "Supervisor: " & vbCrLf & Form1.FirstName & " " & Form1.LastName
         btnStock.Text = "STOCK OUT"
 
         LockControls()
         LoadCategories()
         SetupGrid()
         LoadBarista()
+
+    End Sub
+
+    Private Sub LoadItems()
+
+        If cmbCategory.SelectedIndex = -1 Then Exit Sub
+        If cmbCategory.SelectedValue Is Nothing Then Exit Sub
+        If TypeOf cmbCategory.SelectedValue Is DataRowView Then Exit Sub
+        If IsDBNull(cmbCategory.SelectedValue) Then Exit Sub
+
+        Dim dt As New DataTable()
+
+        Dim sql As String =
+    "SELECT ItemID, ItemName 
+     FROM ItemsTbl 
+     WHERE ItemStatus = 1 
+     AND ItemCategory = ?
+     AND ItemName LIKE ?"
+
+        Using cmd As New OleDbCommand(sql, oledbCnn)
+
+            cmd.Parameters.Add("?", OleDbType.Integer).Value =
+        Convert.ToInt32(cmbCategory.SelectedValue)
+
+            cmd.Parameters.Add("?", OleDbType.VarWChar).Value =
+        "%" & txtSearch.Text.Trim & "%"
+
+            Using da As New OleDbDataAdapter(cmd)
+                da.Fill(dt)
+            End Using
+
+        End Using
+
+        lstItem.DataSource = dt
+        lstItem.DisplayMember = "ItemName"
+        lstItem.ValueMember = "ItemID"
+
+        lstItem.Enabled = True
+        lstItem.ClearSelected()
 
     End Sub
 
@@ -45,33 +84,13 @@ Public Class subStockOutRoom
 
     Private Sub cmbCategory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCategory.SelectedIndexChanged
 
-        If cmbCategory.SelectedIndex = -1 Then Exit Sub
-        If cmbCategory.SelectedValue Is Nothing Then Exit Sub
-        If TypeOf cmbCategory.SelectedValue Is DataRowView Then Exit Sub
-        If IsDBNull(cmbCategory.SelectedValue) Then Exit Sub
+        LoadItems()
 
-        Dim dt As New DataTable()
+    End Sub
 
-        Dim sql As String =
-        "SELECT ItemID, ItemName FROM ItemsTbl WHERE ItemStatus = 1 AND ItemCategory = ?"
+    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
 
-        Using cmd As New OleDbCommand(sql, oledbCnn)
-
-            cmd.Parameters.Add("?", OleDbType.Integer).Value =
-            Convert.ToInt32(cmbCategory.SelectedValue)
-
-            Using da As New OleDbDataAdapter(cmd)
-                da.Fill(dt)
-            End Using
-
-        End Using
-
-        lstItem.DataSource = dt
-        lstItem.DisplayMember = "ItemName"
-        lstItem.ValueMember = "ItemID"
-
-        lstItem.Enabled = True
-        lstItem.ClearSelected()
+        LoadItems()
 
     End Sub
 

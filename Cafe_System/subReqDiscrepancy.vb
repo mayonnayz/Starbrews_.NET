@@ -79,18 +79,24 @@ Public Class subReqDiscrepancy
         Dim dt As New DataTable()
 
         Dim sql As String =
-    "SELECT 
-        smi.StockItemID AS ItemID,
-        i.ItemName,
-        c.CatName AS Category,
-        smi.Discrepancy,
-        i.Unit,
-        i.UnitPrice
-     FROM ((StockMoveItemsTbl smi
-     INNER JOIN ItemsTbl i ON smi.StockItemID = i.ItemID)
-     INNER JOIN CategoriesTbl c ON i.ItemCategory = c.CategoryID)
-     WHERE smi.StockMoveID = ?
-     AND smi.Discrepancy > 0"
+        "SELECT 
+            smi.StockItemID AS ItemID,
+            i.ItemName,
+            c.CatName AS Category,
+            smi.SupplierID,
+            s.SupplierName,
+            smi.Discrepancy,
+            i.Unit,
+            i.UnitPrice
+         FROM ((StockMoveItemsTbl smi
+         INNER JOIN ItemsTbl i 
+            ON smi.StockItemID = i.ItemID)
+         INNER JOIN CategoriesTbl c 
+            ON i.ItemCategory = c.CategoryID)
+         INNER JOIN SupplierTbl s 
+            ON smi.SupplierID = s.SupplierID
+         WHERE smi.StockMoveID = ?
+         AND smi.Discrepancy > 0"
 
         Using cmd As New OleDbCommand(sql, oledbCnn)
             cmd.Parameters.Add("?", OleDbType.Integer).Value = stockMoveID
@@ -104,45 +110,17 @@ Public Class subReqDiscrepancy
 
         For Each r As DataRow In dt.Rows
 
-            Dim itemID = r("ItemID")
-            Dim itemName = r("ItemName").ToString()
-            Dim category = r("Category").ToString()
-            Dim disc = Convert.ToInt32(r("Discrepancy"))
-            Dim unit = r("Unit").ToString()
-            Dim price = r("UnitPrice")
-
-            Dim supplierID As Integer = 0
-            Dim supplierName As String = ""
-
-            Dim sqlSupp =
-        "SELECT TOP 1 SupplierID, SupplierName
-         FROM SupplierTbl
-         WHERE SupplierStatus = 1
-         AND SupplierCategory =
-         (SELECT CategoryID FROM CategoriesTbl WHERE CatName = ?)"
-
-            Using cmd As New OleDbCommand(sqlSupp, oledbCnn)
-                cmd.Parameters.Add("?", OleDbType.VarWChar).Value = category
-
-                Using reader = cmd.ExecuteReader()
-                    If reader.Read Then
-                        supplierID = reader("SupplierID")
-                        supplierName = reader("SupplierName").ToString()
-                    End If
-                End Using
-            End Using
-
             DataGridView1.Rows.Add(
-            itemID,
-            itemName,
-            category,
-            supplierName,
-            disc,
-            unit,
-            price,
-            disc,
-            supplierID
-        )
+                r("ItemID"),
+                r("ItemName").ToString(),
+                r("Category").ToString(),
+                r("SupplierName").ToString(),
+                Convert.ToInt32(r("Discrepancy")),
+                r("Unit").ToString(),
+                r("UnitPrice"),
+                Convert.ToInt32(r("Discrepancy")),
+                Convert.ToInt32(r("SupplierID"))
+            )
 
         Next
 
@@ -406,17 +384,13 @@ Public Class subReqDiscrepancy
 
             Using cmd As New OleDbCommand(sqlItem, oledbCnn)
 
-                cmd.Parameters.Add("?", OleDbType.Integer).Value =
-                orderReqID
+                cmd.Parameters.Add("?", OleDbType.Integer).Value = orderReqID
 
-                cmd.Parameters.Add("?", OleDbType.Integer).Value =
-                itemID
+                cmd.Parameters.Add("?", OleDbType.Integer).Value = itemID
 
-                cmd.Parameters.Add("?", OleDbType.Integer).Value =
-                qty
+                cmd.Parameters.Add("?", OleDbType.Integer).Value = qty
 
-                cmd.Parameters.Add("?", OleDbType.Integer).Value =
-                supplierID
+                cmd.Parameters.Add("?", OleDbType.Integer).Value = supplierID
 
                 cmd.ExecuteNonQuery()
 
@@ -465,4 +439,7 @@ Public Class subReqDiscrepancy
         End If
     End Sub
 
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
+    End Sub
 End Class

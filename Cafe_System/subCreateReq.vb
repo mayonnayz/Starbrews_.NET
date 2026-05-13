@@ -31,6 +31,41 @@ Public Class subCreateReq
         txtPrice.ReadOnly = True
     End Sub
 
+    Private Sub LoadItems()
+
+        If cmbCategory.SelectedValue Is Nothing Then Exit Sub
+        If TypeOf cmbCategory.SelectedValue Is DataRowView Then Exit Sub
+
+        Dim dt As New DataTable()
+
+        Dim sql As String =
+        "SELECT ItemID, ItemName
+         FROM ItemsTbl
+         WHERE ItemStatus = 1
+         AND ItemCategory = ?
+         AND ItemName LIKE ?"
+
+        Using cmd As New OleDbCommand(sql, oledbCnn)
+
+            cmd.Parameters.AddWithValue("?", cmbCategory.SelectedValue)
+
+            cmd.Parameters.AddWithValue("?", "%" & txtSearch.Text.Trim & "%")
+
+            Using da As New OleDbDataAdapter(cmd)
+                da.Fill(dt)
+            End Using
+
+        End Using
+
+        lstItem.DataSource = dt
+        lstItem.DisplayMember = "ItemName"
+        lstItem.ValueMember = "ItemID"
+
+        lstItem.Enabled = True
+        lstItem.ClearSelected()
+
+    End Sub
+
     Private Sub LoadCategories()
 
         Dim dt As New DataTable()
@@ -52,32 +87,13 @@ Public Class subCreateReq
 
     Private Sub cmbCategory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCategory.SelectedIndexChanged
 
-        If cmbCategory.SelectedValue Is Nothing Then Exit Sub
-        If TypeOf cmbCategory.SelectedValue Is DataRowView Then Exit Sub
+        LoadItems()
 
-        Dim dt As New DataTable()
+    End Sub
 
-        Dim sql As String =
-        "SELECT ItemID, ItemName
-         FROM ItemsTbl
-         WHERE ItemStatus = 1
-         AND ItemCategory = ?"
+    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
 
-        Using cmd As New OleDbCommand(sql, oledbCnn)
-
-            cmd.Parameters.AddWithValue("?", cmbCategory.SelectedValue)
-
-            Using da As New OleDbDataAdapter(cmd)
-                da.Fill(dt)
-            End Using
-
-        End Using
-
-        lstItem.DataSource = dt
-        lstItem.DisplayMember = "ItemName"
-        lstItem.ValueMember = "ItemID"
-
-        lstItem.Enabled = True
+        LoadItems()
 
     End Sub
 

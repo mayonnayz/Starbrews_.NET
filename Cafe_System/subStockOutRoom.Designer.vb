@@ -22,9 +22,9 @@ Partial Class subStockOutRoom
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         btnStock = New Button()
         btnCancel = New Button()
         cmbBarista = New ComboBox()
@@ -42,6 +42,7 @@ Partial Class subStockOutRoom
         txtUnit = New TextBox()
         txtQuantity = New TextBox()
         Label5 = New Label()
+        txtSearch = New TextBox()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -128,33 +129,33 @@ Partial Class subStockOutRoom
         ' 
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataGridView1.BackgroundColor = Color.FromArgb(CByte(89), CByte(82), CByte(71))
-        DataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = SystemColors.Control
-        DataGridViewCellStyle10.Font = New Font("Consolas", 9F)
-        DataGridViewCellStyle10.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle10.SelectionBackColor = SystemColors.Control
-        DataGridViewCellStyle10.SelectionForeColor = SystemColors.WindowText
-        DataGridViewCellStyle10.WrapMode = DataGridViewTriState.True
-        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = SystemColors.Control
+        DataGridViewCellStyle1.Font = New Font("Consolas", 9F)
+        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Control
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = SystemColors.Window
-        DataGridViewCellStyle11.Font = New Font("Consolas", 9F)
-        DataGridViewCellStyle11.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(CByte(80), CByte(82), CByte(71))
-        DataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = DataGridViewTriState.False
-        DataGridView1.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = SystemColors.Window
+        DataGridViewCellStyle2.Font = New Font("Consolas", 9F)
+        DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(80), CByte(82), CByte(71))
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        DataGridView1.DefaultCellStyle = DataGridViewCellStyle2
         DataGridView1.Location = New Point(204, 40)
         DataGridView1.Name = "DataGridView1"
-        DataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = SystemColors.Control
-        DataGridViewCellStyle12.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle12.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = DataGridViewTriState.True
-        DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = SystemColors.Control
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         DataGridView1.Size = New Size(793, 563)
         DataGridView1.TabIndex = 30
         ' 
@@ -190,7 +191,7 @@ Partial Class subStockOutRoom
         ' 
         lstItem.FormattingEnabled = True
         lstItem.ItemHeight = 15
-        lstItem.Location = New Point(7, 205)
+        lstItem.Location = New Point(7, 250)
         lstItem.Name = "lstItem"
         lstItem.Size = New Size(186, 244)
         lstItem.TabIndex = 41
@@ -200,7 +201,7 @@ Partial Class subStockOutRoom
         Label3.AutoSize = True
         Label3.BackColor = Color.Transparent
         Label3.Font = New Font("Consolas", 9F)
-        Label3.Location = New Point(10, 188)
+        Label3.Location = New Point(10, 233)
         Label3.Name = "Label3"
         Label3.Size = New Size(42, 14)
         Label3.TabIndex = 40
@@ -211,7 +212,7 @@ Partial Class subStockOutRoom
         Label4.AutoSize = True
         Label4.BackColor = Color.Transparent
         Label4.Font = New Font("Consolas", 9F)
-        Label4.Location = New Point(10, 138)
+        Label4.Location = New Point(10, 183)
         Label4.Name = "Label4"
         Label4.Size = New Size(70, 14)
         Label4.TabIndex = 39
@@ -220,21 +221,21 @@ Partial Class subStockOutRoom
         ' cmbCategory
         ' 
         cmbCategory.FormattingEnabled = True
-        cmbCategory.Location = New Point(7, 155)
+        cmbCategory.Location = New Point(7, 200)
         cmbCategory.Name = "cmbCategory"
         cmbCategory.Size = New Size(186, 23)
         cmbCategory.TabIndex = 38
         ' 
         ' txtUnit
         ' 
-        txtUnit.Location = New Point(103, 478)
+        txtUnit.Location = New Point(103, 516)
         txtUnit.Name = "txtUnit"
         txtUnit.Size = New Size(90, 23)
         txtUnit.TabIndex = 46
         ' 
         ' txtQuantity
         ' 
-        txtQuantity.Location = New Point(7, 478)
+        txtQuantity.Location = New Point(7, 516)
         txtQuantity.Name = "txtQuantity"
         txtQuantity.Size = New Size(99, 23)
         txtQuantity.TabIndex = 45
@@ -244,11 +245,18 @@ Partial Class subStockOutRoom
         Label5.AutoSize = True
         Label5.BackColor = Color.Transparent
         Label5.Font = New Font("Consolas", 9F)
-        Label5.Location = New Point(10, 461)
+        Label5.Location = New Point(10, 499)
         Label5.Name = "Label5"
         Label5.Size = New Size(70, 14)
         Label5.TabIndex = 44
         Label5.Text = "Quantity:"
+        ' 
+        ' txtSearch
+        ' 
+        txtSearch.Location = New Point(7, 144)
+        txtSearch.Name = "txtSearch"
+        txtSearch.Size = New Size(186, 23)
+        txtSearch.TabIndex = 47
         ' 
         ' subStockOutRoom
         ' 
@@ -256,6 +264,7 @@ Partial Class subStockOutRoom
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = My.Resources.Resources.mainPanelBg
         ClientSize = New Size(1009, 614)
+        Controls.Add(txtSearch)
         Controls.Add(txtUnit)
         Controls.Add(txtQuantity)
         Controls.Add(Label5)
@@ -298,4 +307,5 @@ Partial Class subStockOutRoom
     Friend WithEvents txtUnit As TextBox
     Friend WithEvents txtQuantity As TextBox
     Friend WithEvents Label5 As Label
+    Friend WithEvents txtSearch As TextBox
 End Class

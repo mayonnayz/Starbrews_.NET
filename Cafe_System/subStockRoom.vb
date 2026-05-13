@@ -68,11 +68,14 @@ Public Class subStockRoom
                 i.ItemID,
                 i.ItemName,
                 c.CatName AS Category,
+                s.SupplierID,
+                s.SupplierName AS Supplier,
                 ori.Quantity AS RequestedQty,
                 i.Unit
-            FROM ((ReqItemsTbl ori
+            FROM (((ReqItemsTbl ori
             INNER JOIN ItemsTbl i ON ori.ItemID = i.ItemID)
             INNER JOIN CategoriesTbl c ON i.ItemCategory = c.CategoryID)
+            INNER JOIN SupplierTbl s ON ori.SupplierID = s.SupplierID)
             WHERE ori.OrderReqID = ?"
 
             Using cmd As New OleDbCommand(sql, oledbCnn)
@@ -87,8 +90,10 @@ Public Class subStockRoom
 
             DataGridView1.DataSource = dt
 
+            DataGridView1.Columns("Supplier").Width = 110
             DataGridView1.AllowUserToAddRows = False
             DataGridView1.Columns("ItemID").Visible = False
+            DataGridView1.Columns("SupplierID").Visible = False
 
             DataGridView1.Columns("RequestedQty").ReadOnly = True
             DataGridView1.Columns("ReceivedQty").ReadOnly = False
@@ -97,42 +102,42 @@ Public Class subStockRoom
 
         Else
 
-            Dim sql As String =
-            "SELECT 
-                i.ItemID,
-                i.ItemName,
-                c.CatName AS Category,
-                s.CurrentQuantity AS CurrentQty,
-                i.Unit,
-                i.UnitPrice
-            FROM (ItemsTbl i
-            INNER JOIN CategoriesTbl c ON i.ItemCategory = c.CategoryID)
-            INNER JOIN StockRoomTbl s ON i.ItemID = s.ItemID
-            WHERE i.ItemStatus = 1"
+            'Dim sql As String =
+            '"SELECT 
+            '    i.ItemID,
+            '    i.ItemName,
+            '    c.CatName AS Category,
+            '    s.CurrentQuantity AS CurrentQty,
+            '    i.Unit,
+            '    i.UnitPrice
+            'FROM (ItemsTbl i
+            'INNER JOIN CategoriesTbl c ON i.ItemCategory = c.CategoryID)
+            'INNER JOIN StockRoomTbl s ON i.ItemID = s.ItemID
+            'WHERE i.ItemStatus = 1"
 
-            Using da As New OleDbDataAdapter(sql, oledbCnn)
-                da.Fill(dt)
-            End Using
+            'Using da As New OleDbDataAdapter(sql, oledbCnn)
+            '    da.Fill(dt)
+            'End Using
 
-            dt.Columns.Add("MoveQty", GetType(Integer))
-            DataGridView1.DataSource = dt
+            'dt.Columns.Add("MoveQty", GetType(Integer))
+            'DataGridView1.DataSource = dt
 
-            DataGridView1.AllowUserToAddRows = False
-            DataGridView1.Columns("ItemID").Visible = False
+            'DataGridView1.AllowUserToAddRows = False
+            'DataGridView1.Columns("ItemID").Visible = False
 
-            DataGridView1.Columns("ItemName").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            'DataGridView1.Columns("ItemName").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
 
-            DataGridView1.Columns("CurrentQty").Width = 80
-            DataGridView1.Columns("Unit").Width = 60
-            DataGridView1.Columns("UnitPrice").Width = 80
-            DataGridView1.Columns("UnitPrice").DefaultCellStyle.Format = "C2"
+            'DataGridView1.Columns("CurrentQty").Width = 80
+            'DataGridView1.Columns("Unit").Width = 60
+            'DataGridView1.Columns("UnitPrice").Width = 80
+            'DataGridView1.Columns("UnitPrice").DefaultCellStyle.Format = "C2"
 
-            For Each col As DataGridViewColumn In DataGridView1.Columns
-                col.ReadOnly = True
-            Next
+            'For Each col As DataGridViewColumn In DataGridView1.Columns
+            '    col.ReadOnly = True
+            'Next
 
-            DataGridView1.Columns("MoveQty").ReadOnly = False
-            DataGridView1.Columns("MoveQty").HeaderText = "Quantity"
+            'DataGridView1.Columns("MoveQty").ReadOnly = False
+            'DataGridView1.Columns("MoveQty").HeaderText = "Quantity"
         End If
 
     End Sub
@@ -264,6 +269,7 @@ Public Class subStockRoom
             If row.IsNewRow Then Continue For
 
             Dim itemID As Integer = Convert.ToInt32(row.Cells("ItemID").Value)
+            Dim supplierID As Integer = Convert.ToInt32(row.Cells("SupplierID").Value)
 
 
             Dim receivedQty As Integer
@@ -307,9 +313,9 @@ Public Class subStockRoom
             End Using
 
             Dim detailSql As String =
-                "INSERT INTO StockMoveItemsTbl 
-                    (StockItemID, StockMoveID, RequestedQuantity, ReceivedQuantity, Discrepancy)
-                    VALUES (?, ?, ?, ?, ?)"
+            "INSERT INTO StockMoveItemsTbl 
+            (StockItemID, StockMoveID, RequestedQuantity, ReceivedQuantity, Discrepancy, SupplierID)
+            VALUES (?, ?, ?, ?, ?, ?)"
 
             Using cmdDetail As New OleDbCommand(detailSql, oledbCnn)
                 cmdDetail.Parameters.Add("?", OleDbType.Integer).Value = itemID
@@ -317,6 +323,7 @@ Public Class subStockRoom
                 cmdDetail.Parameters.Add("?", OleDbType.Integer).Value = requestedQty
                 cmdDetail.Parameters.Add("?", OleDbType.Integer).Value = receivedQty
                 cmdDetail.Parameters.Add("?", OleDbType.Integer).Value = discrepancy
+                cmdDetail.Parameters.Add("?", OleDbType.Integer).Value = supplierID
                 cmdDetail.ExecuteNonQuery()
             End Using
 
@@ -353,10 +360,10 @@ Public Class subStockRoom
         Dim updateOrder As String =
                 "UPDATE OrderReqTbl SET OrderStatus = 2 WHERE OrderReqID = ?"
 
-            Using cmd As New OleDbCommand(updateOrder, oledbCnn)
-                cmd.Parameters.Add("?", OleDbType.Integer).Value = selectedOrderID
-                cmd.ExecuteNonQuery()
-            End Using
+        Using cmd As New OleDbCommand(updateOrder, oledbCnn)
+            cmd.Parameters.Add("?", OleDbType.Integer).Value = selectedOrderID
+            cmd.ExecuteNonQuery()
+        End Using
 
 
         MessageBox.Show("Stock transaction completed!")
@@ -462,5 +469,9 @@ Public Class subStockRoom
 
     Private Sub dtEnd_ValueChanged(sender As Object, e As EventArgs) Handles dtEnd.ValueChanged
         dtStart.MaxDate = dtEnd.Value.Date
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
     End Sub
 End Class

@@ -76,6 +76,8 @@ Public Class subItems
 
     Private Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
 
+        If Not ValidateInputs() Then Exit Sub
+
         Dim result As DialogResult
 
         If tabItems.purpose = "Item Info" Then
@@ -86,7 +88,7 @@ Public Class subItems
         End If
 
         If result = DialogResult.No Then Exit Sub
-        If Not ValidateInputs() Then Exit Sub
+
 
 
         If tabItems.purpose = "Item Info" Then

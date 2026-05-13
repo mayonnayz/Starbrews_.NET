@@ -117,14 +117,16 @@ Public Class subStoLogs
 
         Dim sql As String =
         "SELECT 
-        i.ItemName,
-        c.CatName AS Category,
-        smi.RequestedQuantity,
-        smi.ReceivedQuantity
-    FROM ((StockMoveItemsTbl smi
-    INNER JOIN ItemsTbl i ON smi.StockItemID = i.ItemID)
-    INNER JOIN CategoriesTbl c ON i.ItemCategory = c.CategoryID)
-    WHERE smi.StockMoveID = ?"
+            i.ItemName,
+            c.CatName AS Category,
+            s.SupplierName AS Supplier,
+            smi.RequestedQuantity,
+            smi.ReceivedQuantity
+        FROM ((StockMoveItemsTbl smi
+        INNER JOIN ItemsTbl i ON smi.StockItemID = i.ItemID)
+        INNER JOIN CategoriesTbl c ON i.ItemCategory = c.CategoryID)
+        INNER JOIN SupplierTbl s ON smi.SupplierID = s.SupplierID
+        WHERE smi.StockMoveID = ?"
 
         Using cmd As New OleDbCommand(sql, oledbCnn)
 
@@ -401,6 +403,7 @@ Public Class subStoLogs
         "SELECT 
             i.ItemName,
             c.CatName AS Category,
+            s.SupplierName AS Supplier,
             smi.RequestedQuantity,
             smi.ReceivedQuantity,
             (smi.Discrepancy * -1) AS Discrepancy,
@@ -408,6 +411,7 @@ Public Class subStoLogs
         FROM ((StockMoveItemsTbl smi
         INNER JOIN ItemsTbl i ON smi.StockItemID = i.ItemID)
         INNER JOIN CategoriesTbl c ON i.ItemCategory = c.CategoryID)
+        INNER JOIN SupplierTbl s ON smi.SupplierID = s.SupplierID
         WHERE smi.StockMoveID = ?
         AND smi.Discrepancy <> 0"
 
@@ -460,7 +464,7 @@ Public Class subStoLogs
 
                 Dim disc As Integer = Val(row.Cells("Discrepancy").Value)
 
-                If disc > 0 Then
+                If disc < 0 Then
                     btnReorder.Enabled = True
                     Exit For
                 End If
@@ -747,4 +751,5 @@ Public Class subStoLogs
         disc.ShowDialog()
 
     End Sub
+
 End Class
